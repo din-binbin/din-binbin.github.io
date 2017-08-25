@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-25T15:28:44.192Z">
+<meta property="og:updated_time" content="2017-08-25T15:40:49.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结 —— HTML篇">
 <meta name="twitter:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
@@ -367,22 +367,16 @@
 <li>meta元素共有两个属性，分别是http-equiv属性和name属性。</li>
 </ul>
 </blockquote>
-<pre><code>1. name属性
-主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。
-meta标签中name属性语法格式是：
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="attribute">name</span>=<span class="string">"参数"</span> <span class="attribute">content</span>=<span class="string">"具体的描述"</span>&gt;</div></pre></td></tr></table></figure>
-
-取值包括：keywords(关键字)、description(网站内容的描述)、 viewport(移动端的窗口)、robots(定义搜索引擎爬虫的索引方式)、author(作者)、generator(网页制作软件)、copyright(版权)、revisit-after(搜索引擎爬虫重访时间)、renderer(双核浏览器渲染方式)。
-
-2. http-equiv属性
-相当于HTTP的作用，比如说定义些HTTP参数啥的。
-meta标签中http-equiv属性语法格式是：
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"参数"</span> <span class="attribute">content</span>=<span class="string">"具体的描述"</span>&gt;</div></pre></td></tr></table></figure>
-
-取值包括： content-Type(设定网页字符集)(推荐使用HTML5的方式)、X-UA-Compatible(浏览器采取何种版本渲染当前页面)、cache-control(指定请求和响应遵循的缓存机制)、expires(网页到期时间)、refresh(自动刷新并指向某页面)、Set-Cookie(cookie设定)。
-
-可参考 ：[HTML meta标签总结与属性使用介绍](https://segmentfault.com/a/1190000004279791)
-</code></pre><h2 id="4-HTML注释"><a href="#4-HTML注释" class="headerlink" title="4. HTML注释"></a>4. HTML注释</h2><blockquote>
+<ol>
+<li><p>name属性<br> 主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。<br> meta标签中name属性语法格式是：<br> <code>&lt;meta name=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;</code></p>
+<p> 取值包括：keywords(关键字)、description(网站内容的描述)、 viewport(移动端的窗口)、robots(定义搜索引擎爬虫的索引方式)、author(作者)、generator(网页制作软件)、copyright(版权)、revisit-after(搜索引擎爬虫重访时间)、renderer(双核浏览器渲染方式)。</p>
+</li>
+<li><p>http-equiv属性<br> 相当于HTTP的作用，比如说定义些HTTP参数啥的。<br> meta标签中http-equiv属性语法格式是：<br> <code>&lt;meta http-equiv=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;</code></p>
+<p> 取值包括： content-Type(设定网页字符集)(推荐使用HTML5的方式)、X-UA-Compatible(浏览器采取何种版本渲染当前页面)、cache-control(指定请求和响应遵循的缓存机制)、expires(网页到期时间)、refresh(自动刷新并指向某页面)、Set-Cookie(cookie设定)。</p>
+<p> 可参考 ：<a href="https://segmentfault.com/a/1190000004279791" target="_blank" rel="external">HTML meta标签总结与属性使用介绍</a></p>
+</li>
+</ol>
+<h2 id="4-HTML注释"><a href="#4-HTML注释" class="headerlink" title="4. HTML注释"></a>4. HTML注释</h2><blockquote>
 <p>程序员圈子里面有个非常经典的笑话：“当我写下这段代码的时候，只有我和上帝能看懂。现在，只有上帝能了。”</p>
 <p>就如有些人看文章需要做笔记一样，写代码最好也需要做笔记，这个笔记就是注释。注释主要用来解释代码的功能或逻辑，可以辅助阅读代码，当然注释内容本身是不会在浏览器中显示的。大家务必养成注释的习惯，这样即利于你日后阅读，也利于团队小伙伴阅读，否则，你的代码真的只有上帝才能看懂。</p>
 </blockquote>
