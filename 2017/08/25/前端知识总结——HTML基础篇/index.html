@@ -98,11 +98,11 @@
 <meta name="keywords" content="HTML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端知识总结 —— HTML篇">
-<meta property="og:url" content="http://ice-io.github.io/2017/08/25/前端知识总结——HTML篇/index.html">
+<meta property="og:url" content="http://ice-io.github.io/2017/08/25/前端知识总结——HTML基础篇/index.html">
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-26T10:27:24.735Z">
+<meta property="og:updated_time" content="2017-08-26T11:48:08.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结 —— HTML篇">
 <meta name="twitter:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://ice-io.github.io/2017/08/25/前端知识总结——HTML篇/"/>
+  <link rel="canonical" href="http://ice-io.github.io/2017/08/25/前端知识总结——HTML基础篇/"/>
 
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ice-io.github.io/2017/08/25/前端知识总结——HTML篇/">
+    <link itemprop="mainEntityOfPage" href="http://ice-io.github.io/2017/08/25/前端知识总结——HTML基础篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ice">
@@ -465,6 +465,29 @@
 </tr>
 </tbody>
 </table>
+<h2 id="8-HTML表单"><a href="#8-HTML表单" class="headerlink" title="8. HTML表单"></a>8. HTML表单</h2><p>表单元素本身是指<code>&lt;form&gt;</code>，不过它也有一个更广泛的概念，指构成表单的所有元素。<br>首先就<code>&lt;form&gt;</code>元素本身来说，主要有两个属性：</p>
+<ul>
+<li><code>action</code>：表示表单数据所提交到的处理地址（如果不知道处理地址，可先用#表示）</li>
+<li><code>method</code>：表示提交内容的方式，默认取值为 <code>get</code>，可以设置为 <code>post</code></li>
+</ul>
+<p>下面正式介绍一些常用的表单元素</p>
+<ul>
+<li><p><code>&lt;input&gt;</code>元素<br>  &lt;<code>input&gt;</code>元素跟<code>&lt;img&gt;</code>元素一样，不需要闭合标签。其常见属性如下：</p>
+  <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">type</span>：必备属性，常见取值如下：</div><div class="line">    text：文本输入框</div><div class="line">    password：密码输入框</div><div class="line">    <span class="built_in">search</span>：搜索框</div><div class="line">    <span class="keyword">number</span>：数字输入框</div><div class="line">    radio：单选按钮</div><div class="line">    checkbox：复选框</div><div class="line">    hidden：隐藏域（页面不可见，用来保存数据等）</div><div class="line">    <span class="keyword">file</span>： 上传文件</div><div class="line">    button：普通按钮</div><div class="line">    submit：提交按钮</div><div class="line">    reset：重置按钮</div><div class="line">placeholder：如为输入框时，可设置该属性，在输入框中灰色显示提示信息</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>&lt;textarea&gt;</code>元素<br>  用于多行文本输入，我们常用的评论输入框也是这个。<br>  可以通过 <code>cols</code> 和 <code>rows</code> 属性来规定 <code>textarea</code> 的尺寸，不过等我们学了 CSS 之后，更好的办法是使用 CSS 的 <code>height</code> 和 <code>width</code> 属性来控制其尺寸。</p>
+</li>
+<li><p><code>&lt;select&gt;</code>元素<br>  用于创建选项菜单，默认只能选择一个值，可通过设置属性multiple=”multiple”   来实现多选（很少很少使用多选）。</p>
+<p>  其选项为<code>&lt;option&gt;</code>元素，常用有两个属性：</p>
+<pre><code>`value`：表示选中该选项的值。
+`selected`：表示默认选中。
+</code></pre></li>
+<li><code>&lt;button&gt;</code>元素<br>  <code>&lt;button&gt;</code>元素用来定义按钮，跟 <code>input</code> 定义的按钮不同，这个是有闭合标签的。同样也可以通过设置 <code>type</code> 属性来实现提交按钮和重置按钮，不过不建议这么做。一般对于提交与重置按钮，我们建议使用 <code>input</code> 来定义，对于普通按钮可以使用 <code>button。</code></li>
+<li><p><code>&lt;label&gt;</code>元素<br>  <code>&lt;label&gt;</code>元素用于关联表单元素的标题，可直接包裹表单元素，也可以通过设置其 <code>for</code> 属性关联到表单元素的 <code>id</code> 属性，这样点击 <code>label</code> 标题上关联的表单元素就 可以自动获取焦点，提升用户体验。示例如下：</p>
+<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 包裹表单元素 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 使用for属性关联表单元素的id属性 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"username"</span>&gt;</span>用户名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"username"</span>&gt;</span></div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<p>可参考：<a href="http://blog.mingsixue.com/it/HTML-form-attribute.html" target="_blank" rel="external">HTML Form浅析之表单属性</a></p>
 
       
     </div>
@@ -628,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTML基础结构"><span class="nav-number">1.</span> <span class="nav-text">1. HTML基础结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-深入了解head元素"><span class="nav-number">2.</span> <span class="nav-text">2. 深入了解head元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-meta元素神通广大"><span class="nav-number">3.</span> <span class="nav-text">3. meta元素神通广大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HTML注释"><span class="nav-number">4.</span> <span class="nav-text">4. HTML注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HTML属性"><span class="nav-number">5.</span> <span class="nav-text">5. HTML属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-常用基本元素"><span class="nav-number">6.</span> <span class="nav-text">6. 常用基本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-HTML字符实体"><span class="nav-number">7.</span> <span class="nav-text">7. HTML字符实体</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTML基础结构"><span class="nav-number">1.</span> <span class="nav-text">1. HTML基础结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-深入了解head元素"><span class="nav-number">2.</span> <span class="nav-text">2. 深入了解head元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-meta元素神通广大"><span class="nav-number">3.</span> <span class="nav-text">3. meta元素神通广大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HTML注释"><span class="nav-number">4.</span> <span class="nav-text">4. HTML注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HTML属性"><span class="nav-number">5.</span> <span class="nav-text">5. HTML属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-常用基本元素"><span class="nav-number">6.</span> <span class="nav-text">6. 常用基本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-HTML字符实体"><span class="nav-number">7.</span> <span class="nav-text">7. HTML字符实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-HTML表单"><span class="nav-number">8.</span> <span class="nav-text">8. HTML表单</span></a></li></ol></div>
             
 
           </div>
