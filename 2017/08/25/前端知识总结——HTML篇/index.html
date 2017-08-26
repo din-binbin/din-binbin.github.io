@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-25T15:40:49.359Z">
+<meta property="og:updated_time" content="2017-08-26T10:16:22.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结 —— HTML篇">
 <meta name="twitter:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
@@ -368,11 +368,9 @@
 </ul>
 </blockquote>
 <ol>
-<li><p>name属性<br> 主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。<br> meta标签中name属性语法格式是：<br> <code>&lt;meta name=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;</code></p>
-<p> 取值包括：keywords(关键字)、description(网站内容的描述)、 viewport(移动端的窗口)、robots(定义搜索引擎爬虫的索引方式)、author(作者)、generator(网页制作软件)、copyright(版权)、revisit-after(搜索引擎爬虫重访时间)、renderer(双核浏览器渲染方式)。</p>
+<li><p>name属性<br> 主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。<br> meta标签中name属性语法格式是：<br> <code>&lt;meta name=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;</code><br> 取值包括：keywords(关键字)、description(网站内容的描述)、 viewport(移动端的窗口)、robots(定义搜索引擎爬虫的索引方式)、author(作者)、generator(网页制作软件)、copyright(版权)、revisit-after(搜索引擎爬虫重访时间)、renderer(双核浏览器渲染方式)。</p>
 </li>
-<li><p>http-equiv属性<br> 相当于HTTP的作用，比如说定义些HTTP参数啥的。<br> meta标签中http-equiv属性语法格式是：<br> <code>&lt;meta http-equiv=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;</code></p>
-<p> 取值包括： content-Type(设定网页字符集)(推荐使用HTML5的方式)、X-UA-Compatible(浏览器采取何种版本渲染当前页面)、cache-control(指定请求和响应遵循的缓存机制)、expires(网页到期时间)、refresh(自动刷新并指向某页面)、Set-Cookie(cookie设定)。</p>
+<li><p>http-equiv属性<br> 相当于HTTP的作用，比如说定义些HTTP参数啥的。<br> meta标签中http-equiv属性语法格式是：<br> <code>&lt;meta http-equiv=&quot;参数&quot; content=&quot;具体的描述&quot;&gt;</code><br> 取值包括： content-Type(设定网页字符集)(推荐使用HTML5的方式)、X-UA-Compatible(浏览器采取何种版本渲染当前页面)、cache-control(指定请求和响应遵循的缓存机制)、expires(网页到期时间)、refresh(自动刷新并指向某页面)、Set-Cookie(cookie设定)。</p>
 <p> 可参考 ：<a href="https://segmentfault.com/a/1190000004279791" target="_blank" rel="external">HTML meta标签总结与属性使用介绍</a></p>
 </li>
 </ol>
@@ -383,6 +381,7 @@
 <p>HTML注释的语法为：<code>&lt;!-- 注释写这里 --&gt;</code></p>
 <h2 id="5-HTML属性"><a href="#5-HTML属性" class="headerlink" title="5. HTML属性"></a>5. HTML属性</h2><blockquote>
 <p>为了表示元素的一些特征，我们可以在开始标签中添加一些属性。</p>
+</blockquote>
 <ol>
 <li>属性特性<br> 一般属性都具有以下特征：<ul>
 <li>每个属性之间或与元素名之间都有一个空格隔开</li>
@@ -396,8 +395,26 @@
 <li>只用于某一个元素的，如alt属性只用于img元素</li>
 </ul>
 </li>
-<li>属性</li>
+<li>属性参考<ul>
+<li><a href="http://www.w3school.com.cn/tags/html_ref_standardattributes.asp" target="_blank" rel="external">HTML 全局属性|W3school</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes" target="_blank" rel="external">HTML 全局属性|MDN</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes" target="_blank" rel="external">HTML 属性参考</a></li>
+</ul>
+</li>
 </ol>
+<h2 id="6-常用基本元素"><a href="#6-常用基本元素" class="headerlink" title="6. 常用基本元素"></a>6. 常用基本元素</h2><ul>
+<li>标题元素<br>  <code>&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt;</code>标签用来定义标题，其大小依次减小。<code>&lt;h1&gt;</code>为最大的标题，<code>&lt;h6&gt;</code>为最小的标题。</li>
+<li>段落元素<br>  <code>&lt;p&gt;</code>标签定义段落，每一个<code>&lt;p&gt;</code>标签默认都另起一行。</li>
+<li>图片元素<br>  <code>&lt;img&gt;</code>标签用来在网页中嵌入图片，该标签没有结束标签。（如这种只有一个标签的元素都可以称之为“空元素（empty element）”。<br>  <code>&lt;img&gt;</code>标签有两个必需的属性：<code>src</code>属性 和 <code>alt</code>属性。其中<code>src</code>属性为图片地址，<code>alt</code>属性为如果图片加载失败显示的替换文字。</li>
+<li>链接元素<br>  <code>&lt;a&gt;</code>标签定义超链接，用于网页之间的跳转（从一个网页到另一个网页），它有一个重要的属性<code>href</code>，用来指定链接的目标。如果需要新标签页打开，则要添加另一个属性<code>target</code>。</li>
+<li>列表元素<br>  列表分为无序列表及有序列表两种，其中无序列表标签为<code>&lt;ul&gt;</code>，有序列表标签为<code>&lt;ol&gt;</code>，其直接的子元素标签为<code>&lt;li&gt;</code>(不能是其他标签)。</li>
+<li>div元素<br>  <code>&lt;div&gt;</code>标签用来分割为独立的、不同的部分，每一个<code>&lt;div&gt;</code>标签默认都另起一行。</li>
+<li>span元素<br>  <code>&lt;span&gt;</code>标签被用来组合文档中的行内元素。</li>
+<li>换行元素<br>  <code>&lt;br&gt;</code>标签可插入一个简单的换行符，它是个空元素，没有结束标签，不包含任何内容。</li>
+</ul>
+<h2 id="7-HTML字符实体"><a href="#7-HTML字符实体" class="headerlink" title="7. HTML字符实体"></a>7. HTML字符实体</h2><p>预留字符</p>
+<blockquote>
+<p>在 HTML 中，某些字符是预留的不能直接使用，如小于号（&lt;）和大于号（&gt;），直接使用会误认为它们是标签。所以如果我们希望正确地显示预留字符，那必须在 HTML 源代码中使用字符实体（character entities），如可以使用<code>&amp;lt;</code>表示小于号（&lt;），<code>&amp;gt;</code>表示大于号（&gt;）。<br>常用字符实体如下<br>|  显示结果  |  描述  |  实体名称 |  实体编号 |<br>| —–     | —–  | —–    | —–    |<br>|           |  空格   |  &nbsp;  |  &#160;  |<br>|  &lt;        |  小于号 |  &lt;    |  &#60;   |<br>|  &gt;        |  大于号 |  &gt;    |  &#62;   |<br>|  &amp;        |  和号  |  &amp;    |  &#38;   |<br>|  ©        |  版权  |  &copy;   |  &#169;  |<br>|  ×        |  乘号  |  &times;  |  &#215;  |</p>
 </blockquote>
 
       
@@ -562,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTML基础结构"><span class="nav-number">1.</span> <span class="nav-text">1. HTML基础结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-深入了解head元素"><span class="nav-number">2.</span> <span class="nav-text">2. 深入了解head元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-meta元素神通广大"><span class="nav-number">3.</span> <span class="nav-text">3. meta元素神通广大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HTML注释"><span class="nav-number">4.</span> <span class="nav-text">4. HTML注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HTML属性"><span class="nav-number">5.</span> <span class="nav-text">5. HTML属性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTML基础结构"><span class="nav-number">1.</span> <span class="nav-text">1. HTML基础结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-深入了解head元素"><span class="nav-number">2.</span> <span class="nav-text">2. 深入了解head元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-meta元素神通广大"><span class="nav-number">3.</span> <span class="nav-text">3. meta元素神通广大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HTML注释"><span class="nav-number">4.</span> <span class="nav-text">4. HTML注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HTML属性"><span class="nav-number">5.</span> <span class="nav-text">5. HTML属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-常用基本元素"><span class="nav-number">6.</span> <span class="nav-text">6. 常用基本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-HTML字符实体"><span class="nav-number">7.</span> <span class="nav-text">7. HTML字符实体</span></a></li></ol></div>
             
 
           </div>
