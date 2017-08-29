@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-26T11:48:08.545Z">
+<meta property="og:updated_time" content="2017-08-27T13:47:40.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结 —— HTML篇">
 <meta name="twitter:description" content="从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。">
@@ -351,8 +351,8 @@
 
       
         <p>从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。<br><a id="more"></a></p>
-<h2 id="1-HTML基础结构"><a href="#1-HTML基础结构" class="headerlink" title="1. HTML基础结构"></a>1. HTML基础结构</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span>                          <span class="comment">&lt;!--文档声明，告诉浏览器应该使用哪种规范来解析--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>                                  <span class="comment">&lt;!--根元素，所有的元素都是其子元素--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span>                              <span class="comment">&lt;!--head元素，包含网页的基本信息和元数据--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">'utf-8'</span>&gt;</span>          <span class="comment">&lt;!--meta元素，存放元数据，由name和http-equiv两个属性--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>我是网页标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span>      <span class="comment">&lt;!--title元素，表示网页标题--&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span>                              <span class="comment">&lt;!--body元素，存放页面内容--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是内容标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="2-深入了解head元素"><a href="#2-深入了解head元素" class="headerlink" title="2. 深入了解head元素"></a>2. 深入了解head元素</h2><ul>
+<h2 id="HTML基础结构"><a href="#HTML基础结构" class="headerlink" title="HTML基础结构"></a>HTML基础结构</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">html</span>&gt;</span>                          <span class="comment">&lt;!--文档声明，告诉浏览器应该使用哪种规范来解析--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>                                  <span class="comment">&lt;!--根元素，所有的元素都是其子元素--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span>                              <span class="comment">&lt;!--head元素，包含网页的基本信息和元数据--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">'utf-8'</span>&gt;</span>          <span class="comment">&lt;!--meta元素，存放元数据，由name和http-equiv两个属性--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>我是网页标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span>      <span class="comment">&lt;!--title元素，表示网页标题--&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span>                              <span class="comment">&lt;!--body元素，存放页面内容--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是内容标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="深入了解head元素"><a href="#深入了解head元素" class="headerlink" title="深入了解head元素"></a>深入了解head元素</h2><ul>
 <li>head元素包含网页的常规信息和元数据。</li>
 <li>其子元素主要为三类：<ol>
 <li>描述网页基本信息 —— meta元素</li>
@@ -361,7 +361,7 @@
 </ol>
 </li>
 </ul>
-<h2 id="3-meta元素神通广大"><a href="#3-meta元素神通广大" class="headerlink" title="3. meta元素神通广大"></a>3. meta元素神通广大</h2><blockquote>
+<h2 id="meta元素神通广大"><a href="#meta元素神通广大" class="headerlink" title="meta元素神通广大"></a>meta元素神通广大</h2><blockquote>
 <ul>
 <li>meta常用于定义页面的说明，关键字，最后修改日期，和其它的元数据。这些元数据将服务于浏览器（如何布局或重载页面），搜索引擎和其它网络服务。</li>
 <li>meta元素共有两个属性，分别是http-equiv属性和name属性。</li>
@@ -374,12 +374,12 @@
 <p> 可参考 ：<a href="https://segmentfault.com/a/1190000004279791" target="_blank" rel="external">HTML meta标签总结与属性使用介绍</a></p>
 </li>
 </ol>
-<h2 id="4-HTML注释"><a href="#4-HTML注释" class="headerlink" title="4. HTML注释"></a>4. HTML注释</h2><blockquote>
+<h2 id="HTML注释"><a href="#HTML注释" class="headerlink" title="HTML注释"></a>HTML注释</h2><blockquote>
 <p>程序员圈子里面有个非常经典的笑话：“当我写下这段代码的时候，只有我和上帝能看懂。现在，只有上帝能了。”</p>
 <p>就如有些人看文章需要做笔记一样，写代码最好也需要做笔记，这个笔记就是注释。注释主要用来解释代码的功能或逻辑，可以辅助阅读代码，当然注释内容本身是不会在浏览器中显示的。大家务必养成注释的习惯，这样即利于你日后阅读，也利于团队小伙伴阅读，否则，你的代码真的只有上帝才能看懂。</p>
 </blockquote>
 <p>HTML注释的语法为：<code>&lt;!-- 注释写这里 --&gt;</code></p>
-<h2 id="5-HTML属性"><a href="#5-HTML属性" class="headerlink" title="5. HTML属性"></a>5. HTML属性</h2><blockquote>
+<h2 id="HTML属性"><a href="#HTML属性" class="headerlink" title="HTML属性"></a>HTML属性</h2><blockquote>
 <p>为了表示元素的一些特征，我们可以在开始标签中添加一些属性。</p>
 </blockquote>
 <ol>
@@ -402,7 +402,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="6-常用基本元素"><a href="#6-常用基本元素" class="headerlink" title="6. 常用基本元素"></a>6. 常用基本元素</h2><ul>
+<h2 id="常用基本元素"><a href="#常用基本元素" class="headerlink" title="常用基本元素"></a>常用基本元素</h2><ul>
 <li>标题元素<br>  <code>&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt;</code>标签用来定义标题，其大小依次减小。<code>&lt;h1&gt;</code>为最大的标题，<code>&lt;h6&gt;</code>为最小的标题。</li>
 <li>段落元素<br>  <code>&lt;p&gt;</code>标签定义段落，每一个<code>&lt;p&gt;</code>标签默认都另起一行。</li>
 <li>图片元素<br>  <code>&lt;img&gt;</code>标签用来在网页中嵌入图片，该标签没有结束标签。（如这种只有一个标签的元素都可以称之为“空元素（empty element）”。<br>  <code>&lt;img&gt;</code>标签有两个必需的属性：<code>src</code>属性 和 <code>alt</code>属性。其中<code>src</code>属性为图片地址，<code>alt</code>属性为如果图片加载失败显示的替换文字。</li>
@@ -412,7 +412,7 @@
 <li>span元素<br>  <code>&lt;span&gt;</code>标签被用来组合文档中的行内元素。</li>
 <li>换行元素<br>  <code>&lt;br&gt;</code>标签可插入一个简单的换行符，它是个空元素，没有结束标签，不包含任何内容。</li>
 </ul>
-<h2 id="7-HTML字符实体"><a href="#7-HTML字符实体" class="headerlink" title="7. HTML字符实体"></a>7. HTML字符实体</h2><p>预留字符</p>
+<h2 id="HTML字符实体"><a href="#HTML字符实体" class="headerlink" title="HTML字符实体"></a>HTML字符实体</h2><p>预留字符</p>
 <blockquote>
 <p>在 HTML 中，某些字符是预留的不能直接使用，如小于号（&lt;）和大于号（&gt;），直接使用会误认为它们是标签。所以如果我们希望正确地显示预留字符，那必须在 HTML 源代码中使用字符实体（character entities），如可以使用<code>&amp;lt;</code>表示小于号（&lt;），<code>&amp;gt;</code>表示大于号（&gt;）。</p>
 </blockquote>
@@ -465,7 +465,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="8-HTML表单"><a href="#8-HTML表单" class="headerlink" title="8. HTML表单"></a>8. HTML表单</h2><p>表单元素本身是指<code>&lt;form&gt;</code>，不过它也有一个更广泛的概念，指构成表单的所有元素。<br>首先就<code>&lt;form&gt;</code>元素本身来说，主要有两个属性：</p>
+<h2 id="HTML表单"><a href="#HTML表单" class="headerlink" title="HTML表单"></a>HTML表单</h2><p>表单元素本身是指<code>&lt;form&gt;</code>，不过它也有一个更广泛的概念，指构成表单的所有元素。<br>首先就<code>&lt;form&gt;</code>元素本身来说，主要有两个属性：</p>
 <ul>
 <li><code>action</code>：表示表单数据所提交到的处理地址（如果不知道处理地址，可先用#表示）</li>
 <li><code>method</code>：表示提交内容的方式，默认取值为 <code>get</code>，可以设置为 <code>post</code></li>
@@ -527,6 +527,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/26/前端知识总结——CSS基础篇/" rel="prev" title="前端知识总结——CSS">
+                前端知识总结——CSS <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -603,7 +607,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -616,7 +620,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -651,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-HTML基础结构"><span class="nav-number">1.</span> <span class="nav-text">1. HTML基础结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-深入了解head元素"><span class="nav-number">2.</span> <span class="nav-text">2. 深入了解head元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-meta元素神通广大"><span class="nav-number">3.</span> <span class="nav-text">3. meta元素神通广大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HTML注释"><span class="nav-number">4.</span> <span class="nav-text">4. HTML注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-HTML属性"><span class="nav-number">5.</span> <span class="nav-text">5. HTML属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-常用基本元素"><span class="nav-number">6.</span> <span class="nav-text">6. 常用基本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-HTML字符实体"><span class="nav-number">7.</span> <span class="nav-text">7. HTML字符实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-HTML表单"><span class="nav-number">8.</span> <span class="nav-text">8. HTML表单</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML基础结构"><span class="nav-number">1.</span> <span class="nav-text">HTML基础结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深入了解head元素"><span class="nav-number">2.</span> <span class="nav-text">深入了解head元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meta元素神通广大"><span class="nav-number">3.</span> <span class="nav-text">meta元素神通广大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML注释"><span class="nav-number">4.</span> <span class="nav-text">HTML注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML属性"><span class="nav-number">5.</span> <span class="nav-text">HTML属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用基本元素"><span class="nav-number">6.</span> <span class="nav-text">常用基本元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML字符实体"><span class="nav-number">7.</span> <span class="nav-text">HTML字符实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML表单"><span class="nav-number">8.</span> <span class="nav-text">HTML表单</span></a></li></ol></div>
             
 
           </div>
