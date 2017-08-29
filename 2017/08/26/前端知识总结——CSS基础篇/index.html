@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="这一篇文章将回顾之前所学的CSS基础知识。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-29T16:16:34.142Z">
+<meta property="og:updated_time" content="2017-08-29T16:22:06.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——CSS">
 <meta name="twitter:description" content="这一篇文章将回顾之前所学的CSS基础知识。">
@@ -355,11 +355,11 @@
 <p>CSS，即Cascading Style Sheet，层叠样式表，用来修饰网页。</p>
 </blockquote>
 <ol>
-<li>CSS语法<br><code>h1{color:red;font-size:20px}</code><br>包含选择器、属性、属性值，当然最好写成下面的样子方便阅读和维护：</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;</div><div class="line">    <span class="attribute">color</span>: red;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>CSS注释</li>
+<li><p>CSS语法<br><code>h1{color:red;font-size:20px}</code><br>包含选择器、属性、属性值，当然最好写成下面的样子方便阅读和维护：</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span> &#123;</div><div class="line">    <span class="attribute">color</span>: red;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>CSS注释</p>
+</li>
 </ol>
 <ul>
 <li>单行注释：<code>/* 注释内容 */</code></li>
@@ -460,7 +460,7 @@
 <td style="text-align:center">用于选取属性值中包含指定词汇的元素</td>
 </tr>
 <tr>
-<td style="text-align:center">`[attribute</td>
+<td style="text-align:center">`[attribute\</td>
 <td style="text-align:center">=value]`</td>
 <td>用于选取带有以指定值开头的属性值的元素，该值必须是整个单词</td>
 </tr>
@@ -494,6 +494,10 @@
 <ul>
 <li>避免使用通用选择器</li>
 <li>避免使用标签或 <code>class</code> 选择器来限制 <code>id</code> 选择器</li>
+<li>避免使用标签限制 <code>class</code> 选择器</li>
+<li>避免使用多层标签选择器。使用 <code>class</code> 选择器替换，减少css查找</li>
+<li>避免使用子选择器</li>
+<li>使用继承</li>
 </ul>
 
       
