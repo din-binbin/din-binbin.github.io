@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="这一篇文章将回顾之前所学的CSS基础知识。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-29T17:04:35.045Z">
+<meta property="og:updated_time" content="2017-08-29T17:22:03.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——CSS">
 <meta name="twitter:description" content="这一篇文章将回顾之前所学的CSS基础知识。">
@@ -647,7 +647,59 @@
 <li>高效性：iconfont有矢量特性，不会失真</li>
 <li>轻便性：在使用上字体文件和普通的静态资源一样，既可以外链也可以内链，并且字体文件也可以使用gzip压缩<br>推荐：<a href="http://fontello.com/" target="_blank" rel="external">Fontello</a></li>
 </ul>
-<h2 id="CSS中的单位"><a href="#CSS中的单位" class="headerlink" title="CSS中的单位"></a>CSS中的单位</h2>
+<h2 id="CSS中的单位"><a href="#CSS中的单位" class="headerlink" title="CSS中的单位"></a>CSS中的单位</h2><ol>
+<li><p><strong>px</strong><br>px 是 pixels（像素）的缩写，是一种绝对单位，用于屏幕显示器上，传统上一个像素对应于计算机屏幕上的一个点，而对于高清屏则对应更多。任何现代显示屏，不管是手机，平板，笔记本还是电视都是由成千上万的像素组成的，所以我们可以使用这些像素来定义长度。</p>
+</li>
+<li><p><strong>%</strong><br>%（百分比）应该是我们最好理解的单位了，即相对于父元素。</p>
+<blockquote>
+<p>如果对 <code>html</code> 元素设置 <code>font-size</code> 为百分比值，则是以浏览器默认的字体大小16px为参照计算的（所有浏览器的默认字体大小都为 16px），如62.5%即等于10px（62.5% * 16px = 10px）。</p>
+</blockquote>
+</li>
+<li><p><strong>em</strong><br>em 也是一种相对单位，既然是相对单位，那么肯定有一个参照值。不过其参照值并不是固定不变的，而是不同的属性有不同的参照值。</p>
+<blockquote>
+<p>对于字体大小属性（<code>font-size</code>）来说，em 的计算方式是相对于父元素的字体大小，1em 等于父元素设置的字体大小。如果父元素没有设置字体大小，则继续往父级元素查找，直到有设置大小的，如果都没有设置大小，则使用浏览器默认的字体大小。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>在(<code>border</code>, <code>width</code>, <code>height</code>, <code>padding</code>, <code>margin</code>, <code>line-height</code>)这些属性中，使用em单位的计算方式是参照该元素的 <code>font-size</code>，1em 等于该元素设置的字体大小。同理如果该元素没有设置，则一直向父级元素查找，直到找到，如果都没有设置大小，则使用浏览器默认的字体大小。</p>
+</blockquote>
+<ol>
+<li><strong>rem</strong><br>和 em 一样，rem 也是一种相对单位，不过不一样的是 rem 是相对于根元素 html 的 font-size 来计算的，所以其参照物是固定的。（rem的r就是表示root，虽然rem相对em进步了很多，但是由于是新技术，不支持IE8以下（包括IE8）,不过幸喜的是移动端可以放心使用）</li>
+</ol>
+<blockquote>
+<p>由于 rem 是基于跟元素 html 的 font-size 来计算的，所以如果改变 html 的 font-size 值，那么所有使用的 rem 单位的大小都会随着改变，这对于移动端适应各种屏幕大小来说还是有点作用的。</p>
+</blockquote>
+<ol>
+<li><strong>vw, vh, vmin, vmax</strong><br>这四个单位属于 v 系单位，它们也是相对单位，是基于视窗大小（浏览器用来显示内容的区域大小）来计算的。<blockquote>
+<p>网页中我们很多时候都需要用到满屏，或者屏幕大小的一半等，尤其是移动端，屏幕大小各式各样，而这个时候我们现有的单位就显得有点捉襟见肘，于是就诞生了这四个单位。</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>vw：基于视窗的宽度计算，1vw 等于视窗宽度的百分之一</li>
+<li>vh：基于视窗的高度计算，1vh 等于视窗高度的百分之一</li>
+<li>vmin：基于vw和vh中的最小值来计算，1vmin 等于最小值的百分之一</li>
+<li>vmax：基于vw和vh中的最大值来计算，1vmax 等于最大值的百分之一</li>
+</ul>
+<ol>
+<li><p><strong>单位运算</strong><br>除了设置以上的单位之外，我们还可以使用 calc 来进行单位运算，单位运算时可以使用各种单位进行加减乘除运算。简单示例如下：</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line"> <span class="attribute">height</span>: <span class="built_in">calc</span>(50vh - 20px); <span class="comment">/* 50% 的视窗高度减掉20px */</span></div><div class="line"> <span class="attribute">width</span>: <span class="built_in">calc</span>(100% / 3);  <span class="comment">/* 三分之一的父容器宽度 */</span></div><div class="line"> <span class="attribute">background</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="CSS中的颜色"><a href="#CSS中的颜色" class="headerlink" title="CSS中的颜色"></a>CSS中的颜色</h2><ol>
+<li><p><strong>颜色关键词</strong><br>如 <code>red，green，gray</code> 等，除此之外，还有两个关键词可用，分别是 <code>transparent</code> 和 <code>currentColor。</code></p>
+</li>
+<li><p><strong>RGB</strong><br>表示使用红-绿-蓝模式来定义颜色。</p>
+</li>
+<li><p><strong>十六进制</strong><br>十六进制颜色表现形式为： <code>#RRGGBB</code> 和 <code>#RGB</code></p>
+</li>
+<li><p><strong>RGBa</strong><br>在 rgb 的基础上，还可以添加一个 alpha 透明度表示半透明值，这样就构成了我 rgba，其函数表示为：<code>rgb(red, green, blue, alpha)</code>，其中 alpha 参数是介于 0.0（完全透明）与 1.0（完全不透明）的数字。</p>
+</li>
+<li><p><strong>hsl</strong><br>除了使用红-绿-蓝的模式定义颜色之外，还可以通过 hue（色调）、saturation（饱和度）、lightness（亮度）模式定义颜色，其语法为：<code>hsl(hue, saturation, lightness)</code> 。</p>
+</li>
+</ol>
+
       
     </div>
     
@@ -810,7 +862,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#认识CSS"><span class="nav-number">1.</span> <span class="nav-text">认识CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的选择器"><span class="nav-number">2.</span> <span class="nav-text">CSS中的选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器的优化"><span class="nav-number">3.</span> <span class="nav-text">选择器的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的属性和值"><span class="nav-number">4.</span> <span class="nav-text">CSS中的属性和值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义字体"><span class="nav-number">5.</span> <span class="nav-text">自定义字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义图标字体（iconfont）"><span class="nav-number">6.</span> <span class="nav-text">自定义图标字体（iconfont）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的单位"><span class="nav-number">7.</span> <span class="nav-text">CSS中的单位</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#认识CSS"><span class="nav-number">1.</span> <span class="nav-text">认识CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的选择器"><span class="nav-number">2.</span> <span class="nav-text">CSS中的选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器的优化"><span class="nav-number">3.</span> <span class="nav-text">选择器的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的属性和值"><span class="nav-number">4.</span> <span class="nav-text">CSS中的属性和值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义字体"><span class="nav-number">5.</span> <span class="nav-text">自定义字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义图标字体（iconfont）"><span class="nav-number">6.</span> <span class="nav-text">自定义图标字体（iconfont）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的单位"><span class="nav-number">7.</span> <span class="nav-text">CSS中的单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的颜色"><span class="nav-number">8.</span> <span class="nav-text">CSS中的颜色</span></a></li></ol></div>
             
 
           </div>
