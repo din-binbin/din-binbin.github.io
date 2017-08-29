@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="这一篇文章将回顾之前所学的CSS基础知识。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-29T16:29:11.492Z">
+<meta property="og:updated_time" content="2017-08-29T17:04:35.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——CSS">
 <meta name="twitter:description" content="这一篇文章将回顾之前所学的CSS基础知识。">
@@ -460,7 +460,7 @@
 <td style="text-align:center">用于选取属性值中包含指定词汇的元素</td>
 </tr>
 <tr>
-<td style="text-align:center">[attribute&#166;=value]</td>
+<td style="text-align:center">[attribute&#124;=value]</td>
 <td style="text-align:center">用于选取带有以指定值开头的属性值的元素，该值必须是整个单词</td>
 </tr>
 </tbody>
@@ -498,7 +498,156 @@
 <li>避免使用子选择器</li>
 <li>使用继承</li>
 </ul>
-
+<h2 id="CSS中的属性和值"><a href="#CSS中的属性和值" class="headerlink" title="CSS中的属性和值"></a>CSS中的属性和值</h2><p><strong>字体相关属性</strong></p>
+<ul>
+<li>font-family：定义文本的字体，如：<code>font-family: arial</code>;</li>
+<li>font-size：字体尺寸，如：<code>font-size: 18px</code>;</li>
+<li>font-style ：字体样式，如：<code>font-style: italic</code>;</li>
+<li>font-weight：字体的粗细，如：<code>font-weight: bold</code>;</li>
+</ul>
+<p><strong>文本相关属性</strong></p>
+<ul>
+<li>color：定义文字颜色，如：<code>color: red</code>;</li>
+<li>line-height：设置行高，如：<code>line-height: 1.5</code>;</li>
+<li>text-align：文本的水平对齐方式，如：<code>text-aligin: center</code>;</li>
+<li>text-decoration：文本的装饰效果，如：<code>text-decoration: underline</code>;</li>
+<li>text-indent：首行的缩进，如：<code>text-indent: 2em</code>;</li>
+<li>text-shadow：文本的阴影效果，如：<code>text-shadow: 0 0 5px #ff0000</code>;</li>
+</ul>
+<p><strong>列表属性</strong></p>
+<ul>
+<li>list-style：在一个声明中设置所有的列表属性</li>
+<li>list-style-image：将图象设置为列表项标记</li>
+<li>list-style-position：设置列表项标记的放置位置</li>
+<li>list-style-type：设置列表项标记的类型</li>
+</ul>
+<p><strong>表格属性</strong></p>
+<ul>
+<li>border-collapse：是否合并表格边框</li>
+<li>border-spacing：相邻单元格边框之间的距离</li>
+<li>table-layout：设置表格的布局算法</li>
+</ul>
+<p><strong>盒子大小</strong></p>
+<ul>
+<li>width</li>
+<li>min-width</li>
+<li>max-width</li>
+<li>height</li>
+<li>min-height</li>
+<li>max-height</li>
+<li>box-sizing</li>
+</ul>
+<p><strong>盒子边框</strong></p>
+<ul>
+<li>border：简写模式，四边边框</li>
+<li>border-width：边框宽度</li>
+<li>border-style：边框样式，常用的为solid和dashed</li>
+<li>border-color：边框颜色</li>
+<li>border-top：上边框</li>
+<li>border-right：右边框</li>
+<li>border-bottom：下边框</li>
+<li>border-left：左边框</li>
+</ul>
+<p><strong>盒子内外边距</strong></p>
+<ul>
+<li>margin</li>
+<li>margin-top</li>
+<li>margin-right</li>
+<li>margin-bottom</li>
+<li>margin-left</li>
+<li>padding</li>
+<li>padding-top</li>
+<li>padding-right</li>
+<li>padding-bottom</li>
+<li>padding-left</li>
+</ul>
+<p><strong>盒子背景</strong></p>
+<ul>
+<li>background：总的简写形式，包括了下面各个单条属性</li>
+<li>background-color：背景色</li>
+<li>background-image：背景图片</li>
+<li>background-position：背景图片起始位置</li>
+<li>background-repeat：背景图片平铺方式</li>
+<li>background-size：背景图片大小</li>
+<li>background-clip：背景图片绘制区域</li>
+<li>background-origin：背景图片的定位区域</li>
+</ul>
+<p><strong>盒子其他</strong></p>
+<ul>
+<li>overflow：指定当内容溢出其块级容器时,是否剪辑内容，渲染滚动条或显示内容</li>
+<li>visibility：是否可见</li>
+<li>border-radius：圆角</li>
+<li>box-shadow：阴影</li>
+</ul>
+<p><strong>空间位置相关</strong></p>
+<ul>
+<li>display</li>
+<li>float</li>
+<li>clear</li>
+<li>position</li>
+<li>top</li>
+<li>right</li>
+<li>bottom</li>
+<li>left</li>
+<li>transform</li>
+<li>z-index</li>
+<li>opacity</li>
+</ul>
+<p><strong>动画相关</strong></p>
+<ul>
+<li>transition</li>
+<li>animation</li>
+</ul>
+<p>可参考:<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference" target="_blank" rel="external">CSS 参考 | MDN</a> 、<a href="http://www.w3school.com.cn/cssref/" target="_blank" rel="external">CSS 参考手册 | W3school</a></p>
+<h2 id="自定义字体"><a href="#自定义字体" class="headerlink" title="自定义字体"></a>自定义字体</h2><blockquote>
+<p>一般来说，网页上的字体使用的都是我们电脑里面的字体，比如我们常说的微软雅黑、宋体就是 windows 系统自带的字体。所以你可以看到网页的字体一般都比较中规中矩，不像平面设计那样各种新花样。但是我们在浏览一些网站时，还是可以发现一些非常酷炫和高端的字体。</p>
+<p>那么如何实现自定义字体的效果呢？答案是 CSS 的 <code>@font-face</code> 。</p>
+</blockquote>
+<p><code>@font-face</code> 的语法规则如下：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@font-<span class="class">face </span>&#123;</div><div class="line">    font-family: <span class="params">&lt;fontFamily&gt;</span>; <span class="comment">/* 自定义的字体名称; */</span></div><div class="line"><span class="symbol">    src:</span> <span class="params">&lt;source&gt;</span> [<span class="params">&lt;format&gt;</span>][,<span class="params">&lt;source&gt;</span> [<span class="params">&lt;format&gt;</span>]]*;  <span class="comment">/* 自定义的字体的存放路径、格式; */</span></div><div class="line">    [font-weight: <span class="params">&lt;weight&gt;</span>]; <span class="comment">/*  是否为粗体 */</span> </div><div class="line">    [font-style: <span class="params">&lt;style&gt;</span>]; <span class="comment">/*  定义字体样式，如斜体 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其取值说明如下：</p>
+<ul>
+<li><code>fontFamily</code>：此值指的就是你自定义的字体名称，如<code>font-family: myFirstFont</code>。</li>
+<li><code>source</code>：此值指的是你自定义的字体的存放路径，可以是相对路径也可以是绝对路径。</li>
+<li><code>format</code>：此值表达自定义的字体的格式，用于帮助浏览器识别字体类型。</li>
+<li><code>weight</code>和<code>style</code>：这两个值大家一定很熟悉，<code>weight</code> 定义字体是否为粗体，<code>style</code> 主要定义字体样式，如斜体。</li>
+</ul>
+<p>推荐：<a href="http://www.dafont.com/" target="_blank" rel="external">dafont字体</a></p>
+<p><strong>字体格式</strong></p>
+<ul>
+<li><p>TrueType (.ttf)</p>
+<p> Windows 和 Mac 系统最常用的字体格式，其最大的特点就是它是由一种数学模式来进行定义的基于轮廓技术的字体，这使得它们比基于矢量的字体更容易处理，保证了屏幕与打印输出的一致性。同时，这类字体和矢量字体一样可以随意缩放、旋转而不必担心会出现锯齿。</p>
+</li>
+</ul>
+<ul>
+<li><p>OpenType (.otf)</p>
+<p>  OpenType 是一种可缩放字型（scalable font）电脑字体类型，采用 PostScript 格式，是美国微软公司与Adobe 公司联合开发，用来替代 TrueType 字型的新字型。这类字体的文件扩展名为.otf，类型代码是 OTTO。</p>
+</li>
+<li><p>Embedded Open Type (.eot)</p>
+<p>  嵌入字体格式（EOT）是微软开发的一种技术，允许 OpenType 字体嵌入到网页并可以下载至浏览器渲染。这些文件只在当前页活动的状态下，临时安装在用户的系统中。</p>
+</li>
+<li><p>Web Open Font Format (.woff)</p>
+<p>  相对于 TrueType 和 OpenType ，WOFF（Web开发字体格式）是一种专门为了 Web 而设计的字体格式标准，它并不复杂，实际上只是对于 TrueType / OpenType 等字体格式的封装，并针对网络使用加以优化：每个字体文件中含有字体以及针对字体的元数据（ Metadata ），字体文件被压缩，以便于网络传输，并且不包含任何加密或者 DRM 措施。</p>
+</li>
+<li><p>Scalable Vector Graphics Fonts (.svg)</p>
+<p>  顾名思义，就是使用SVG技术来呈现字体，还有一种 gzip 压缩格式的 SVG 字体 .svgz。</p>
+</li>
+</ul>
+<blockquote>
+<p>这么多字体带来的问题是浏览器的支持：目前现代浏览器基本都支持 .ttf、 .otf、 .woff 的字体格式。但需要注意的是 IE8以下仅支持 .eot 格式，而 .svg 目前只有 safari 支持。</p>
+</blockquote>
+<h2 id="自定义图标字体（iconfont）"><a href="#自定义图标字体（iconfont）" class="headerlink" title="自定义图标字体（iconfont）"></a>自定义图标字体（iconfont）</h2><blockquote>
+<p>我们经常会在网页中使用这些图标，以前主要是通过背景图去做的，每次换个颜色或改个大小就得重新切个图，所以维护使用比较繁琐。这样图标字体就应时而生，它提供了一种解决方案：把一些简单的图标制作成字体，然后让图标变成和文字一样可以通过 CSS 去改变颜色大小等。</p>
+</blockquote>
+<p>对于使用图片的图标来说，iconfont 图标有许多优点：</p>
+<ul>
+<li>灵活性：改变图标的颜色，背景色，大小都非常简单</li>
+<li>兼容性：基本没有兼容性问题，在IE6，Android2.3都能够兼容</li>
+<li>扩展性：替换图标很方便，新增图标也非常简单</li>
+<li>高效性：iconfont有矢量特性，不会失真</li>
+<li>轻便性：在使用上字体文件和普通的静态资源一样，既可以外链也可以内链，并且字体文件也可以使用gzip压缩<br>推荐：<a href="http://fontello.com/" target="_blank" rel="external">Fontello</a></li>
+</ul>
+<h2 id="CSS中的单位"><a href="#CSS中的单位" class="headerlink" title="CSS中的单位"></a>CSS中的单位</h2>
       
     </div>
     
@@ -661,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#认识CSS"><span class="nav-number">1.</span> <span class="nav-text">认识CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的选择器"><span class="nav-number">2.</span> <span class="nav-text">CSS中的选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器的优化"><span class="nav-number">3.</span> <span class="nav-text">选择器的优化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#认识CSS"><span class="nav-number">1.</span> <span class="nav-text">认识CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的选择器"><span class="nav-number">2.</span> <span class="nav-text">CSS中的选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器的优化"><span class="nav-number">3.</span> <span class="nav-text">选择器的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的属性和值"><span class="nav-number">4.</span> <span class="nav-text">CSS中的属性和值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义字体"><span class="nav-number">5.</span> <span class="nav-text">自定义字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义图标字体（iconfont）"><span class="nav-number">6.</span> <span class="nav-text">自定义图标字体（iconfont）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS中的单位"><span class="nav-number">7.</span> <span class="nav-text">CSS中的单位</span></a></li></ol></div>
             
 
           </div>
