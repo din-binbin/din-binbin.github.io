@@ -98,13 +98,19 @@
 <meta name="keywords" content="CSS,HTML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端知识总结——HTML、CSS进阶篇">
-<meta property="og:url" content="http://ice-io.github.io/2017/08/31/前端知识总结——HTML、CSS进阶篇/index.html">
+<meta property="og:url" content="http://ice-io.github.io/2017/08/21/前端知识总结——HTML、CSS进阶篇/index.html">
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="了解了HTML和CSS的基础知识后，就可以继续深入HTML和CSS的博大精深了。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ice-io.github.io/images/vfm.png">
 <meta property="og:image" content="http://ice-io.github.io/images/grids-excel.png">
-<meta property="og:updated_time" content="2017-09-07T06:36:40.556Z">
+<meta property="og:image" content="http://ice-io.github.io/images/render-1.png">
+<meta property="og:image" content="http://ice-io.github.io/images/render-2.png">
+<meta property="og:image" content="http://ice-io.github.io/images/render-3.png">
+<meta property="og:image" content="http://ice-io.github.io/images/render-4.png">
+<meta property="og:image" content="http://ice-io.github.io/images/render-5.png">
+<meta property="og:image" content="http://ice-io.github.io/images/render-6.png">
+<meta property="og:updated_time" content="2017-09-07T07:52:21.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——HTML、CSS进阶篇">
 <meta name="twitter:description" content="了解了HTML和CSS的基础知识后，就可以继续深入HTML和CSS的博大精深了。">
@@ -137,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="http://ice-io.github.io/2017/08/31/前端知识总结——HTML、CSS进阶篇/"/>
+  <link rel="canonical" href="http://ice-io.github.io/2017/08/21/前端知识总结——HTML、CSS进阶篇/"/>
 
 
 
@@ -286,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ice-io.github.io/2017/08/31/前端知识总结——HTML、CSS进阶篇/">
+    <link itemprop="mainEntityOfPage" href="http://ice-io.github.io/2017/08/21/前端知识总结——HTML、CSS进阶篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ice">
@@ -315,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T15:24:58+08:00">
-                2017-08-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T15:24:58+08:00">
+                2017-08-21
               </time>
             
 
@@ -362,6 +368,7 @@
 </ul>
 </blockquote>
 <p>表格之后，布局主要是div + CSS —— 导致div标签被滥用</p>
+<hr>
 <h2 id="HTML语义化"><a href="#HTML语义化" class="headerlink" title="HTML语义化"></a>HTML语义化</h2><ol>
 <li>方便团队开发</li>
 <li>有利于SEO</li>
@@ -371,6 +378,7 @@
 <p>HTML 语义当然不仅仅只是几个 HTML 语义标签。HTML 就是文档，最开始的《Web 简史》中我们有提到过，万维网的雏形是一个文档共享系统，万维网就是一个放大版的文档共享系统。只是随着 Web 的发展，各种酷炫的页面和应用层出不穷，倒是让新入行的小伙伴忽略了，HTML 的本质其实是文档（document）。<br>视觉上的各种酷炫会给人以视觉冲击，但对机器来说，并没有什么用，它们更看重的是语义，这样才能更好地解析内容。这也是为什么样式会从结构里面分离出来的原因之一。</p>
 </blockquote>
 <p>可参考：<a href="https://segmentfault.com/a/1190000002695791" target="_blank" rel="external">深入理解HTML5标签</a></p>
+<hr>
 <h2 id="让-IE8-支持-HTML5-语义化标签"><a href="#让-IE8-支持-HTML5-语义化标签" class="headerlink" title="让 IE8 支持 HTML5 语义化标签"></a>让 IE8 支持 HTML5 语义化标签</h2><p>HTML5是 HTML 最新的修订版本，于2014年10月由万维网联盟（W3C）完成标准制定。而 IE8 面世时间为2009年3月19日，时间相差如此之大，所以 IE8 作为比较古老的浏览器，不支持 HTML 5 引入的语义化标签（如 <code>header</code>、<code>nav</code>、<code>menu</code>、<code>section</code>、<code>article</code> 等）。</p>
 <ul>
 <li><p>默认情况下 IE8 对 HTML5 标签的处理</p>
@@ -383,6 +391,7 @@
 <p>其实不只是 IE8 ， IE6-9、 Safari 4.x (以及 iPhone 3.x)、还有Firefox 3.x 等等，对 HTML5 的支持都不完善。所以有了一个库<code>html5shiv.js</code> 来做统一处理，shiv 意为用作武器的小刀（实际上是一个拼写错误，应该为 shim），在机械工程中的专业释义为垫片，比喻给那些老旧的浏览器加个垫片，让它们基本能用。<br>可参考：<a href="https://github.com/aFarkas/html5shiv/" target="_blank" rel="external"><code>html5shiv.js</code></a></p>
 </li>
 </ul>
+<hr>
 <h2 id="显示类型-display"><a href="#显示类型-display" class="headerlink" title="显示类型-display"></a>显示类型-display</h2><p>在HTML的元素显示时，有的是块级元素，有的是行内元素。</p>
 <p>比如块级：</p>
 <ul>
@@ -407,6 +416,7 @@
 </ul>
 <p>这并非是由HTML定义的，而是由默认的css定义的，这也就意味着我们更改元素的显示类型<code>display</code>。</p>
 <p>除了上述属性，<code>display</code>还有<code>flex</code>、<code>grid</code>属性，以及<code>inline-block</code>、<code>inline-flex</code>、<code>inline-grid</code>，后面再详细回顾。</p>
+<hr>
 <h2 id="视觉格式化模型（visual-formatting-model）"><a href="#视觉格式化模型（visual-formatting-model）" class="headerlink" title="视觉格式化模型（visual formatting model）"></a>视觉格式化模型（visual formatting model）</h2><p>前面我们已经学习了盒模型（box model），知道了元素会被渲染成一个个盒子。那么这些盒子在屏幕上的位置又是怎么放置的呢？这就是我们现在要学习的——CSS 视觉格式化模型(visual formatting model)。视觉格式化模型是 CSS 布局的一个基础理论体系。</p>
 <p><strong>盒子的位置摆放</strong></p>
 <p>默认情况下，盒子按照元素在 HTML 中的先后位置从左至右自上而下一个接着一个排列摆放。</p>
@@ -480,6 +490,7 @@
 </li>
 </ul>
 <p>可参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Visual_formatting_model#.E7.9B.92.E7.9A.84.E7.94.9F.E6.88.90" target="_blank" rel="external">视觉格式化模型 | MDN</a></p>
+<hr>
 <h2 id="定位方案"><a href="#定位方案" class="headerlink" title="定位方案"></a>定位方案</h2><p>上面我们所讨论的BFC、IFC其实都是常规流（normal flow）中盒子的摆放。但实际上我们有三种定位方案，分别为：</p>
 <ul>
 <li>常规流（normal flow）：盒一个接一个排列，不同的盒子采用不同的格式化上下文渲染。</li>
@@ -506,6 +517,7 @@
 <p> <em>固定定位元素(fixed positioned element)</em>也是绝对定位元素，它的包含块是视口。当页面滚动时它固定在屏幕上，因为视口没有移动。</p>
 </li>
 </ol>
+<hr>
 <h2 id="float-及如何清除浮动"><a href="#float-及如何清除浮动" class="headerlink" title="float 及如何清除浮动"></a>float 及如何清除浮动</h2><p>元素浮动最开始的目的，就是实现文字环绕元素的效果</p>
 <p><code>float</code>的取值包括，<code>none</code> | <code>left</code> | <code>right</code> 。</p>
 <blockquote>
@@ -553,6 +565,7 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"container"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
 <h2 id="float-布局"><a href="#float-布局" class="headerlink" title="float 布局"></a>float 布局</h2><p>常见的float布局有，两栏布局、三栏布局、流动布局。</p>
 <ul>
 <li><p>两栏布局：一栏固定宽度并设置浮动，另一栏可设置宽度并浮动，也可不设置宽度不浮动。</p>
@@ -562,10 +575,12 @@
 <li><p>流动布局：最外层容器设置<code>margin</code>左右值为<code>auto</code>；中间一栏设置左右<code>margin</code>值以给左右两栏预留位置；三栏均设置浮动，并且左右两栏根据<code>margin-left</code>来调整位置使其在中间栏的<code>margin</code>上。（左边栏为<code>margin-left:-100%</code>;右边栏为<code>margin-left:-margin值</code>。）</p>
 </li>
 </ul>
+<hr>
 <h2 id="网格布局系统"><a href="#网格布局系统" class="headerlink" title="网格布局系统"></a>网格布局系统</h2><p>参考：<a href="https://960.gs/" target="_blank" rel="external">960网格布局官网</a></p>
 <blockquote>
 <p>960s 是网格布局系统的鼻祖，当然随着技术的发展，基于它又发展了很多其他的网格布局系统，但是思想是想通的，无非是整体多少宽度分成几分，间距是多少，如何组合等。为什么是12列呢？因为12可以被2，3，4，6整除，这样做等分的时候是非常方便的。</p>
 </blockquote>
+<hr>
 <h2 id="position-属性"><a href="#position-属性" class="headerlink" title="position 属性"></a>position 属性</h2><p><code>position</code> —— 设置元素的定位方式。四种取值：</p>
 <ul>
 <li><code>static</code>（静态）</li>
@@ -573,6 +588,7 @@
 <li><code>absolute</code>（绝对）—— 相对于非<code>static</code>最近的父元素偏移</li>
 <li><code>fixed</code>（固定）—— 一般来说相对于视窗偏移</li>
 </ul>
+<hr>
 <h2 id="z-index-属性"><a href="#z-index-属性" class="headerlink" title="z-index 属性"></a>z-index 属性</h2><blockquote>
 <p>网页正常文档流排版可以理解为在一个平面立面里面，元素占据空间，依次排列，互不覆盖。但是当页面中元素设置了定位属性的时候，难免会出现元素之间相互重叠的情况。</p>
 </blockquote>
@@ -611,6 +627,7 @@
 <li><code>-webkit-overflow-scrolling</code> 属性被设置 <code>&quot;touch&quot;</code>的元素</li>
 </ul>
 <p>可参考：<a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="external">深入理解CSS中的层叠上下文和层叠顺序</a> 、<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index" target="_blank" rel="external">理解CSS的 z-index属性</a> 。</p>
+<hr>
 <h2 id="flexbox-布局"><a href="#flexbox-布局" class="headerlink" title="flexbox 布局"></a>flexbox 布局</h2><p>当给父元素设置<code>display:flex</code>属性后，其直接子元素会形成一个flexbox布局模型，可以非常容易的去排列子元素。父元素成为flex <code>container</code>，子元素称为<code>flex item</code>。</p>
 <p>flex container 属性：</p>
 <ul>
@@ -642,6 +659,7 @@
 </li>
 </ul>
 <p>关于flexbox布局，可参考：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">Flex布局教程：语法篇</a> 、 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="external">Flex 布局教程：实例篇</a></p>
+<hr>
 <h2 id="grids-布局系统"><a href="#grids-布局系统" class="headerlink" title="grids 布局系统"></a>grids 布局系统</h2><p>随着 CSS 的不断发展及完善，一种新的网格布局方式被纳入规范，它将会解决所有的网格问题，这就是我们要说的 CSS Grid Layout。</p>
 <p><img src="/images/grids-excel.png" alt="网格布局类比excel"></p>
 <ul>
@@ -706,7 +724,120 @@
 </ul>
 </li>
 </ol>
-<h2 id="浏览器是如何渲染-HTML-amp-CSS-的"><a href="#浏览器是如何渲染-HTML-amp-CSS-的" class="headerlink" title="浏览器是如何渲染 HTML&amp;CSS 的"></a>浏览器是如何渲染 HTML&amp;CSS 的</h2>
+<hr>
+<h2 id="浏览器是如何渲染-HTML-amp-CSS-的"><a href="#浏览器是如何渲染-HTML-amp-CSS-的" class="headerlink" title="浏览器是如何渲染 HTML&amp;CSS 的"></a>浏览器是如何渲染 HTML&amp;CSS 的</h2><blockquote>
+<p>我们现在已经知道，使用 HTML &amp; CSS 可以搭建出一个漂亮的 Web 页面。那么浏览器到底是如何使用我们的 HTML &amp; CSS 渲染成我们在屏幕上所看到的页面呢？</p>
+</blockquote>
+<p>虽然具体渲染过程很复杂，但是还是可以将其分为几个关键路径，如下：</p>
+<ul>
+<li>处理 HTML 标记并构建 DOM 树</li>
+<li>处理 CSS 标记并构建 CSSOM 树</li>
+<li>将 DOM 与 CSSOM 合并成一个渲染树</li>
+<li>根据渲染树来布局，以计算每个节点的几何信息，再将各个节点绘制到屏幕上</li>
+</ul>
+<ol>
+<li><strong>构建 DOM 树</strong></li>
+</ol>
+<p>首先浏览器渲染页面前会根据 HTML 结构构建成对应的 DOM 树。以下面的 HTML 代码为例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"style.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Critical Path<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello <span class="tag">&lt;<span class="name">span</span>&gt;</span>web performance<span class="tag">&lt;/<span class="name">span</span>&gt;</span> students!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"awesome-photo.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>其 DOM 树生成的流程如下图：</p>
+<p><img src="/images/render-1.png" alt="DOM树生成流程"></p>
+<ul>
+<li>转换： 浏览器从磁盘或网络读取 HTML 的原始字节，并根据文件的指定编码（例如 UTF-8）将它们转换成各个字符。</li>
+<li>令牌化： 浏览器将字符串转换成 W3C HTML5 标准规定的各种令牌，例如，“”、“”，以及其他尖括号内的字符串。每个令牌都具有特殊含义和一组规则。</li>
+<li>词法分析： 发出的令牌转换成定义其属性和规则的“对象”。</li>
+<li>DOM 构建： 最后，由于 HTML 标记定义不同标记之间的关系（一些标记包含在其他标记内），创建的对象链接在一个树数据结构内，此结构也会捕获原始标记中定义的父项-子项关系：HTML 对象是 body 对象的父项，body 是 paragraph 对象的父项，依此类推。</li>
+</ul>
+<p>整个流程的最终输出就是我们这个简单页面的文档对象模型 (DOM)，如下图：</p>
+<p><img src="/images/render-2.png" alt="文档对象模型"></p>
+<ol>
+<li><strong>构建 CSSOM 树</strong></li>
+</ol>
+<p>在浏览器构建上面的 DOM 时，在文档的 head 部分遇到了一个 link 标记，该标记引用一个外部 CSS 样式表：style.css。由于预见到需要利用该资源来渲染页面，它会立即发出对该资源的请求，并返回以下内容：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* style.css */</span></div><div class="line"></div><div class="line"><span class="selector-tag">body</span> &#123; <span class="attribute">font-size</span>: <span class="number">16px</span> &#125;</div><div class="line"><span class="selector-tag">p</span> &#123; <span class="attribute">font-weight</span>: bold &#125;</div><div class="line"><span class="selector-tag">span</span> &#123; <span class="attribute">color</span>: red &#125;</div><div class="line"><span class="selector-tag">p</span> <span class="selector-tag">span</span> &#123; <span class="attribute">display</span>: none &#125;</div><div class="line"><span class="selector-tag">img</span> &#123; <span class="attribute">float</span>: right &#125;</div></pre></td></tr></table></figure>
+<p>与处理 HTML 时一样，我们需要将收到的 CSS 规则转换成某种浏览器能够理解和处理的东西。因此，我们会重复 HTML 过程，不过是为 CSS 而不是 HTML：</p>
+<p><img src="/images/render-3.png" alt="CSSOM渲染过程"></p>
+<p>CSS 字节转换成字符，接着转换成令牌和节点，最后挂靠到一个称为“CSS 对象模型”(CSSOM) 的树结构内：</p>
+<p><img src="/images/render-4.png" alt="CSSOM"></p>
+<p>CSSOM 为何具有树结构？这是因为浏览器为页面上的任何对象计算最后一组样式时，都会先从适用于该节点的最通用规则开始（例如，如果该节点是 body 元素的子项，则应用所有 body 样式），然后通过应用更具体的规则（即规则“向下级联”）以递归方式优化计算的样式。</p>
+<ol>
+<li><strong>合并渲染树</strong><br>接下来就是将 DOM 树与 CSSOM 树合并形成渲染树。渲染树会网罗网页上所有可见的 DOM 内容，以及每个节点的所有 CSSOM 样式信息。</li>
+</ol>
+<p><img src="/images/render-5.png" alt="合并成渲染树"></p>
+<p>渲染树只包含渲染网页所需的节点，如display: none;的元素是不会出现在渲染树种的。</p>
+<ol>
+<li><strong>布局及绘制</strong><br>有了渲染树，我们就可以进入“布局”阶段。到目前为止，我们计算了哪些节点应该是可见的以及它们的计算样式，但我们尚未计算它们在设备视口内的确切位置和大小——这就是<em>布局</em>阶段，也称为<em>自动重排</em>。</li>
+</ol>
+<p>为弄清每个对象在网页上的确切大小和位置，浏览器从渲染树的根节点开始进行遍历。让我们考虑下面这样一个简单的实例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Critial Path: Hello world!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 50%"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 50%"</span>&gt;</span>Hello world!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>以上网页的正文包含两个嵌套 div：第一个（父）div 将节点的显示尺寸设置为视口宽度的 50%；而里面内嵌的第二个 div 将其宽度设置为其父项的 50%，即视口宽度的 25%。如下图：</p>
+<p><img src="/images/render-6.png" alt="布局"></p>
+<p>布局流程的输出是一个“盒模型”，它会精确地捕获每个元素在视口内的确切位置和尺寸：所有相对测量值都转换为屏幕上的绝对像素。</p>
+<p>最后，既然我们知道了哪些节点可见、它们的计算样式以及几何信息，我们终于可以将这些信息传递给最后一个阶段：将渲染树中的每个节点转换成屏幕上的实际像素形成我们可见的页面。这一步通常称为<em>绘制</em>或<em>栅格化</em>。</p>
+<hr>
+<h2 id="重排与重绘"><a href="#重排与重绘" class="headerlink" title="重排与重绘"></a>重排与重绘</h2><p>一个页面渲染完毕后，随着用户的操作，或者数据变化，网页还会进行重新渲染。根据不同的触发条件，重新渲染分为两种情况：重排（reflow）和重绘（repaint）。</p>
+<ul>
+<li>所有对元素视觉表现属性的修改，都会导致重绘（repaint）。比如修改了背景颜色、文字颜色等。</li>
+<li>所有会触发元素布局发生变化的修改，都会导致重排（reflow）。比如窗口尺寸发生变化，删除、添加 DOM 元素，修改了影响元素盒子大小的 CSS 属性如 <code>width</code>、 <code>height</code>、 <code>padding</code> 等。</li>
+</ul>
+<p>通常情况下，重排的影响更大，重排会导致文档局部或全部的重新运算：重新计算元素位置，大小。（改变一个元素的布局，可能会影响很多个元素的布局）</p>
+<p>不管是重绘还是重排导致的重新渲染，都会阻塞浏览器。重新渲染的的过程中，JavaScript 会被阻塞，用户的交互行为也会被卡住。复杂的 CSS 动画甚至会拖慢 JavaScript 的运行速度。</p>
+<p><strong>导致重排和重绘的场景</strong></p>
+<ul>
+<li>CSS 属性改变,包括但不限于以下场景：<ul>
+<li>通过 <code>display: none</code> 隐藏 DOM 节点（导致重绘和重排）</li>
+<li>通过 <code>visibility: hidden</code> 隐藏 DOM 节点 （导致重绘，因为它没有影响其它元素位置布局）</li>
+<li>CSS 动画</li>
+<li>通过 JavaScript 添加样式，修改样式</li>
+</ul>
+</li>
+</ul>
+<p>可参考：<a href="https://csstriggers.com/" target="_blank" rel="external">CSS triggers</a><br>（ 注：<code>Composite</code> （渲染层合并） 是 chrome 引入 GPU 加速带来的新概念。）</p>
+<ul>
+<li>用户交互<ul>
+<li>对浏览器窗口进行缩放操作会导致重排</li>
+<li>对 DOM 节点进行操作，添加、删除、更新 DOM 节点都会导致重排</li>
+<li>光标 <code>:hover</code> 、进入文本输入框、修改浏览器的字体都会导致重排</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="最佳实践（减少重新渲染）"><a href="#最佳实践（减少重新渲染）" class="headerlink" title="最佳实践（减少重新渲染）"></a>最佳实践（减少重新渲染）</h2><p>所有的最佳实践都是围绕尽最大可能的降低重绘和重排的频率，来达到减少重新渲染的目的。</p>
+<ul>
+<li><strong>CSS 属性的读、写操作分开</strong></li>
+</ul>
+<p>浏览对 CSS 属性的连续修改做了优化，比如下面的连续修改两次 style，不会导致两次重新渲染：</p>
+<pre><code><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">div</span>.style.color = <span class="string">'blue'</span>;</div><div class="line"><span class="keyword">div</span>.style.marginTop = <span class="string">'30px'</span>;</div></pre></td></tr></table></figure>
+</code></pre><p>上面代码只会进行一次重新渲染。但是如果写的不好，则会触发两次重新渲染，如下：</p>
+<pre><code><figure class="highlight cal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">div</span>.style.color = <span class="string">'blue'</span>;</div><div class="line"><span class="keyword">var</span> margin = parseInt(<span class="keyword">div</span>.style.marginTop);</div><div class="line"><span class="keyword">div</span>.style.marginTop = (margin + <span class="number">10</span>) + <span class="string">'px'</span>;</div></pre></td></tr></table></figure>
+</code></pre><p>上面代码对 div 元素设置背景色以后，第二行要求浏览器给出该元素的位置，所以浏览器不得不重新渲染然后得到该元素的位置。</p>
+<p>除此之外，样式的写操作之后，如果有下面这些属性的读操作，都会引发浏览器立即重新渲染：</p>
+<ul>
+<li><code>offsetTop/offsetLeft/offsetWidth/offsetHeight</code></li>
+<li><code>scrollTop/scrollLeft/scrollWidth/scrollHeight</code></li>
+<li><code>clientTop/clientLeft/clientWidth/clientHeight</code></li>
+<li><code>getComputedStyle()</code></li>
+</ul>
+<ul>
+<li><strong>通过 class 或者 csstext 来批量更新样式</strong></li>
+</ul>
+<p>上面对通过对 style 对 CSS 属性一个一个修改，其实更好的方式应该是通过 class 来批量化。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> <span class="keyword">left</span> = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> top = <span class="number">10</span>;</div><div class="line">el.style.<span class="keyword">left</span> = <span class="keyword">left</span> + <span class="string">"px"</span>;</div><div class="line">el.style.top  = top  + <span class="string">"px"</span>;</div><div class="line"></div><div class="line"><span class="comment">// good </span></div><div class="line">el.className += <span class="string">" theclassname"</span>;</div><div class="line"></div><div class="line"><span class="comment">// good</span></div><div class="line">el.style.cssText += <span class="string">"; left: "</span> + <span class="keyword">left</span> + <span class="string">"px; top: "</span> + top + <span class="string">"px;"</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>其他方法</strong></p>
+<ul>
+<li>DOM 样式离线更新：尽量使用离线 DOM，而不是真实的网页 DOM 来改变元素样式。比如，操作 Document Fragment对象，完成后再把这个对象加入 DOM。再比如，使用 cloneNode() 方法，在克隆的节点上进行操作，然后再用克隆的节点替换原始节点。</li>
+<li>使用 display: none 进行样式批量更新：先将元素设为 display: none（需要1次重排和重绘），然后对这个节点进行100次操作，最后再恢复显示（需要1次重排和重绘）。这样一来，你就用两次重新渲染，取代了可能高达100次的重新渲染。</li>
+<li>善用 position：position 属性为 absolute 或 fixed 的元素，重排的开销会比较小，因为不用考虑它对其他元素的影响。</li>
+<li>将元素设置为不可见：只在必要的时候，才将元素的 display 属性为可见，因为不可见的元素不影响重排和重绘。另外，visibility : hidden 的元素只对重绘有影响，不影响重排。</li>
+<li>减少样式的更新频率：使用虚拟 DOM 脚本库，比如 React 等。</li>
+<li>调节 js 运行帧率：使用 window.requestAnimationFrame()、window.requestIdleCallback() 这两个方法调节重新渲染的频率。</li>
+<li>慎用 table 布局：table 的单元格具有非常好的自适应特性，但是同时代价也很高，能不用就不用。如果非要使用 table ，给 table 添加 table-layout: fixed 属性，这个属性的目的是让后面单元格的宽度由表头的宽度来决定——减少布局的计算量。</li>
+</ul>
+</li>
+</ul>
+<p>可参考：<a href="http://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html" target="_blank" rel="external">网页性能管理详解</a> 、 <a href="http://taobaofed.org/blog/2016/04/25/performance-composite/" target="_blank" rel="external">无线性能优化：Composite</a></p>
+
       
     </div>
     
@@ -738,7 +869,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/26/前端知识总结——CSS基础篇/" rel="next" title="前端知识总结——CSS基础篇">
+              <a href="/2017/08/10/前端知识总结——CSS基础篇/" rel="next" title="前端知识总结——CSS基础篇">
                 <i class="fa fa-chevron-left"></i> 前端知识总结——CSS基础篇
               </a>
             
@@ -823,7 +954,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -871,7 +1002,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS布局"><span class="nav-number">1.</span> <span class="nav-text">CSS布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML语义化"><span class="nav-number">2.</span> <span class="nav-text">HTML语义化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让-IE8-支持-HTML5-语义化标签"><span class="nav-number">3.</span> <span class="nav-text">让 IE8 支持 HTML5 语义化标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示类型-display"><span class="nav-number">4.</span> <span class="nav-text">显示类型-display</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视觉格式化模型（visual-formatting-model）"><span class="nav-number">5.</span> <span class="nav-text">视觉格式化模型（visual formatting model）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位方案"><span class="nav-number">6.</span> <span class="nav-text">定位方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-及如何清除浮动"><span class="nav-number">7.</span> <span class="nav-text">float 及如何清除浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-布局"><span class="nav-number">8.</span> <span class="nav-text">float 布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网格布局系统"><span class="nav-number">9.</span> <span class="nav-text">网格布局系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position-属性"><span class="nav-number">10.</span> <span class="nav-text">position 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-index-属性"><span class="nav-number">11.</span> <span class="nav-text">z-index 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flexbox-布局"><span class="nav-number">12.</span> <span class="nav-text">flexbox 布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grids-布局系统"><span class="nav-number">13.</span> <span class="nav-text">grids 布局系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器是如何渲染-HTML-amp-CSS-的"><span class="nav-number">14.</span> <span class="nav-text">浏览器是如何渲染 HTML&CSS 的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS布局"><span class="nav-number">1.</span> <span class="nav-text">CSS布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML语义化"><span class="nav-number">2.</span> <span class="nav-text">HTML语义化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#让-IE8-支持-HTML5-语义化标签"><span class="nav-number">3.</span> <span class="nav-text">让 IE8 支持 HTML5 语义化标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示类型-display"><span class="nav-number">4.</span> <span class="nav-text">显示类型-display</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视觉格式化模型（visual-formatting-model）"><span class="nav-number">5.</span> <span class="nav-text">视觉格式化模型（visual formatting model）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位方案"><span class="nav-number">6.</span> <span class="nav-text">定位方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-及如何清除浮动"><span class="nav-number">7.</span> <span class="nav-text">float 及如何清除浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#float-布局"><span class="nav-number">8.</span> <span class="nav-text">float 布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网格布局系统"><span class="nav-number">9.</span> <span class="nav-text">网格布局系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position-属性"><span class="nav-number">10.</span> <span class="nav-text">position 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-index-属性"><span class="nav-number">11.</span> <span class="nav-text">z-index 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flexbox-布局"><span class="nav-number">12.</span> <span class="nav-text">flexbox 布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grids-布局系统"><span class="nav-number">13.</span> <span class="nav-text">grids 布局系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器是如何渲染-HTML-amp-CSS-的"><span class="nav-number">14.</span> <span class="nav-text">浏览器是如何渲染 HTML&CSS 的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重排与重绘"><span class="nav-number">15.</span> <span class="nav-text">重排与重绘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最佳实践（减少重新渲染）"><span class="nav-number">16.</span> <span class="nav-text">最佳实践（减少重新渲染）</span></a></li></ol></div>
             
 
           </div>
