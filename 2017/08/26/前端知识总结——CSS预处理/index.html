@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS,CSS预处理," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="随着互联网的发展，网站复杂度日益加深，CSS语法能力不够。">
+<meta name="keywords" content="CSS,CSS预处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识总结——CSS预处理">
+<meta property="og:url" content="http://ice-io.github.io/2017/08/26/前端知识总结——CSS预处理/index.html">
+<meta property="og:site_name" content="Thinking Coding">
+<meta property="og:description" content="随着互联网的发展，网站复杂度日益加深，CSS语法能力不够。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-09T09:04:44.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识总结——CSS预处理">
+<meta name="twitter:description" content="随着互联网的发展，网站复杂度日益加深，CSS语法能力不够。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ice-io.github.io/2017/08/26/前端知识总结——CSS预处理/"/>
+
+
+
+
+
+  <title>前端知识总结——CSS预处理 | Thinking Coding</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Thinking Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ice-io.github.io/2017/08/26/前端知识总结——CSS预处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Thinking Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端知识总结——CSS预处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T19:55:41+08:00">
+                2017-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>随着互联网的发展，网站复杂度日益加深，CSS语法能力不够。<br><a id="more"></a></p>
+<h1 id="CSS预处理"><a href="#CSS预处理" class="headerlink" title="CSS预处理"></a>CSS预处理</h1><p>CSS语法不够，促使开发人员去开发一套工具来补足对CSS的使用。</p>
+<ul>
+<li>Sass</li>
+<li>{less}</li>
+<li>stylus</li>
+</ul>
+<p>这三种CSS预处理器只是语法形式不一样，功能都差不多一样。包括：变量、逻辑运算、嵌套、mixin等。</p>
+<h2 id="Sass的嵌套"><a href="#Sass的嵌套" class="headerlink" title="Sass的嵌套"></a>Sass的嵌套</h2><p>CSS写法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.link-list</span> &#123;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.link-list</span> <span class="selector-class">.link-item</span> &#123;</div><div class="line">    <span class="attribute">text-decoration</span>: none;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.link-list</span> <span class="selector-class">.link-item</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#188eee</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的写法多次用到了<code>.link-list</code>，如果改用Sass写法；</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.link-list</span> &#123;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</div><div class="line"></div><div class="line">    .link-item &#123;</div><div class="line">        <span class="selector-tag">text-decoration</span>: <span class="selector-tag">none</span>;</div><div class="line"></div><div class="line">        &amp;<span class="selector-pseudo">:hover</span> &#123;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#188eee</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Sass写法通过嵌套省掉了多次调用<code>.link-list</code>。</p>
+<p>可参考：<a href="https://www.sassmeister.com/" target="_blank" rel="external">Sass在线编译</a></p>
+<hr>
+<h2 id="Sass的变量"><a href="#Sass的变量" class="headerlink" title="Sass的变量"></a>Sass的变量</h2><p>当需要多次赋值同一颜色的时候，CSS写法如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.tt</span> &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#188eee</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.link</span> &#123;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#188eee</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.btn</span> &#123;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#188eee</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>颜色代码多次写入，且不利于后期修改。如果用Sass写法的话：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$blue: #188eee;</div><div class="line"></div><div class="line"><span class="selector-class">.tt</span> &#123;</div><div class="line">    <span class="attribute">color</span>: $blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.link</span> &#123;</div><div class="line">    <span class="attribute">color</span>: $blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.btn</span> &#123;</div><div class="line">    <span class="attribute">background</span>: $blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很明显，通过使用Sass的变量，可以更方便地编写CSS代码。</p>
+<hr>
+<h2 id="Sass的-mixin"><a href="#Sass的-mixin" class="headerlink" title="Sass的 mixin"></a>Sass的 mixin</h2><p>直接上代码观察；</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Sass语法 */</span></div><div class="line"></div><div class="line">@<span class="keyword">mixin</span> box-shadow($shadow) &#123;</div><div class="line">    -moz-box-shadow: $shadow;</div><div class="line">    -webkit-box-shadow: $shadow;</div><div class="line">    box-shadow: $shadow;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    @include box-shadow(2px 4px #ccc);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">    @include box-shadow(3px 4px #ccc);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码转为CSS语法如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* CSS语法 */</span></div><div class="line"></div><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">-moz-box-shadow</span>: <span class="number">2px</span> <span class="number">4px</span> <span class="number">#ccc</span>;</div><div class="line">    <span class="attribute">-webkit-box-shadow</span>: <span class="number">2px</span> <span class="number">4px</span> <span class="number">#ccc</span>;</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">2px</span> <span class="number">4px</span> <span class="number">#ccc</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">    <span class="attribute">-moz-box-shadow</span>: <span class="number">3px</span> <span class="number">4px</span> <span class="number">#ccc</span>;</div><div class="line">    <span class="attribute">-webkit-box-shadow</span>: <span class="number">3px</span> <span class="number">4px</span> <span class="number">#ccc</span>;</div><div class="line">    <span class="attribute">box-shadow</span>: <span class="number">3px</span> <span class="number">4px</span> <span class="number">#ccc</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>方便之处一目了然，mixin的作用就是将一段常用的代码抽象为一种结构，再配合参数使用。</p>
+<hr>
+<h2 id="Sass里的循环"><a href="#Sass里的循环" class="headerlink" title="Sass里的循环"></a>Sass里的循环</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/CSS预处理/" rel="tag"># CSS预处理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/24/前端知识总结——响应式设计/" rel="next" title="前端知识总结——响应式设计">
+                <i class="fa fa-chevron-left"></i> 前端知识总结——响应式设计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="ice" />
+          <p class="site-author-name" itemprop="name">ice</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS预处理"><span class="nav-number">1.</span> <span class="nav-text">CSS预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass的嵌套"><span class="nav-number">1.1.</span> <span class="nav-text">Sass的嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass的变量"><span class="nav-number">1.2.</span> <span class="nav-text">Sass的变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass的-mixin"><span class="nav-number">1.3.</span> <span class="nav-text">Sass的 mixin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sass里的循环"><span class="nav-number">1.4.</span> <span class="nav-text">Sass里的循环</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ice</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
