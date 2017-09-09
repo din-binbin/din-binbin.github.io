@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://ice-io.github.io/images/render-4.png">
 <meta property="og:image" content="http://ice-io.github.io/images/render-5.png">
 <meta property="og:image" content="http://ice-io.github.io/images/render-6.png">
-<meta property="og:updated_time" content="2017-09-09T09:09:38.466Z">
+<meta property="og:updated_time" content="2017-09-09T10:10:47.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——HTML、CSS进阶">
 <meta name="twitter:description" content="了解了HTML和CSS的基础知识后，就可以继续深入HTML和CSS的博大精深了。">
@@ -361,12 +361,12 @@
 
       
         <p>了解了HTML和CSS的基础知识后，就可以继续深入HTML和CSS的博大精深了。<br><a id="more"></a></p>
-<h1 id="HTML-CSS布局"><a href="#HTML-CSS布局" class="headerlink" title="HTML+CSS布局"></a>HTML+CSS布局</h1><blockquote>
-<p>这里引入一下古老的table布局方法：用表格定义天然的区块再填入内容来布局。缺点如下：</p>
-<p>加载慢，需等到表格加载完才显示。</p>
-<p>HTML语义化</p>
-</blockquote>
-<p>表格之后，布局主要是div + CSS —— 导致div标签被滥用</p>
+<h1 id="HTML-CSS布局"><a href="#HTML-CSS布局" class="headerlink" title="HTML+CSS布局"></a>HTML+CSS布局</h1><p>这里引入一下古老的table布局方法：用表格定义天然的区块再填入内容来布局。缺点如下：</p>
+<ul>
+<li>加载慢，需等到表格加载完才显示。</li>
+<li>HTML语义化</li>
+</ul>
+<p>表格之后，布局主要是div + CSS —— 导致div标签被滥用。</p>
 <hr>
 <h2 id="HTML语义化"><a href="#HTML语义化" class="headerlink" title="HTML语义化"></a>HTML语义化</h2><ol>
 <li>方便团队开发</li>
@@ -384,7 +384,7 @@
 <p>在 IE8 里面，未定义的标签——IE8 不认识所有新引入的 HTML5 标签，所以定义样式是不会生效。</p>
 </li>
 <li><p>如何让 IE8 支持 HTML5 标签<br>虽然默认不支持，但是我们可以通过 JS 使用 document.createElement 来“欺骗” IE 的 CSS 引擎，让它知道某个标签的存在，具体做法如下：</p>
-<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5 test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">        document.createElement('section');</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="css">        <span class="selector-tag">section</span> &#123; <span class="attribute">color</span>: red; &#125;</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">        Hello!</div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML5 test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="built_in">document</span>.createElement(<span class="string">'section'</span>);</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="css">        <span class="selector-tag">section</span> &#123; <span class="attribute">color</span>: red; &#125;</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">        Hello!</div><div class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 </code></pre></li>
 <li><p>借助<code>html5shiv.js</code>让IE8支持更多的HTML5特性</p>
 <p>其实不只是 IE8 ， IE6-9、 Safari 4.x (以及 iPhone 3.x)、还有Firefox 3.x 等等，对 HTML5 的支持都不完善。所以有了一个库<code>html5shiv.js</code> 来做统一处理，shiv 意为用作武器的小刀（实际上是一个拼写错误，应该为 shim），在机械工程中的专业释义为垫片，比喻给那些老旧的浏览器加个垫片，让它们基本能用。<br>可参考：<a href="https://github.com/aFarkas/html5shiv/" target="_blank" rel="external"><code>html5shiv.js</code></a></p>
@@ -541,10 +541,11 @@
 <p>我们知道，在计算页面排版的时候，如果没有设置父元素的高度，那么该父元素的高度是由他的子元素高度撑开的。但是如果子元素是设置了浮动，脱离了文档流，那么父元素计算高度的时候就会忽略该子元素，甚至当所有子元素都是浮动的时候，就会出现父元素高度为 0 的情况，这就是所谓的<em>父元素高度坍塌问题</em>。</p>
 <p>为了能让父元素正确包裹子元素的高度，不发生坍塌，我们需要<em>闭合子元素的浮动</em>。</p>
 </blockquote>
-<p>   一般我们有两种办法可以用来闭合子元素浮动：</p>
+<p>一般我们有两种办法可以用来闭合子元素浮动：</p>
 <ol>
 <li>给最后一个元素设置 <code>clear: both</code></li>
-<li><p>给父元素新建一个 BFC(块格式化上下文)</p>
+<li>给父元素新建一个 BFC(块格式化上下文)</li>
+</ol>
 <p>方法一：由于我们最后一个元素使用 clear:both，所以该元素就能不受浮动元素影响出现在父元素的最底部，而父元素计算高度的时候需要考虑到这个正常元素的位置，所以高度自然包裹到了最底部，也就没有了坍塌。</p>
 <p>对于这个方法，以前我们是利用新增一个空元素（<code>&lt;b&gt;</code> 或 <code>&lt;span&gt;</code> 或 <code>&lt;div&gt;</code> 等）来实现的，如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"clear-box"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -566,8 +567,6 @@
 <p>虽然有这么多方法可用，可我们常用的就是 <code>overflow: hidden</code>，代码如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
 </li>
 </ul>
 <hr>
