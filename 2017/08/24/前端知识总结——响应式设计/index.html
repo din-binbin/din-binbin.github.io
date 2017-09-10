@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://ice-io.github.io/images/retina-bitmap-2x.png">
 <meta property="og:image" content="http://ice-io.github.io/images/1px-1.png">
 <meta property="og:image" content="http://ice-io.github.io/images/1px-2.png">
-<meta property="og:updated_time" content="2017-09-09T09:03:56.854Z">
+<meta property="og:updated_time" content="2017-09-10T08:56:13.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——响应式设计">
 <meta name="twitter:description" content="随着移动互联网的发展，移动设备的增加，移动端的网页需求越来越大，响应式设计应运而生。">
@@ -371,10 +371,10 @@
 <li>图片大小</li>
 </ul>
 <hr>
-<h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><p>viewport，即为浏览器的可视区域。</p>
+<h1 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h1><p>viewport，即为浏览器的可视区域。</p>
 <p>可参考：<a href="http://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="external">移动前端开发之viewport的深入理解</a></p>
 <hr>
-<h2 id="retina-显示屏"><a href="#retina-显示屏" class="headerlink" title="retina 显示屏"></a>retina 显示屏</h2><p>所谓“Retina”是一种显示技术，可以将更多的像素点压缩至一块屏幕里，从而达到更高的分辨率并提高屏幕显示的细腻程度。这种分辨率在正常观看距离下足以使人肉眼无法分辨其中的单独像素，也被称为视网膜显示屏。</p>
+<h1 id="retina-显示屏"><a href="#retina-显示屏" class="headerlink" title="retina 显示屏"></a>retina 显示屏</h1><p>所谓“Retina”是一种显示技术，可以将更多的像素点压缩至一块屏幕里，从而达到更高的分辨率并提高屏幕显示的细腻程度。这种分辨率在正常观看距离下足以使人肉眼无法分辨其中的单独像素，也被称为视网膜显示屏。</p>
 <p>Retina 既不是指分辨率，也不是单独指PPI，而是指视觉效果。</p>
 <ul>
 <li>手机显示器的像素密度达到或高于 300ppi 就不会再出现颗粒感（视线距离在35CM左右）</li>
@@ -382,7 +382,7 @@
 </ul>
 <p>可参考：<a href="https://www.zhihu.com/question/24935579" target="_blank" rel="external">4K 和 Retina 显示屏哪个分辨率更高</a> 、 <a href="https://baike.baidu.com/item/retina/4616695?fromtitle=Retina%E5%B1%8F%E5%B9%95&amp;fromid=3782050" target="_blank" rel="external">Retina屏幕</a></p>
 <hr>
-<h2 id="PPI（像素密度）-和-DPR（设备像素比）"><a href="#PPI（像素密度）-和-DPR（设备像素比）" class="headerlink" title="PPI（像素密度） 和 DPR（设备像素比）"></a>PPI（像素密度） 和 DPR（设备像素比）</h2><p>Pixels Per Inch（PPI）也叫像素密度，所表示的是每英寸所拥有的像素数量，PPI值越高，画面的细节就会越丰富。</p>
+<h1 id="PPI（像素密度）-和-DPR（设备像素比）"><a href="#PPI（像素密度）-和-DPR（设备像素比）" class="headerlink" title="PPI（像素密度） 和 DPR（设备像素比）"></a>PPI（像素密度） 和 DPR（设备像素比）</h1><p>Pixels Per Inch（PPI）也叫像素密度，所表示的是每英寸所拥有的像素数量，PPI值越高，画面的细节就会越丰富。</p>
 <p><em>物理像素</em>：我们把分辨率的像素称之为物理像素或设备像素（如 iPhone 7 的物理像素为 750px * 1334px），它是显示设备中一个最微小的物理部件。</p>
 <p><em>设备独立像素</em>：CSS 的尺寸像素称之为设备独立像素（device-independent pixels 简称为“DIPs”）或 CSS 像素（如 iPhone 7 的设备独立像素为 375px * 667px），它是一个抽象的单位，主要使用在浏览器上，用来精确的度量（确定）Web页面上的内容。</p>
 <p><em>devicePixelRatio（DPR）</em>： 用来描述物理像素与设备独立像素的比例，其值等于 “物理像素 / 设备独立像素”。devicePixelRatio 值为 1 时就是我们的标准屏，值为 2 时则是我们俗称的 2 倍屏（2x），同样 3 就是 3 倍屏（3x）。</p>
@@ -390,7 +390,7 @@
 <p>对一个标准屏来说，渲染一个 2px 2px 的盒子将会使用 2px 2px 物理像素，如我们的普通电脑屏；但是对于一个 2 倍屏来说，渲染一个 2px 2px 的盒子将会使用 （2px 2） （2px 2） 物理像素，如我们的 iPhone 4、5、6、7，如下图：</p>
 <p><img src="/images/retina-dpr.png" alt="2倍屏和普通标准屏"></p>
 <hr>
-<h2 id="多倍屏带来的问题"><a href="#多倍屏带来的问题" class="headerlink" title="多倍屏带来的问题"></a>多倍屏带来的问题</h2><p>熟悉了这些概念之后，我们就要开始解决需要面临的问题了。由于 devicePixelRatio 不再是1，我们的物理像素与设备独立像素不再对等，所以在实际网页开发时面临了2个问题：图片虚化、1px边框变粗。</p>
+<h1 id="多倍屏带来的问题"><a href="#多倍屏带来的问题" class="headerlink" title="多倍屏带来的问题"></a>多倍屏带来的问题</h1><p>熟悉了这些概念之后，我们就要开始解决需要面临的问题了。由于 devicePixelRatio 不再是1，我们的物理像素与设备独立像素不再对等，所以在实际网页开发时面临了2个问题：图片虚化、1px边框变粗。</p>
 <ul>
 <li><p>图片虚化</p>
 <p>我们知道，位图（png, jpg, gif等）是由一个个像素点构成的，每个像素都具有特定的位置和颜色值，我们称之为位图像素，如下图：</p>
@@ -412,7 +412,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="媒体查询（media-queries）"><a href="#媒体查询（media-queries）" class="headerlink" title="媒体查询（media queries）"></a>媒体查询（media queries）</h2><p>媒体查询，通俗地说就是感应一些设备信息来给开发使用。</p>
+<h1 id="媒体查询（media-queries）"><a href="#媒体查询（media-queries）" class="headerlink" title="媒体查询（media queries）"></a>媒体查询（media queries）</h1><p>媒体查询，通俗地说就是感应一些设备信息来给开发使用。</p>
 <p>语法示例：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> screen and (min-width:<span class="number">768px</span>) and (max-width:<span class="number">1024px</span>) &#123;</div><div class="line">    <span class="selector-class">.demo</span>&#123;</div><div class="line">        <span class="attribute">color</span>:red;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
@@ -425,7 +425,7 @@
 <p>另外，这种方法也可以：<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; media=&quot;(min-width:1024px)&quot;&gt;</code></p>
 <p>可参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Media_queries" target="_blank" rel="external">CSS媒体查询</a></p>
 <hr>
-<h2 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h2><p>通俗地说就是根据设备来自动选择要展示的图片，大屏展示大图，小屏展示小图，以优化网络性能。代码示例如下：</p>
+<h1 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h1><p>通俗地说就是根据设备来自动选择要展示的图片，大屏展示大图，小屏展示小图，以优化网络性能。代码示例如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span></span></div><div class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">"img/small.png"</span></span></div><div class="line"><span class="tag">    <span class="attr">srcset</span>=<span class="string">"img/large.png 960w, img/medium.png 640w,img/small.png 320w"</span></span></div><div class="line"><span class="tag">    <span class="attr">sizes</span>=<span class="string">"(max-width:414px) 100vw,640px"</span></span></div><div class="line"><span class="tag">    <span class="attr">alt</span>=<span class="string">"响应式图片"</span></span></div><div class="line"><span class="tag">&gt;</span></div></pre></td></tr></table></figure>
 <ul>
 <li>sizes —— 表示需要图片的大小（相当于响应式查询）</li>
@@ -440,14 +440,14 @@
 <p>iPhone 7 plus 的设备宽度为<code>414px</code>，小于<code>768px</code>，所以使用<code>100vw</code>，然后因为它的DPR为3，所以需要的图片宽度为 <code>414px * 3 = 1242px</code>，没有正好的规格图片，所以先向上取，那么就是1920规格的 <code>xl.png</code> 。</p>
 </blockquote>
 <hr>
-<h2 id="响应式怎么实现"><a href="#响应式怎么实现" class="headerlink" title="响应式怎么实现"></a>响应式怎么实现</h2><p>要做一个好的响应式页面，最重要的是要处理好以下两点：</p>
+<h1 id="响应式怎么实现"><a href="#响应式怎么实现" class="headerlink" title="响应式怎么实现"></a>响应式怎么实现</h1><p>要做一个好的响应式页面，最重要的是要处理好以下两点：</p>
 <ul>
 <li>断点设置：可以先综合判断要实现各个平台断点，然后再针对一些特殊局部进行单独的断点</li>
 <li>内容布局呈现：这个可能就比较繁琐，有些时候还得有一定的想象力</li>
 </ul>
 <p>可参考：<a href="http://imweb.io/topic/56dff5121a5f05dc506430da" target="_blank" rel="external">响应式及断点设置分析</a></p>
 <hr>
-<h2 id="响应式相关"><a href="#响应式相关" class="headerlink" title="响应式相关"></a>响应式相关</h2><ul>
+<h1 id="响应式相关"><a href="#响应式相关" class="headerlink" title="响应式相关"></a>响应式相关</h1><ul>
 <li><p>整体布局</p>
 <ul>
 <li><a href="http://flexboxgrid.com/" target="_blank" rel="external">Flexbox Grid</a></li>
@@ -472,7 +472,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="常见CSS框架"><a href="#常见CSS框架" class="headerlink" title="常见CSS框架"></a>常见CSS框架</h2><p>有时候为了提高开发效率，我们往往会使用一些前端的 CSS 框架。当框架的功能能够满足你的需求时，使用框架是一个不错的主意。</p>
+<h1 id="常见CSS框架"><a href="#常见CSS框架" class="headerlink" title="常见CSS框架"></a>常见CSS框架</h1><p>有时候为了提高开发效率，我们往往会使用一些前端的 CSS 框架。当框架的功能能够满足你的需求时，使用框架是一个不错的主意。</p>
 <ul>
 <li><a href="https://getbootstrap.com/" target="_blank" rel="external">Bootstrap</a><blockquote>
 <p>Bootstrap 是世界上最流行的前端基础框架之一，可用于构建响应式或移动端项目以及帮助你快速开发web应用。其在推出之后就广受追捧，并掀起了 UI 框架热。在许多有名的网站都能看到使用 Bootstrap 的身影，而在管理后台方面更是一骑绝尘成为首先框架。</p>
@@ -657,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式"><span class="nav-number">1.</span> <span class="nav-text">响应式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport"><span class="nav-number">1.1.</span> <span class="nav-text">viewport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#retina-显示屏"><span class="nav-number">1.2.</span> <span class="nav-text">retina 显示屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PPI（像素密度）-和-DPR（设备像素比）"><span class="nav-number">1.3.</span> <span class="nav-text">PPI（像素密度） 和 DPR（设备像素比）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多倍屏带来的问题"><span class="nav-number">1.4.</span> <span class="nav-text">多倍屏带来的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#媒体查询（media-queries）"><span class="nav-number">1.5.</span> <span class="nav-text">媒体查询（media queries）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式图片"><span class="nav-number">1.6.</span> <span class="nav-text">响应式图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式怎么实现"><span class="nav-number">1.7.</span> <span class="nav-text">响应式怎么实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式相关"><span class="nav-number">1.8.</span> <span class="nav-text">响应式相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见CSS框架"><span class="nav-number">1.9.</span> <span class="nav-text">常见CSS框架</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式"><span class="nav-number">1.</span> <span class="nav-text">响应式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#viewport"><span class="nav-number">2.</span> <span class="nav-text">viewport</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#retina-显示屏"><span class="nav-number">3.</span> <span class="nav-text">retina 显示屏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PPI（像素密度）-和-DPR（设备像素比）"><span class="nav-number">4.</span> <span class="nav-text">PPI（像素密度） 和 DPR（设备像素比）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多倍屏带来的问题"><span class="nav-number">5.</span> <span class="nav-text">多倍屏带来的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#媒体查询（media-queries）"><span class="nav-number">6.</span> <span class="nav-text">媒体查询（media queries）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式图片"><span class="nav-number">7.</span> <span class="nav-text">响应式图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式怎么实现"><span class="nav-number">8.</span> <span class="nav-text">响应式怎么实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式相关"><span class="nav-number">9.</span> <span class="nav-text">响应式相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见CSS框架"><span class="nav-number">10.</span> <span class="nav-text">常见CSS框架</span></a></li></ol></div>
             
 
           </div>
