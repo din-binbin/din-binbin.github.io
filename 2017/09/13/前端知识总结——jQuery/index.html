@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,jQuery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="学了JavaScript的基础知识后，有必要了解一下“影响一代人的jQuery”。">
+<meta name="keywords" content="JavaScript,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识总结——jQuery">
+<meta property="og:url" content="http://ice-io.github.io/2017/09/13/前端知识总结——jQuery/index.html">
+<meta property="og:site_name" content="Thinking Coding">
+<meta property="og:description" content="学了JavaScript的基础知识后，有必要了解一下“影响一代人的jQuery”。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-13T18:45:46.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识总结——jQuery">
+<meta name="twitter:description" content="学了JavaScript的基础知识后，有必要了解一下“影响一代人的jQuery”。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ice-io.github.io/2017/09/13/前端知识总结——jQuery/"/>
+
+
+
+
+
+  <title>前端知识总结——jQuery | Thinking Coding</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Thinking Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ice-io.github.io/2017/09/13/前端知识总结——jQuery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ice">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Thinking Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端知识总结——jQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T18:51:45+08:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学了JavaScript的基础知识后，有必要了解一下“影响一代人的jQuery”。<br><a id="more"></a></p>
+<h1 id="jQuery简介"><a href="#jQuery简介" class="headerlink" title="jQuery简介"></a>jQuery简介</h1><p>在全球的网站中，差不多有60%的网站使用了jQuery。它是一个JavaScript库，可以让我们更方便的使用JavaScript。</p>
+<hr>
+<h1 id="引入jQuery"><a href="#引入jQuery" class="headerlink" title="引入jQuery"></a>引入jQuery</h1><p>jQuery其实也是一个JavaScript文件，因此引入方式和引用js文件一样。</p>
+<ul>
+<li>本地文件</li>
+<li>CDN引入</li>
+</ul>
+<hr>
+<h1 id="jQuery中的"><a href="#jQuery中的" class="headerlink" title="jQuery中的$"></a>jQuery中的$</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$===jQuery</div></pre></td></tr></table></figure>
+<p>$就是jQuery，是一个函数，准确来说，是一个构造函数，会将DOmain对象转为jquery对象，具有特定的额外方法。</p>
+<hr>
+<h1 id="jQuery里的选择器"><a href="#jQuery里的选择器" class="headerlink" title="jQuery里的选择器"></a>jQuery里的选择器</h1><p>jQuery实现了CSS的选择器，包括基本选择器、组合选择器和其他选择器。</p>
+<ul>
+<li>基本选择器<ul>
+<li>$(tag)</li>
+<li>$(#id)</li>
+<li>$(.class)</li>
+<li>$(*)</li>
+</ul>
+</li>
+<li>组合选择器<ul>
+<li>$(selector1,selector2)</li>
+<li>$(selector1 selector2)</li>
+<li>$(selector1&gt;selector2)</li>
+<li>$(selector1+selector2)</li>
+</ul>
+</li>
+<li>其他选择器<ul>
+<li>$(selector:first-child)</li>
+<li>$(selector:last-child)</li>
+<li>$(selector:eq(index))</li>
+<li>$([attrbute=value])</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="jQuery里的遍历"><a href="#jQuery里的遍历" class="headerlink" title="jQuery里的遍历"></a>jQuery里的遍历</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取父元素</span></div><div class="line">$(<span class="string">'#id'</span>).parent();</div><div class="line"><span class="comment">// 获取所有父元素和祖先元素</span></div><div class="line">$(<span class="string">'#id'</span>).parents();</div><div class="line"><span class="comment">// 使用.eq()函数获取相应元素</span></div><div class="line">$(<span class="string">'#id'</span>).parents().eq(<span class="number">0</span>);</div><div class="line">$(<span class="string">'#id'</span>).parents().eq(<span class="number">1</span>);</div><div class="line"><span class="comment">// 使用.parents(selector)来精准查找</span></div><div class="line">$(<span class="string">'#id'</span>).parents(<span class="string">'.fat'</span>);</div><div class="line">$(<span class="string">'#id'</span>).parents(<span class="string">'.oldest'</span>);</div><div class="line"><span class="comment">// 获取所有兄弟元素</span></div><div class="line">$(<span class="string">'#id'</span>).siblings();</div><div class="line"><span class="comment">// 使用selector来精准查找</span></div><div class="line">$(<span class="string">'#id'</span>).siblings(<span class="string">'.class'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 使用.children()获取子元素</span></div><div class="line">$(<span class="string">'#id'</span>).children();</div><div class="line"><span class="comment">// 使用.find('*')获取所有子元素</span></div><div class="line">$(<span class="string">'#id'</span>).find(<span class="string">'*'</span>);</div><div class="line"><span class="comment">// 使用.find(selector)精准获取子孙元素</span></div><div class="line">$(<span class="string">'#id'</span>).find(<span class="string">'.class'</span>);</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="jQuery添加和删除DOM"><a href="#jQuery添加和删除DOM" class="headerlink" title="jQuery添加和删除DOM"></a>jQuery添加和删除DOM</h1><ul>
+<li>append/appendTo<blockquote>
+<p>在被选元素的结尾插入内容</p>
+</blockquote>
+</li>
+<li>prepend/prependTo<blockquote>
+<p>在被选元素的开头插入内容</p>
+</blockquote>
+</li>
+<li>after/insertAfter<blockquote>
+<p>在被选元素之后插入内容</p>
+</blockquote>
+</li>
+<li><p>before/insertBefore</p>
+<blockquote>
+<p>在被选元素之前插入内容</p>
+</blockquote>
+</li>
+<li><p>empty()</p>
+<blockquote>
+<p>删除其所有子元素</p>
+</blockquote>
+</li>
+<li>remove()<blockquote>
+<p>删除元素，包括子元素和元素本身</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h1 id="jQuery事件监听"><a href="#jQuery事件监听" class="headerlink" title="jQuery事件监听"></a>jQuery事件监听</h1><p>jQuery事件包括：</p>
+<ul>
+<li>触发事件的目标元素</li>
+<li>触发的事件名称</li>
+<li>事件触发时的回调</li>
+<li>事件对象</li>
+</ul>
+<p>jQuery事件对象，是对原生事件对象的封装，做了浏览器兼容处理，并且增加了好用的属性和方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'a'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(event.target);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 既阻止默认事件，且阻止事件冒泡</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="事件委托（事件代理）"><a href="#事件委托（事件代理）" class="headerlink" title="事件委托（事件代理）"></a>事件委托（事件代理）</h1><p>一般来说我们要给某个元素绑定事件，都会直接绑定在该元素上，但是这种直接的处理会有以下问题：</p>
+<ul>
+<li>通过 JS 新添加的 li 元素并没有该事件绑定，所以点击无效</li>
+<li>元素如果比较多的话，比喻有200个 li ，那每个 li 都绑定一个事件，性能是非常低的</li>
+</ul>
+<p>那么如何解决这些问题呢？这就需要事件委托（或叫事件代理）。</p>
+<p>件委托简单来说就是利用事件冒泡，只指定一个事件处理程序，用来管理某一类型的所有事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 要点击的元素是 todo-item</span></div><div class="line"><span class="comment">// 但是我们把事件绑定在父元素 todo-list 上，实现事件委托</span></div><div class="line"><span class="comment">// html 结构为：ul#todo-list&gt;li.todo-item*5</span></div><div class="line"></div><div class="line">$(<span class="string">'#todo-list'</span>).on(<span class="string">'click'</span>, <span class="string">'.todo-item'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="keyword">this</span>).toggleClass(<span class="string">'done'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>上述代码是用jQuery完成的，可能本质不太明显，下面再看看JavaScript原生的事件委托：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> todoList = <span class="built_in">document</span>.getElementById(<span class="string">"todo-list"</span>);</div><div class="line"></div><div class="line">todoList.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> target = e.target;</div><div class="line">    <span class="comment">// 检查事件源 target 是否为 todo-item</span></div><div class="line">    <span class="keyword">if</span> (target &amp;&amp; target.nodeName.toUpperCase() == <span class="string">'LI'</span> &amp;&amp; target.classList.contains(<span class="string">'todo-item'</span>)) &#123;</div><div class="line">        target.classList.toggle(<span class="string">'done'</span>)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'我不是 todo-item '</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>注：因为事件委托是依赖于事件冒泡的，所以没有事件冒泡的事件是不能使用事件委托的。</p>
+<p>综上，事件委托的优点有如下几点：</p>
+<ul>
+<li>管理的函数变少，不需要为每个元素都添加事件监听函数。</li>
+<li>可以动态的增加和修改元素，无需因为元素的改动而修改事件绑定。</li>
+<li>Javascript和DOM节点之间的关联变少，降低了循环引用的导致内存泄漏的可能性。</li>
+</ul>
+<p>事件委托的缺点：</p>
+<ul>
+<li>如果绑定监听器的父元素和目标元素的层级相距较远，那么在冒泡过程中会消耗一定的时间。</li>
+</ul>
+<hr>
+<h1 id="jQuery的隐式迭代和链式调用"><a href="#jQuery的隐式迭代和链式调用" class="headerlink" title="jQuery的隐式迭代和链式调用"></a>jQuery的隐式迭代和链式调用</h1><h2 id="隐式迭代"><a href="#隐式迭代" class="headerlink" title="隐式迭代"></a>隐式迭代</h2><p>对于原生 JS 来说，一般我们设置某类元素的样式，都得使用循环设置，而 jQuery 在使用的时候则无需考虑这点，简单示例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置 .primary 元素的文字颜色为 #188eee</span></div><div class="line"></div><div class="line"><span class="comment">// 原生 JS</span></div><div class="line"><span class="keyword">var</span> primary = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'primary'</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = primary.length; i &lt; len; i++) &#123;</div><div class="line">    primary[i].style.color = <span class="string">'#188eee'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// jQuery</span></div><div class="line">$(<span class="string">'.primary'</span>).css(<span class="string">'color'</span>, <span class="string">'#188eee'</span>);</div></pre></td></tr></table></figure>
+<p>这是因为 jQuery 的方法内部存在隐式迭代，它会对匹配到的所有元素进行循环遍历，执行相应的方法；无需我们再手动地进行循，方便我们使用。</p>
+<p>除了隐式迭代外，jQuery 还提供了 <code>each()</code>方法，方便有需要的时候调用。比喻要对每个元素做不同的处理：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"li"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">   $(<span class="keyword">this</span>).addClass(<span class="string">'item-'</span>+i);</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<h2 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h2><p>从前我们要对某个元素进行一系列操作，只能一个一个来，而 jQuery 提供了链式操作：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 原始版</span></div><div class="line">$(<span class="string">'div'</span>).hide(); <span class="comment">//隐藏页面上所有的div元素</span></div><div class="line">$(<span class="string">'div'</span>).text(<span class="string">'new content'</span>); <span class="comment">//更新所有div元素内的文本</span></div><div class="line">$(<span class="string">'div'</span>).addClass(<span class="string">"updatedContent"</span>); <span class="comment">//在所有的div元素上添加值为updatedContent的class属性</span></div><div class="line">$(<span class="string">'div'</span>).show(); <span class="comment">//显示页面上所有的div元素</span></div><div class="line"></div><div class="line"><span class="comment">// 重写版，链式</span></div><div class="line">$(<span class="string">'div'</span>).hide().text(<span class="string">'new content'</span>).addClass(<span class="string">"updatedContent"</span>).show();</div><div class="line"></div><div class="line"><span class="comment">// 缩进版</span></div><div class="line">$(<span class="string">'div'</span>)</div><div class="line">  .hide()</div><div class="line">  .text(<span class="string">'new content'</span>)</div><div class="line">  .addClass(<span class="string">"updatedContent"</span>)</div><div class="line">  .show();</div></pre></td></tr></table></figure>
+<p>其原理就是每个方法的最后都返回了 this 对象，我们可以使用一份简单的代码演示下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">opt</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = opt.name;</div><div class="line">    <span class="keyword">this</span>.age = opt.age</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义 getName 方法</span></div><div class="line">Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// 返回 this 对象</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定义 sayHello 方法</span></div><div class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello the world'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">// 返回 this 对象</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 新建一个叫 next 的 Person 类</span></div><div class="line"><span class="keyword">var</span> next = <span class="keyword">new</span> Person(&#123;</div><div class="line">    name: <span class="string">'next'</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 链式调用 getName 和 sayHello 方法</span></div><div class="line">next.getName().sayHello();</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="jQuery源码解析"><a href="#jQuery源码解析" class="headerlink" title="jQuery源码解析"></a>jQuery源码解析</h1><p>可参考：<a href="http://www.cnblogs.com/aaronjs/p/3279314.html" target="_blank" rel="external">jQuery源码分析系列</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/10/前端知识总结——JavaScript基础/" rel="next" title="前端知识总结——JavaScript基础">
+                <i class="fa fa-chevron-left"></i> 前端知识总结——JavaScript基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="ice" />
+          <p class="site-author-name" itemprop="name">ice</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery简介"><span class="nav-number">1.</span> <span class="nav-text">jQuery简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引入jQuery"><span class="nav-number">2.</span> <span class="nav-text">引入jQuery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery中的"><span class="nav-number">3.</span> <span class="nav-text">jQuery中的$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery里的选择器"><span class="nav-number">4.</span> <span class="nav-text">jQuery里的选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery里的遍历"><span class="nav-number">5.</span> <span class="nav-text">jQuery里的遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery添加和删除DOM"><span class="nav-number">6.</span> <span class="nav-text">jQuery添加和删除DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery事件监听"><span class="nav-number">7.</span> <span class="nav-text">jQuery事件监听</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件委托（事件代理）"><span class="nav-number">8.</span> <span class="nav-text">事件委托（事件代理）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery的隐式迭代和链式调用"><span class="nav-number">9.</span> <span class="nav-text">jQuery的隐式迭代和链式调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式迭代"><span class="nav-number">9.1.</span> <span class="nav-text">隐式迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链式调用"><span class="nav-number">9.2.</span> <span class="nav-text">链式调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery源码解析"><span class="nav-number">10.</span> <span class="nav-text">jQuery源码解析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ice</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
