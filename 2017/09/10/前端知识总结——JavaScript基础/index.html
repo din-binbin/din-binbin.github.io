@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Thinking Coding">
 <meta property="og:description" content="知道了HTML、CSS，已经可以做出很多精美漂亮的页面了，但是这还远远不够，因为缺少与数据和用户交互的逻辑，这就需要学习脚本语言JavaScript。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-11T15:00:59.981Z">
+<meta property="og:updated_time" content="2017-09-13T10:49:13.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——JavaScript基础">
 <meta name="twitter:description" content="知道了HTML、CSS，已经可以做出很多精美漂亮的页面了，但是这还远远不够，因为缺少与数据和用户交互的逻辑，这就需要学习脚本语言JavaScript。">
@@ -663,6 +663,329 @@
 <hr>
 <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。</p>
 <h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 函数声明（定义方式）</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params">arg</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'function'</span>+arg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数表达式（定义方式）</span></div><div class="line"><span class="keyword">var</span> fun2 = <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'function'</span>+arg);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 函数调用</span></div><div class="line">fun1(<span class="string">'哈哈'</span>);</div></pre></td></tr></table></figure>
+<h2 id="函数声明与函数表达式的区别"><a href="#函数声明与函数表达式的区别" class="headerlink" title="函数声明与函数表达式的区别"></a>函数声明与函数表达式的区别</h2><p> JavaScript解释器中存在一种变量声明被提升（hoisting）的机制，也就是说变量（函数）的声明会被提升到当前作用域的最前面，即使写代码的时候是写在最后面，也还是会被提升至最前面。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>任何程序设计语言都有作用域的概念，简单的说，作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。</p>
+<ul>
+<li><p>全局作用域</p>
+<p>在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下几种情形拥有全局作用域：</p>
+<ul>
+<li><p>最外层函数和在最外层函数外面定义的变量拥有全局作用域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> authorName=<span class="string">"山边小溪"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> blogName=<span class="string">"梦想天空"</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">innerSay</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(blogName);</div><div class="line">    &#125;</div><div class="line">    innerSay();</div><div class="line">&#125;</div><div class="line">alert(authorName); <span class="comment">//山边小溪</span></div><div class="line">alert(blogName); <span class="comment">//脚本错误</span></div><div class="line">doSomething(); <span class="comment">//梦想天空</span></div><div class="line">innerSay() <span class="comment">//脚本错误</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>所有末定义直接赋值的变量自动声明为拥有全局作用域</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> authorName=<span class="string">"山边小溪"</span>;</div><div class="line">    blogName=<span class="string">"梦想天空"</span>;</div><div class="line">    alert(authorName);</div><div class="line">&#125;</div><div class="line">doSomething(); <span class="comment">//山边小溪</span></div><div class="line">alert(blogName); <span class="comment">//梦想天空</span></div><div class="line">alert(authorName); <span class="comment">//脚本错误</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>所有window对象的属性拥有全局作用域</p>
+</li>
+</ul>
+</li>
+<li><p>局部作用域</p>
+<p>局部作用域一般只在固定的代码片段内可访问到，最常见的例如函数内部，所有在一些地方也会看到有人把这种作用域称为函数作用域。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> blogName=<span class="string">"梦想天空"</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">innerSay</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(blogName);</div><div class="line">    &#125;</div><div class="line">    innerSay();</div><div class="line">&#125;</div><div class="line">alert(blogName); <span class="comment">//脚本错误</span></div><div class="line">innerSay(); <span class="comment">//脚本错误</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术表达式"><a href="#算术表达式" class="headerlink" title="算术表达式"></a>算术表达式</h2><ul>
+<li><code>+</code> —— 加</li>
+<li><code>-</code> —— 减</li>
+<li><code>*</code> —— 乘</li>
+<li><code>/</code> —— 除</li>
+<li><code>%</code> —— 求余</li>
+<li><code>++ / --</code> —— 自增 / 自减</li>
+</ul>
+<p>注意：前自增会先自增完，再计算整个表达式；而后自增则是先计算整个表达式，再自增。</p>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul>
+<li><code>=</code> —— 普通赋值</li>
+<li><code>+=</code> —— 复合赋值</li>
+<li><code>-=</code> —— 复合赋值</li>
+<li><code>*=</code> —— 复合赋值</li>
+<li><code>/=</code> —— 复合赋值</li>
+<li><code>%=</code> —— 复合赋值</li>
+</ul>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ul>
+<li><code>&gt;</code> —— 大于</li>
+<li><code>&lt;</code> —— 小于</li>
+<li><code>&gt;=</code> —— 大于或等于</li>
+<li><code>&lt;=</code> —— 小于或等于</li>
+<li><code>== / ===</code> —— 相等 / 严格相等（先类型转换再比较）</li>
+<li><code>!= / !==</code> —— 不想等 / 严格不想等（直接比较）</li>
+</ul>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
+<li><code>!</code> —— 逻辑非</li>
+<li><code>&amp;&amp;</code> —— 逻辑与</li>
+<li><code>||</code> —— 逻辑或</li>
+</ul>
+<hr>
+<h1 id="JavaScript-流程控制"><a href="#JavaScript-流程控制" class="headerlink" title="JavaScript 流程控制"></a>JavaScript 流程控制</h1><p>操作和控制数据的过程就是流程控制，主要分为循环和条件两种。</p>
+<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>( 条件<span class="number">1</span> ) &#123;</div><div class="line">  执行代码<span class="number">1</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>( 条件<span class="number">2</span> ) &#123;</div><div class="line">  执行代码<span class="number">2</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  执行代码<span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">判断条件 ? ( 条件为真时执行代码 ) : ( 条件为假时执行代码 )</div></pre></td></tr></table></figure>
+<h2 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>()&#123;</div><div class="line">    <span class="keyword">case</span> 满足<span class="number">1</span>:</div><div class="line">      执行代码<span class="number">1</span>;</div><div class="line">      <span class="keyword">break</span>;  <span class="comment">// 用break来打断switch语句的传递性</span></div><div class="line">    <span class="keyword">case</span> 满足<span class="number">2</span>:</div><div class="line">      执行代码<span class="number">2</span>;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    ...</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      执行默认代码;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><ul>
+<li><p>while</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先判断后执行</span></div><div class="line"><span class="keyword">while</span> (条件)&#123;</div><div class="line">    循环代码;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>do-while</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先执行后判断，因此会至少执行一次</span></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">    循环代码;</div><div class="line">&#125; <span class="keyword">while</span> (条件);</div></pre></td></tr></table></figure>
+</li>
+<li><p>for</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(初始化;判断表达式;每次循环后执行的代码)&#123;</div><div class="line">    循环代码;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>for-in</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 遍历对象属性</span></div><div class="line"><span class="keyword">for</span>(变量 <span class="keyword">in</span> 对象)&#123;</div><div class="line">    遍历执行代码;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>break 和 continue</p>
+<ul>
+<li>break —— 用于跳出循环</li>
+<li>continue —— 用于跳过循环中的一个迭代</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="BOM-浏览器对象模型"><a href="#BOM-浏览器对象模型" class="headerlink" title="BOM 浏览器对象模型"></a>BOM 浏览器对象模型</h1><h2 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h2><ul>
+<li>浏览器窗口相关信息<ul>
+<li><code>window.alert(&#39;弹出窗口&#39;);</code></li>
+<li><code>window.confirm(&#39;你确定吗？&#39;);</code></li>
+<li><code>window.prompt(&#39;请输入文字并确认&#39;);</code></li>
+</ul>
+</li>
+<li>JavaScript的<code>global</code>对象（全局作用域）</li>
+</ul>
+<h2 id="location"><a href="#location" class="headerlink" title="location"></a>location</h2><ul>
+<li>提供文档相关信息<ul>
+<li><code>location.host</code></li>
+<li><code>location.href</code></li>
+<li><code>location.hostname</code></li>
+<li><code>location.port</code></li>
+<li><code>location.pathname</code></li>
+</ul>
+</li>
+<li>导航<ul>
+<li><code>location.reload(true)</code> —— 表示不缓存</li>
+<li><code>location.reload()</code> —— 刷新页面</li>
+<li><code>location.assign()</code> —— 跳转</li>
+</ul>
+</li>
+</ul>
+<h2 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h2><ul>
+<li>客户端相关信息<ul>
+<li><code>userAgent</code> —— 浏览器用户代理字符串</li>
+<li><code>platform</code> —— 系统平台</li>
+</ul>
+</li>
+</ul>
+<h2 id="history"><a href="#history" class="headerlink" title="history"></a>history</h2><ul>
+<li>保存用户的上网记录<ul>
+<li><code>length</code> —— 历史纪录数量</li>
+<li><code>go()</code> —— 跳转到指定历史记录</li>
+<li><code>forward()</code> —— 前进</li>
+<li><code>back()</code> —— 后退</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="DOM-文档对象模型"><a href="#DOM-文档对象模型" class="headerlink" title="DOM 文档对象模型"></a>DOM 文档对象模型</h1><p>通过DOM，可以将JavaScript和HTML、CSS练习起来，以增删元素，修改样式。即，DOM是针对HTML文档的一个应用程序编程接口（API）。</p>
+<h2 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h2><ul>
+<li>是一个对象</li>
+<li>有十二种类型</li>
+</ul>
+<h2 id="常用节点类型"><a href="#常用节点类型" class="headerlink" title="常用节点类型"></a>常用节点类型</h2><ul>
+<li>Element类型<ul>
+<li>HTML元素</li>
+<li>属性（特别注意<code>className</code>）</li>
+<li>创建、删除元素</li>
+<li><code>nodeType:1;</code></li>
+<li><code>nodeName:元素的标签名;</code></li>
+</ul>
+</li>
+<li>Text类型<ul>
+<li><code>data</code>和<code>nodeValue</code></li>
+<li>创建文本节点</li>
+<li><code>nodeType:3;</code></li>
+<li><code>nodeName:#text;</code></li>
+</ul>
+</li>
+<li>Document类型<ul>
+<li>不是HTML元素</li>
+<li>挂靠各种常用的api</li>
+<li><code>nodeType:9;</code></li>
+<li><code>nodeName:#document;</code></li>
+</ul>
+</li>
+<li>DocumentFragment类型<ul>
+<li><code>nodeType:11;</code></li>
+<li><code>nodeName:#document-fragment;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM查找"><a href="#DOM查找" class="headerlink" title="DOM查找"></a>DOM查找</h2><ul>
+<li>document.getElementById( )<blockquote>
+<p>返回一个元素</p>
+</blockquote>
+</li>
+<li>document.getElementsByTagName( )<blockquote>
+<p>返回一个类数组的<code>HTML Collection</code>，包含一组元素</p>
+<p><code>HTML Collection</code>是一个动态集合</p>
+</blockquote>
+</li>
+<li>document.getElementsByClassName( )<blockquote>
+<p>返回一个类数组的<code>HTML Collection</code>，包含一组元素</p>
+</blockquote>
+</li>
+<li>document.querySelector( )<blockquote>
+<p>接受参数为合法的CSS选择器<br>只返回一个</p>
+</blockquote>
+</li>
+<li>document.querySelectorAll( )<blockquote>
+<p>接受参数为合法的CSS选择器<br>返回一组</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="DOM增删"><a href="#DOM增删" class="headerlink" title="DOM增删"></a>DOM增删</h2><ul>
+<li>insertBefore( )<blockquote>
+<p>在之前添加</p>
+</blockquote>
+</li>
+<li>appendChild( )<blockquote>
+<p>在之后追加</p>
+</blockquote>
+</li>
+<li><p>DocumentFragment</p>
+<blockquote>
+<p>文档片段</p>
+<p>作为仓库来使用（零碎节点放在一起再一次性添加）</p>
+</blockquote>
+</li>
+<li><p>removeChild( )</p>
+<blockquote>
+<p>删除节点<br>配合<code>parentNode</code>使用</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="DOM修改"><a href="#DOM修改" class="headerlink" title="DOM修改"></a>DOM修改</h2><p>属性<code>property</code>和特性<code>attribute</code></p>
+<ul>
+<li>关联：<ul>
+<li>公认的<code>attribute</code>会映射到<code>property</code></li>
+<li>读写方式<ul>
+<li><code>property</code>为<code>&quot;.&quot;</code>操作</li>
+<li><code>attribute</code>为<code>getAttribute()</code>、<code>setAttribute()</code></li>
+</ul>
+</li>
+<li>特别的值（<code>class</code>、<code>style</code>）</li>
+<li>属性只映射到Node节点，特性会映射到HTML结构</li>
+</ul>
+</li>
+</ul>
+<h2 id="DOM修改-——-样式"><a href="#DOM修改-——-样式" class="headerlink" title="DOM修改 —— 样式"></a>DOM修改 —— 样式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.style.color=<span class="string">'red'</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- element.style=<span class="string">'color:red;font-size:30px'</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加类名</span></div><div class="line">element.className=<span class="string">'blue'</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加类名</span></div><div class="line">element.className=element.className+<span class="string">' red'</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 删除类名</span></div><div class="line">element.className=element.className.replace(<span class="string">'red'</span>,<span class="string">''</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加类名</span></div><div class="line">element.classList.add(<span class="string">'red'</span>);</div><div class="line">element.classList.add(<span class="string">'blue'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 删除类名</span></div><div class="line">element.classList.remove(<span class="string">'red'</span>);</div></pre></td></tr></table></figure>
+<h2 id="DOM修改-——-内容"><a href="#DOM修改-——-内容" class="headerlink" title="DOM修改 —— 内容"></a>DOM修改 —— 内容</h2><ul>
+<li>文本节点（使用不方便）</li>
+<li>innerHTML</li>
+<li>outerHTML</li>
+</ul>
+<h2 id="DOM遍历"><a href="#DOM遍历" class="headerlink" title="DOM遍历"></a>DOM遍历</h2><ul>
+<li>children/childNodes(子元素)</li>
+<li>parentNode/parentElement（父元素）</li>
+<li>previousElementSibling（前面的兄弟元素）</li>
+<li>nextElementSibling（后面的兄弟元素）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//递归方法遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">traversal</span>(<span class="params">dom</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> len=dom.length;</div><div class="line">    <span class="keyword">var</span> d=<span class="literal">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</div><div class="line">        d=dom[i];</div><div class="line">        <span class="built_in">console</span>.log(d);</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(d.children)&#123;</div><div class="line">            traversal(d.children);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="JavaScript中的事件"><a href="#JavaScript中的事件" class="headerlink" title="JavaScript中的事件"></a>JavaScript中的事件</h1><p>任何一门语言，事件无处不在。</p>
+<h2 id="事件模型"><a href="#事件模型" class="headerlink" title="事件模型"></a>事件模型</h2><ul>
+<li>事件冒泡<blockquote>
+<p>点击按钮 —— 点击body —— 点击Document</p>
+</blockquote>
+</li>
+<li>事件捕获<blockquote>
+<p>点击Document —— 点击body —— 点击按钮</p>
+</blockquote>
+</li>
+<li>标准的事件模型<blockquote>
+<p>事件捕获 —— 处于目标 —— 事件冒泡(DOM事件流)</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h2><ul>
+<li><p>添加</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 添加事件</span></div><div class="line">div.addEventListener(type,handle,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>作用域</p>
+</li>
+<li>删除<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 删除事件</span></div><div class="line">div.addEventListener(type,handle);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="事件对象（event）"><a href="#事件对象（event）" class="headerlink" title="事件对象（event）"></a>事件对象（event）</h2><ul>
+<li>包含所有与事件相关的信息</li>
+<li>冒泡（可通过<code>event.stopPropagation()</code>阻止冒泡）</li>
+</ul>
+<h2 id="事件的默认行为"><a href="#事件的默认行为" class="headerlink" title="事件的默认行为"></a>事件的默认行为</h2><p>举个例子， <code>&lt;a&gt;</code> 元素，点击就会跳转到一个新的页面，这个就是浏览器自带的事件的默认行为。</p>
+<p>有时候我们不想要这个行为，那么调用事件对象上的 <code>preventDefault()</code> 方法就能达成效果。</p>
+<h2 id="事件兼容性"><a href="#事件兼容性" class="headerlink" title="事件兼容性"></a>事件兼容性</h2><p>兼容性当然是指浏览器的兼容性，而浏览器的兼容性基本上是指 IE的兼容性 。当然，也不用为此沮丧，IE 的市场份额逐年下滑，胜利终将属于前端开发！</p>
+<ul>
+<li>事件模型<ul>
+<li>IE9 之前只支持事件冒泡，不支持事件捕获，也因此事件捕获在实际开发的过程当中使用的非常少。</li>
+</ul>
+</li>
+<li>addEventListener<ul>
+<li>IE9 之前不支持 <code>addEventListener</code> 和 <code>removeEventListener</code> ，但是有对应的方法 <code>attachEvent</code> 和 <code>detachEvent</code> ，影响也不是很大。</li>
+</ul>
+</li>
+<li><p>事件对象</p>
+<ul>
+<li>事件对象（IE9（不包括IE9） 之前的事件对象也不规范）</li>
+<li><p>获取对象的方式不同</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">elem.attachEvent(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这种绑定方式，`event` 对象可以正确拿到</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">elem.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> event = <span class="built_in">window</span>.event; <span class="comment">// 这种绑定方式，只能从 `window` 上拿</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>事件对象几个常用的属性和方法也不标准，但有对应的属性和实现相同的效果。</p>
+</li>
+</ul>
+<p>|      标准      |        IE        |                    说明                    |<br>|     :—:     |       :—:       |                   :—                    |<br>| <code>stopPropagation()</code> | <code>cancelBubble</code> | <code>cancelBubble</code>默认值为 <code>false</code> ，设为 <code>true</code> 可以取消事件冒泡 |<br>| <code>preventDefault()</code> | <code>returnValue</code> | 默认值为 <code>true</code> ，设置为 <code>false</code> 可以取消事件的默认行为 |<br>| <code>target</code> | <code>srcElement</code> | 这个好说，事件的目标元素。 |</p>
+</li>
+</ul>
+<h2 id="跨浏览器的事件"><a href="#跨浏览器的事件" class="headerlink" title="跨浏览器的事件"></a>跨浏览器的事件</h2><p>当然不能只局限于理论，而是要用于实战。我们的思路就是封装一个函数，让它的可以在所有的浏览器中正确的绑定事件，让使用者不用关注各个浏览器之间的差异，比如下面的 on 函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 修复事件对象不兼容的地方</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fixEventObj</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  e.target = e.target || e.srcElement;</div><div class="line">  e.preventDefault = e.preventDefault || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    e.returnValue = <span class="literal">false</span>;</div><div class="line">  &#125;;</div><div class="line">  e.stopPropagation = e.stopPropagation || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    e.cancelBubble = <span class="literal">true</span>;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> e;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 跨浏览器的绑定事件</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">on</span>(<span class="params">elem, type, handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (elem.addEventListener) &#123; <span class="comment">// 检测是否有标准方法</span></div><div class="line">    elem.addEventListener(type, handle, <span class="literal">false</span>);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (elem.attachEvent) &#123; <span class="comment">// 试图使用 `attachEvent`</span></div><div class="line">    elem.attachEvent(<span class="string">'on'</span> + type, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">      event = fixEventObj(event);</div><div class="line">      handle.call(elem, event); <span class="comment">// 使用 call 来改变 handle 的作用域，使其指向 elem</span></div><div class="line">    &#125;);</div><div class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// 兜底</span></div><div class="line">    elem[<span class="string">'on'</span> + type] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> event = fixEventObj(<span class="built_in">window</span>.event);</div><div class="line">      handle.call(elem, event);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 调用</span></div><div class="line">on(<span class="built_in">document</span>.body, <span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'哈哈哈，好用！'</span>, e);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="绑定事件的历史演进"><a href="#绑定事件的历史演进" class="headerlink" title="绑定事件的历史演进"></a>绑定事件的历史演进</h2><p>我们在写兼容代码的时候，涉及到 DOM0 级和 DOM2 级事件处理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">elem.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; <span class="comment">// dom 属性的绑定方式就是 DOM0 级</span></div><div class="line">elem.addEventListener(); <span class="comment">// 这种就是 DOM2 级</span></div></pre></td></tr></table></figure>
+<p>DOM 也有版本演进，DOM0 和 DOM2 就是不同的版本，当然，版本啥的不是我们的重点，我们想探讨的是这两者的区别。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这种方式只能绑定一个 handle</span></div><div class="line"><span class="comment">// 当你试图绑定第二个时，就会覆盖上一个</span></div><div class="line">elem.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;; </div><div class="line"></div><div class="line"><span class="comment">// 这种则可绑定任意个 handle</span></div><div class="line"><span class="comment">// 在多人开发的项目中，这个特点非常重要，不同的伙伴给同一个元素绑定事件的几率很大的</span></div><div class="line">elem.addEventListener(); <span class="comment">// 这种就是 DOM2 级</span></div></pre></td></tr></table></figure>
+<h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><ul>
+<li>鼠标类<ul>
+<li>click</li>
+<li>mousedown</li>
+<li>mouseup</li>
+<li>mouseenter（与子元素无关）</li>
+<li>mouseleave（与子元素无关）</li>
+<li>mouseover（与子元素有关）</li>
+<li>mouseout（与子元素有关）</li>
+<li>mousemove</li>
+</ul>
+</li>
+<li>键盘类<ul>
+<li>keydown</li>
+<li>keypress</li>
+<li>keyup</li>
+</ul>
+</li>
+<li>UI类<ul>
+<li>load</li>
+<li>unload</li>
+<li>resize</li>
+<li>scroll</li>
+</ul>
+</li>
+</ul>
+<h2 id="keypress-和-keydown"><a href="#keypress-和-keydown" class="headerlink" title="keypress 和 keydown"></a>keypress 和 keydown</h2><ul>
+<li>keypress 按字符集触发</li>
+<li>keydown 按所有键都会触发</li>
+</ul>
+<p><code>keypress</code> 就是用来检测用户输了啥字符的，而 <code>keydown</code> 则是单纯的检测用户是否按了键盘上的按键，所以 <code>keypress</code> 常用。</p>
+<p><code>keyCode</code>是一个代码，与键盘上的一个键对应。在 <code>keypress</code> 事件中，这个 <code>keyCode</code> 还与 ASCII码对应，比如<code>keyCode</code> 等于 105 ，就是按了 <code>i</code>。</p>
+
       
     </div>
     
@@ -825,7 +1148,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认识JavaScript"><span class="nav-number">1.</span> <span class="nav-text">认识JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript引入"><span class="nav-number">2.</span> <span class="nav-text">JavaScript引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript注释"><span class="nav-number">3.</span> <span class="nav-text">JavaScript注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript文档注释规范（JSDoc）"><span class="nav-number">4.</span> <span class="nav-text">JavaScript文档注释规范（JSDoc）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSDoc-注释规则"><span class="nav-number">4.1.</span> <span class="nav-text">JSDoc 注释规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSDoc-的注释效果"><span class="nav-number">4.2.</span> <span class="nav-text">JSDoc 的注释效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用注释语法"><span class="nav-number">4.3.</span> <span class="nav-text">常用注释语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript变量"><span class="nav-number">5.</span> <span class="nav-text">JavaScript变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript中变量的语法"><span class="nav-number">5.1.</span> <span class="nav-text">JavaScript中变量的语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保留字和关键字"><span class="nav-number">6.</span> <span class="nav-text">保留字和关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">6.1.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保留字"><span class="nav-number">6.2.</span> <span class="nav-text">保留字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">7.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">7.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof操作符"><span class="nav-number">7.2.</span> <span class="nav-text">typeof操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-类型"><span class="nav-number">7.3.</span> <span class="nav-text">Number 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-类型"><span class="nav-number">7.4.</span> <span class="nav-text">String 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean-类型"><span class="nav-number">7.5.</span> <span class="nav-text">Boolean 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null-和-Undefined-类型"><span class="nav-number">7.6.</span> <span class="nav-text">Null 和 Undefined 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-类型"><span class="nav-number">7.7.</span> <span class="nav-text">Object 类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Number类型与String类型之间的转换"><span class="nav-number">8.</span> <span class="nav-text">Number类型与String类型之间的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义方式"><span class="nav-number">8.1.</span> <span class="nav-text">定义方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值类型"><span class="nav-number">8.2.</span> <span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值转换"><span class="nav-number">8.3.</span> <span class="nav-text">数值转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值范围"><span class="nav-number">8.4.</span> <span class="nav-text">数值范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学函数"><span class="nav-number">8.5.</span> <span class="nav-text">数学函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">9.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组介绍"><span class="nav-number">9.1.</span> <span class="nav-text">数组介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组长度和索引"><span class="nav-number">9.2.</span> <span class="nav-text">数组长度和索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的常用方法"><span class="nav-number">9.3.</span> <span class="nav-text">数组的常用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">10.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数定义"><span class="nav-number">10.1.</span> <span class="nav-text">函数定义</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认识JavaScript"><span class="nav-number">1.</span> <span class="nav-text">认识JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript引入"><span class="nav-number">2.</span> <span class="nav-text">JavaScript引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript注释"><span class="nav-number">3.</span> <span class="nav-text">JavaScript注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript文档注释规范（JSDoc）"><span class="nav-number">4.</span> <span class="nav-text">JavaScript文档注释规范（JSDoc）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSDoc-注释规则"><span class="nav-number">4.1.</span> <span class="nav-text">JSDoc 注释规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSDoc-的注释效果"><span class="nav-number">4.2.</span> <span class="nav-text">JSDoc 的注释效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用注释语法"><span class="nav-number">4.3.</span> <span class="nav-text">常用注释语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript变量"><span class="nav-number">5.</span> <span class="nav-text">JavaScript变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript中变量的语法"><span class="nav-number">5.1.</span> <span class="nav-text">JavaScript中变量的语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保留字和关键字"><span class="nav-number">6.</span> <span class="nav-text">保留字和关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">6.1.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保留字"><span class="nav-number">6.2.</span> <span class="nav-text">保留字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">7.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">7.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof操作符"><span class="nav-number">7.2.</span> <span class="nav-text">typeof操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number-类型"><span class="nav-number">7.3.</span> <span class="nav-text">Number 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-类型"><span class="nav-number">7.4.</span> <span class="nav-text">String 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean-类型"><span class="nav-number">7.5.</span> <span class="nav-text">Boolean 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null-和-Undefined-类型"><span class="nav-number">7.6.</span> <span class="nav-text">Null 和 Undefined 类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-类型"><span class="nav-number">7.7.</span> <span class="nav-text">Object 类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Number类型与String类型之间的转换"><span class="nav-number">8.</span> <span class="nav-text">Number类型与String类型之间的转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义方式"><span class="nav-number">8.1.</span> <span class="nav-text">定义方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值类型"><span class="nav-number">8.2.</span> <span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值转换"><span class="nav-number">8.3.</span> <span class="nav-text">数值转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值范围"><span class="nav-number">8.4.</span> <span class="nav-text">数值范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学函数"><span class="nav-number">8.5.</span> <span class="nav-text">数学函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">9.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组介绍"><span class="nav-number">9.1.</span> <span class="nav-text">数组介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组长度和索引"><span class="nav-number">9.2.</span> <span class="nav-text">数组长度和索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的常用方法"><span class="nav-number">9.3.</span> <span class="nav-text">数组的常用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">10.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数定义"><span class="nav-number">10.1.</span> <span class="nav-text">函数定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数声明与函数表达式的区别"><span class="nav-number">10.2.</span> <span class="nav-text">函数声明与函数表达式的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域"><span class="nav-number">10.3.</span> <span class="nav-text">作用域</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">11.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算术表达式"><span class="nav-number">11.1.</span> <span class="nav-text">算术表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符"><span class="nav-number">11.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符"><span class="nav-number">11.3.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">11.4.</span> <span class="nav-text">逻辑运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-流程控制"><span class="nav-number">12.</span> <span class="nav-text">JavaScript 流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#if-语句"><span class="nav-number">12.1.</span> <span class="nav-text">if 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元运算符"><span class="nav-number">12.2.</span> <span class="nav-text">三元运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#switch-语句"><span class="nav-number">12.3.</span> <span class="nav-text">switch 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">12.4.</span> <span class="nav-text">循环</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM-浏览器对象模型"><span class="nav-number">13.</span> <span class="nav-text">BOM 浏览器对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#window对象"><span class="nav-number">13.1.</span> <span class="nav-text">window对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location"><span class="nav-number">13.2.</span> <span class="nav-text">location</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#navigator"><span class="nav-number">13.3.</span> <span class="nav-text">navigator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history"><span class="nav-number">13.4.</span> <span class="nav-text">history</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM-文档对象模型"><span class="nav-number">14.</span> <span class="nav-text">DOM 文档对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM节点"><span class="nav-number">14.1.</span> <span class="nav-text">DOM节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用节点类型"><span class="nav-number">14.2.</span> <span class="nav-text">常用节点类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM查找"><span class="nav-number">14.3.</span> <span class="nav-text">DOM查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM增删"><span class="nav-number">14.4.</span> <span class="nav-text">DOM增删</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM修改"><span class="nav-number">14.5.</span> <span class="nav-text">DOM修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM修改-——-样式"><span class="nav-number">14.6.</span> <span class="nav-text">DOM修改 —— 样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM修改-——-内容"><span class="nav-number">14.7.</span> <span class="nav-text">DOM修改 —— 内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM遍历"><span class="nav-number">14.8.</span> <span class="nav-text">DOM遍历</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript中的事件"><span class="nav-number">15.</span> <span class="nav-text">JavaScript中的事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件模型"><span class="nav-number">15.1.</span> <span class="nav-text">事件模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件处理程序"><span class="nav-number">15.2.</span> <span class="nav-text">事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件对象（event）"><span class="nav-number">15.3.</span> <span class="nav-text">事件对象（event）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件的默认行为"><span class="nav-number">15.4.</span> <span class="nav-text">事件的默认行为</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件兼容性"><span class="nav-number">15.5.</span> <span class="nav-text">事件兼容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨浏览器的事件"><span class="nav-number">15.6.</span> <span class="nav-text">跨浏览器的事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定事件的历史演进"><span class="nav-number">15.7.</span> <span class="nav-text">绑定事件的历史演进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件类型"><span class="nav-number">15.8.</span> <span class="nav-text">事件类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keypress-和-keydown"><span class="nav-number">15.9.</span> <span class="nav-text">keypress 和 keydown</span></a></li></ol></li></ol></div>
             
 
           </div>
