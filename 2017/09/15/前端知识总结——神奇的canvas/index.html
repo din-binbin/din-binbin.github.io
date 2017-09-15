@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,canvas," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="学习了JavaScript面向对象，再结合神奇的canvas，游戏开发就在路上。">
+<meta name="keywords" content="JavaScript,canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识总结——神奇的canvas">
+<meta property="og:url" content="http://binbin-io.github.io/2017/09/15/前端知识总结——神奇的canvas/index.html">
+<meta property="og:site_name" content="Thinking Coding">
+<meta property="og:description" content="学习了JavaScript面向对象，再结合神奇的canvas，游戏开发就在路上。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://binbin-io.github.io/images/canvas-arc.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/canvas-arc2.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/canvas-arc3.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/canvas-arc4.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/requestAnimationFrame.gif">
+<meta property="og:image" content="http://binbin-io.github.io/images/keycode.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/crash-rect.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/crash-distance.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/crash-gougu.png">
+<meta property="og:updated_time" content="2017-09-15T10:33:15.703Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识总结——神奇的canvas">
+<meta name="twitter:description" content="学习了JavaScript面向对象，再结合神奇的canvas，游戏开发就在路上。">
+<meta name="twitter:image" content="http://binbin-io.github.io/images/canvas-arc.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://binbin-io.github.io/2017/09/15/前端知识总结——神奇的canvas/"/>
+
+
+
+
+
+  <title>前端知识总结——神奇的canvas | Thinking Coding</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Thinking Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/09/15/前端知识总结——神奇的canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="白发渔樵">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Thinking Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端知识总结——神奇的canvas</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T01:19:09+08:00">
+                2017-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习了JavaScript面向对象，再结合神奇的canvas，游戏开发就在路上。<br><a id="more"></a></p>
+<h1 id="认识-canvas"><a href="#认识-canvas" class="headerlink" title="认识 canvas"></a>认识 canvas</h1><p>canvas在网页中代表的是一个画布元素，该元素会创建一个矩形区域，供JavaScript在画布上绘画。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取制定的canvas元素</span></div><div class="line"><span class="keyword">var</span> canvas=<span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</div><div class="line"><span class="comment">// 调用canvas元素的getContext()方法获取2d渲染上下文</span></div><div class="line"><span class="keyword">var</span> context=canvas.getContext(<span class="string">'2d'</span>);</div><div class="line"><span class="comment">// 通过2d渲染上下文执行绘画操作来绘制图形</span></div><div class="line">context.绘画操作();</div></pre></td></tr></table></figure>
+<p>在canvas中，坐标点原点（0，0）在画布左上角，从左到右，x增大，从上到下，y增大。</p>
+<hr>
+<h1 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一（填充矩形）</span></div><div class="line">context.fillRect(x,y,宽,高);</div><div class="line"></div><div class="line"><span class="comment">// 方法二（描边矩形）</span></div><div class="line">context.strokeRect(x,y,宽,高);</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="绘制线条（路径）"><a href="#绘制线条（路径）" class="headerlink" title="绘制线条（路径）"></a>绘制线条（路径）</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开始设置新路径</span></div><div class="line">context.beginPath();</div><div class="line"><span class="comment">// 设置路径起点</span></div><div class="line">context.moveTo(x,y);</div><div class="line"><span class="comment">// 设置路径到达的点</span></div><div class="line">context.lineTo(x,y);</div><div class="line"><span class="comment">//输出路径轮廓</span></div><div class="line">context.stroke();</div><div class="line"></div><div class="line"><span class="comment">// 如果路径是闭合的，还可以填充路径所闭合的区域</span></div><div class="line">context.fill();</div><div class="line"></div><div class="line"><span class="comment">// 还可以使用闭合路径，自动闭合路径</span></div><div class="line">context.closePath();</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="绘制圆弧"><a href="#绘制圆弧" class="headerlink" title="绘制圆弧"></a>绘制圆弧</h1><p>在 Canvas 中我们可以使用 <code>context.arc()</code> 的方法来创建圆弧路径。简单来说，在 Canvas 中，创建一条圆弧路径是从与圆心<code>(x, y)</code>距离为一个<code>半径</code>且角度为<code>开始角度</code>的位置开始，最后停在离圆心<code>(x, y)</code>距离为一个<code>半径</code>且角度为<code>结束角度</code>的位置上。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">context.arc(x, y, radius, startAngle, endAngle, anticlockwise);</div></pre></td></tr></table></figure>
+<p><img src="/images/canvas-arc.png" alt="参数说明"></p>
+<ul>
+<li><code>x</code>: 圆的中心的 x 坐标</li>
+<li><code>y</code>: 圆的中心的 y 坐标</li>
+<li><code>radius</code>: 圆的半径</li>
+<li><code>startAngle</code>: 圆弧的开始角度</li>
+<li><code>endAngle</code>: 圆弧的结束角度</li>
+<li><code>anticlockwise</code>: 可选的参数，规定应该逆时针还是顺时针绘图，默认值为 <code>false</code></li>
+</ul>
+<p>需要注意的是，在 Canvas 中表示圆弧的<code>开始角度</code>和<code>结束角度</code>都是以弧度来表示的，而不是使用角度来表示。</p>
+<hr>
+<h1 id="绘制部分圆"><a href="#绘制部分圆" class="headerlink" title="绘制部分圆"></a>绘制部分圆</h1><p><img src="/images/canvas-arc2.png" alt="绘制部分圆"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开始创建新路径</span></div><div class="line">context.beginPath();</div><div class="line"><span class="comment">// 创建一个圆弧</span></div><div class="line">context.arc(<span class="number">250</span>, <span class="number">250</span>, <span class="number">200</span>, <span class="number">0</span>, <span class="number">0.75</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line"><span class="comment">// 填充该圆弧</span></div><div class="line">context.fill();</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="绘制圆形"><a href="#绘制圆形" class="headerlink" title="绘制圆形"></a>绘制圆形</h1><p>圆形实际上是由圆弧组成（首尾相连的圆弧便是圆形）,如果我们需要绘制下面的圆形：</p>
+<p><img src="/images/canvas-arc3.png" alt="绘制圆形"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开始创建新路径</span></div><div class="line">context.beginPath();</div><div class="line"><span class="comment">// 设置开始角度为0，结束角度为 2π 弧度</span></div><div class="line">context.arc(<span class="number">250</span>, <span class="number">250</span>, <span class="number">200</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line"><span class="comment">// 使用 fill 自动闭合圆弧路径，然后填充圆弧区域</span></div><div class="line">context.fill();</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="绘制圆角矩形"><a href="#绘制圆角矩形" class="headerlink" title="绘制圆角矩形"></a>绘制圆角矩形</h1><p>如下图为我们需要绘制一个圆角矩形：</p>
+<p><img src="/images/canvas-arc4.png" alt="绘制圆角矩形"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">120</span>; <span class="comment">// 圆角矩形左上角横坐标</span></div><div class="line"><span class="keyword">var</span> y = <span class="number">120</span>; <span class="comment">// 圆角矩形左上角纵坐标</span></div><div class="line"><span class="keyword">var</span> width = <span class="number">250</span>; <span class="comment">// 圆角矩形的宽度</span></div><div class="line"><span class="keyword">var</span> height = <span class="number">250</span>; <span class="comment">// 圆角矩形的高度</span></div><div class="line"><span class="keyword">var</span> radius = <span class="number">50</span>; <span class="comment">// 圆角的半径</span></div><div class="line"></div><div class="line"><span class="comment">// 开始创建新路径</span></div><div class="line">context.beginPath();</div><div class="line"><span class="comment">// 绘制左上角圆角</span></div><div class="line">context.arc(x + radius, y + radius, radius, <span class="built_in">Math</span>.PI, <span class="built_in">Math</span>.PI * <span class="number">3</span> / <span class="number">2</span>);</div><div class="line"><span class="comment">// 绘制顶边路径</span></div><div class="line">context.lineTo(width - radius + x, y);</div><div class="line"><span class="comment">// 绘制右上角圆角</span></div><div class="line">context.arc(width - radius + x, radius + y, radius, <span class="built_in">Math</span>.PI * <span class="number">3</span> / <span class="number">2</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</div><div class="line"><span class="comment">// 绘制右边路径</span></div><div class="line">context.lineTo(width + x, height + y - radius);</div><div class="line"><span class="comment">// 绘制右下角圆角</span></div><div class="line">context.arc(width - radius + x, height - radius + y, radius, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">1</span> / <span class="number">2</span>);</div><div class="line"><span class="comment">// 绘制底边路径</span></div><div class="line">context.lineTo(radius + x, height +y);</div><div class="line"><span class="comment">// 绘制左下角圆角</span></div><div class="line">context.arc(radius + x, height - radius + y, radius, <span class="built_in">Math</span>.PI * <span class="number">1</span> / <span class="number">2</span>, <span class="built_in">Math</span>.PI);</div><div class="line"><span class="comment">// 闭合路径 也可使用 context.lineTo(x, y + radius);</span></div><div class="line">context.closePath();</div><div class="line"><span class="comment">// 设置绘制的颜色</span></div><div class="line">context.strokeStyle = <span class="string">'#188eee'</span>;</div><div class="line">context.stroke();</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h1><ul>
+<li>context.fillText(text,x,y);<blockquote>
+<p>绘制填充文本</p>
+</blockquote>
+</li>
+<li>context.strokeText(text,x,y);<blockquote>
+<p>绘制描边文本</p>
+</blockquote>
+</li>
+<li>context.font —— 可修改绘制的字体样式</li>
+</ul>
+<p>注 ： <code>text</code>表示要绘制的文本内容，<code>x,y</code>表示文本左下角的坐标。</p>
+<hr>
+<h1 id="给图形上色"><a href="#给图形上色" class="headerlink" title="给图形上色"></a>给图形上色</h1><ul>
+<li>context.fillStyle=color;<blockquote>
+<p>改变填充颜色</p>
+</blockquote>
+</li>
+<li>context.strokeStyle=color;<blockquote>
+<p>改变描边颜色</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h1 id="修改线条宽度"><a href="#修改线条宽度" class="headerlink" title="修改线条宽度"></a>修改线条宽度</h1><p>context.lineWidth=number;</p>
+<hr>
+<h1 id="擦除canvas"><a href="#擦除canvas" class="headerlink" title="擦除canvas"></a>擦除canvas</h1><p>context.clearRect(x,y,width,height);</p>
+<hr>
+<h1 id="加载图像"><a href="#加载图像" class="headerlink" title="加载图像"></a>加载图像</h1><p>context.drawImage(image,x,y,width,height);</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> image=<span class="keyword">new</span> Image();</div><div class="line"></div><div class="line">image.src=<span class="string">'http://www.qq.com/img/haha.png'</span></div><div class="line"></div><div class="line">image.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    context.drawImage(image,x,y,width,height);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="图像裁剪"><a href="#图像裁剪" class="headerlink" title="图像裁剪"></a>图像裁剪</h1><p>有时候我们并不需要使用完整的图像，而只是图像的一部分内容，这个时候我们就需要使用图像裁剪。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">context.drawImage(image, source_x, source_y, source_width, source_height, x, y, width, heigh);</div></pre></td></tr></table></figure>
+<ul>
+<li>image：源图像对象</li>
+<li>source_x：源图像的裁剪区原点横坐标</li>
+<li>source_y：源图像的裁剪区原点纵坐标</li>
+<li>source_width：源图像的裁剪区宽度</li>
+<li>source_height：源图像的裁剪区高度</li>
+<li>x：在画布上绘制图像的原点横坐标</li>
+<li>y：在画布上绘制图像的原点纵坐标</li>
+<li>width：在画布上绘制图像的宽度</li>
+<li>heigh：在画布上绘制图像的高度</li>
+</ul>
+<hr>
+<h1 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h1><h2 id="动画原理简介"><a href="#动画原理简介" class="headerlink" title="动画原理简介"></a>动画原理简介</h2><p>画的基本原理是依靠人类具有视觉暂留的特性人的眼睛看到一幅画或一个物体后，在 1/24 秒内不会消失（即每秒钟至少更换24张画面）。利用这一原理，在一幅画（一帧）还没消失前播放下一幅画（下一帧），就会给人造成流畅的视觉变化效果。</p>
+<p>因此我们可以得出：如果我们需要实现动画，只需要设置定时不断地绘制下一帧的画面便可以了。</p>
+<h2 id="早期动画循环"><a href="#早期动画循环" class="headerlink" title="早期动画循环"></a>早期动画循环</h2><p>在 JavaScript 中我们可以使用 <code>setTimeout</code> 和 <code>setInterval</code> 来设置延时任务。因此在很长时间以来，计时器一直都是 JavaScript 动画的最核心技术。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 动画内容</span></div><div class="line">    animation1();</div><div class="line">    animation2();</div><div class="line">    <span class="comment">// 间隔100ms执行动画循环</span></div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        animate();</div><div class="line">    &#125;, <span class="number">100</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 执行动画</span></div><div class="line">animate();</div></pre></td></tr></table></figure>
+<h2 id="循环间隔-60Hz"><a href="#循环间隔-60Hz" class="headerlink" title="循环间隔 60Hz"></a>循环间隔 60Hz</h2><p>早期的动画循环时候，最关键的问题是确定循环间隔的时长。</p>
+<p>一方面，循环间隔必须足够短，这样才能动画效果显得更平滑流畅；</p>
+<p>另一方面，循环时隔还要足够长，这样才能确保浏览器有能力渲染产生的变化。</p>
+<p>我们知道大多数的显示器的刷新频率是 60Hz ，即相当于在每秒钟中屏幕会重回 60 次。因此最平滑动画的最佳循环间隔是 1000ms/60，约等于 16.7ms。</p>
+<h2 id="setTimeout-和-setInterval-问题"><a href="#setTimeout-和-setInterval-问题" class="headerlink" title="setTimeout 和 setInterval 问题"></a>setTimeout 和 setInterval 问题</h2><p>JavaScript 是一个单线程的解释器，在一定时间能只能执行一段代码。为了要控制代码的执行顺序，就需要通过一个JavaScript任务队列来进行管理控制（任务会按照添加到队列的顺序执行）。</p>
+<p>通过 <code>setTimeout</code> 和 <code>setInterval</code> 我们能够设置延时多长时间把我们的代码任务添加到JavaScript任务队列中。如果当前任务队列是空的，那么添加的代码可以立即执行；如果队列不是空的，则新添加的任务需要等到其前面所有的任务都执行完成才能执行。</p>
+<p>由于前面的任务到底需要多少时间执行完，是不确定的，所以没有办法保证，<code>setTimeout</code> 和 <code>setInterval</code> 指定的任务，一定会按照预定时间执行。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout(animateTask, <span class="number">1000</span> / <span class="number">60</span>);</div><div class="line"><span class="comment">// 耗时长的任务</span></div><div class="line">longTimeTask();</div></pre></td></tr></table></figure>
+<p>上面代码的 <code>setTimeout</code>，我们制定 16.7ms 后运行 <code>animateTask</code> 任务。但是，如果由于后面的 <code>longTimeTask</code> 执行（当前脚本的同步任务））非常耗时，即使过了 16.7ms 仍无法结束，那么延迟执行的 <code>animateTask</code> 就只有等着，只有等到前面的任务都运行完，才能轮到它执行。</p>
+<h2 id="requestAnimationFrame-1"><a href="#requestAnimationFrame-1" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h2><p>由于 <code>setTimeout</code> 和 <code>setInterval</code> 的不精准问题，促使了 <code>requestAnimationFrame</code> 的诞生。 <code>requestAnimationFrame</code> 是专门为实现高性能的帧动画而设计的一个API，目前已在多个浏览器得到了支持，你可以把它用在 DOM 上的效果切换或者 Canvas 画布动画中。 <code>requestAnimationFrame</code> 并不是定时器，但和 <code>setTimeout</code> 很相似，在没有 <code>requestAnimationFrame</code> 的浏览器一般都是用<code>setTimeout</code>模拟。 <code>requestAnimationFrame</code> 跟屏幕刷新同步（大多数是 60Hz ）。如果浏览器支持 <code>requestAnimationFrame</code> , 则不建议使用 <code>setTimeout</code> 来做动画。</p>
+<h2 id="requestAnimationFrame-的兼容使用"><a href="#requestAnimationFrame-的兼容使用" class="headerlink" title="requestAnimationFrame 的兼容使用"></a>requestAnimationFrame 的兼容使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断是否有 requestAnimationFrame 方法，如果有则模拟实现</span></div><div class="line"><span class="built_in">window</span>.requestAnimFrame =</div><div class="line"><span class="built_in">window</span>.requestAnimationFrame ||</div><div class="line"><span class="built_in">window</span>.webkitRequestAnimationFrame ||</div><div class="line"><span class="built_in">window</span>.mozRequestAnimationFrame ||</div><div class="line"><span class="built_in">window</span>.oRequestAnimationFrame ||</div><div class="line"><span class="built_in">window</span>.msRequestAnimationFrame ||</div><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">    <span class="built_in">window</span>.setTimeout(callback, <span class="number">1000</span> / <span class="number">60</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="使用-requestAnimationFrame-实现动画"><a href="#使用-requestAnimationFrame-实现动画" class="headerlink" title="使用 requestAnimationFrame 实现动画"></a>使用 requestAnimationFrame 实现动画</h2><p><img src="/images/requestAnimationFrame.gif" alt="requestAnimationFrame实现动画"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;认识Canvas&lt;<span class="regexp">/title&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;canvas id=<span class="string">"canvas"</span> width=<span class="string">"500"</span> height=<span class="string">"500"</span> style=<span class="string">"border: 1px solid #33"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></div><div class="line">    &lt;script&gt;</div><div class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</div><div class="line">        <span class="keyword">var</span> context = canvas.getContext(<span class="string">'2d'</span>);</div><div class="line">        <span class="comment">// 兼容定义 requestAnimFrame</span></div><div class="line">        <span class="built_in">window</span>.requestAnimFrame =</div><div class="line">        <span class="built_in">window</span>.requestAnimationFrame ||</div><div class="line">        <span class="built_in">window</span>.webkitRequestAnimationFrame ||</div><div class="line">        <span class="built_in">window</span>.mozRequestAnimationFrame ||</div><div class="line">        <span class="built_in">window</span>.oRequestAnimationFrame ||</div><div class="line">        <span class="built_in">window</span>.msRequestAnimationFrame ||</div><div class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">            <span class="built_in">window</span>.setTimeout(callback, <span class="number">1000</span> / <span class="number">30</span>);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="comment">// 绘制的圆的对象</span></div><div class="line">        <span class="keyword">var</span> circle = &#123;</div><div class="line">            x: <span class="number">250</span>,</div><div class="line">            y: <span class="number">250</span>,</div><div class="line">            radius: <span class="number">50</span>,</div><div class="line">            direction: <span class="string">'right'</span>,</div><div class="line">            <span class="comment">// 移动圆形</span></div><div class="line">            move: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.direction === <span class="string">'right'</span>) &#123;</div><div class="line">                    <span class="keyword">if</span> (<span class="keyword">this</span>.x &lt;= <span class="number">430</span>) &#123;</div><div class="line">                         <span class="keyword">this</span>.x += <span class="number">5</span>;</div><div class="line">                    &#125; <span class="keyword">else</span> &#123;</div><div class="line">                        <span class="keyword">this</span>.direction = <span class="string">'left'</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">if</span> (<span class="keyword">this</span>.x &gt;= <span class="number">60</span>) &#123;</div><div class="line">                         <span class="keyword">this</span>.x -= <span class="number">5</span>;</div><div class="line">                    &#125; <span class="keyword">else</span> &#123;</div><div class="line">                        <span class="keyword">this</span>.direction = <span class="string">'right'</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 动画执行函数</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">// 随机更新圆形位置</span></div><div class="line">            circle.move();</div><div class="line">            <span class="comment">// 清除画布</span></div><div class="line">            context.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</div><div class="line">            <span class="comment">// 绘制圆形</span></div><div class="line">            context.beginPath();</div><div class="line">            <span class="comment">// 设置开始角度为0，结束角度为 2π 弧度</span></div><div class="line">            context.arc(circle.x, circle.y, circle.radius, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">            context.fillStyle = <span class="string">'#00c09b'</span>;</div><div class="line">            context.fill();</div><div class="line">            <span class="comment">// 使用requestAnimationFrame实现动画循环</span></div><div class="line">            requestAnimationFrame(animate);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 执行animate</span></div><div class="line">        animate();</div><div class="line">    &lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>body&gt;</div><div class="line">&lt;<span class="regexp">/html&gt;</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="JavaScript里的动画循环"><a href="#JavaScript里的动画循环" class="headerlink" title="JavaScript里的动画循环"></a>JavaScript里的动画循环</h1><p>绘制操作——更新操作——清除操作</p>
+<p>上述三个环节会在动画的过程中一直循环，称为动画循环。</p>
+<hr>
+<h1 id="键盘事件处理"><a href="#键盘事件处理" class="headerlink" title="键盘事件处理"></a>键盘事件处理</h1><p>在制作 PC 端的游戏的时候，我们经常需要监听键盘的事件，以便响应用户的键盘操作。</p>
+<h2 id="按键相关事件"><a href="#按键相关事件" class="headerlink" title="按键相关事件"></a>按键相关事件</h2><ul>
+<li><code>keydown</code> ：当用户按下键盘上的任意键时触发，而且如果按住按住不放的话，会重复触发此事件。</li>
+<li><code>keypress</code> ：当用户按下键盘上的字符键时触发，而且如果按住不放的，会重复触发此事件（按下Esc键也会触发这个事件）。</li>
+<li><code>keyup</code> ：当用户释放键盘上的键时触发。</li>
+</ul>
+<h2 id="按键过程"><a href="#按键过程" class="headerlink" title="按键过程"></a>按键过程</h2><p>用户按下键盘上的字符键时</p>
+<ul>
+<li>首先会触发 <code>keydown</code> 事件</li>
+<li>然后紧接着触发 <code>keypress</code> 事件</li>
+<li>最后触发 <code>keyup</code>事件</li>
+</ul>
+<p>如果用户按下了一个字符键不放，就会重复触发 <code>keydown</code> 和 <code>keypress</code> 事件，直到用户松开该键为止。</p>
+<h2 id="键码（keyCode）对照表"><a href="#键码（keyCode）对照表" class="headerlink" title="键码（keyCode）对照表"></a>键码（keyCode）对照表</h2><p>在发送 <code>keydown</code> 和 <code>keyup</code> <code>事件时，event</code> 对象的 <code>keyCode</code> 属性中会包含一个代码，与键盘上一个特定的键对应。如下图，为我们键盘键位的 <code>keyCode</code> 对照表：</p>
+<p><img src="/images/keycode.png" alt="键码对照表"></p>
+<h2 id="例子：简单实现键盘控制物体移动"><a href="#例子：简单实现键盘控制物体移动" class="headerlink" title="例子：简单实现键盘控制物体移动"></a>例子：简单实现键盘控制物体移动</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;title&gt;物体移动&lt;<span class="regexp">/title&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;canvas id=<span class="string">"canvas"</span> width=<span class="string">"500"</span> height=<span class="string">"500"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></div><div class="line">    &lt;script&gt;</div><div class="line">      <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</div><div class="line">      <span class="keyword">var</span> context = canvas.getContext(<span class="string">'2d'</span>);</div><div class="line">      <span class="keyword">var</span> rect = &#123;</div><div class="line">        x: <span class="number">100</span>, <span class="comment">// 矩形的 x 坐标</span></div><div class="line">        y: <span class="number">400</span>, <span class="comment">// 矩形的 y 坐标</span></div><div class="line">        width: <span class="number">100</span>, <span class="comment">// 矩形的宽度</span></div><div class="line">        height: <span class="number">100</span>, <span class="comment">// 矩形的高度</span></div><div class="line">        step: <span class="number">30</span> <span class="comment">// 矩形移动的步伐</span></div><div class="line">      &#125;</div><div class="line">      <span class="comment">// 全局监听键盘操作的 keydown 事件 </span></div><div class="line">      <span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;  </div><div class="line">        <span class="comment">// 获取被按下的键值 (兼容写法)</span></div><div class="line">        <span class="keyword">var</span> key = e.keyCode || e.which || e.charCode;</div><div class="line">        <span class="keyword">switch</span>(key) &#123;</div><div class="line">          <span class="comment">// 点击左方向键</span></div><div class="line">          <span class="keyword">case</span> <span class="number">37</span>: </div><div class="line">            rect.x -= <span class="number">20</span>;</div><div class="line">            drawRect();</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">          <span class="comment">// 点击上方向键</span></div><div class="line">          <span class="keyword">case</span> <span class="number">38</span>: </div><div class="line">            rect.y -= <span class="number">20</span>;</div><div class="line">            drawRect();</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">          <span class="comment">// 点击右方向键</span></div><div class="line">          <span class="keyword">case</span> <span class="number">39</span>: </div><div class="line">            rect.x += <span class="number">20</span>;</div><div class="line">            drawRect();</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">          <span class="comment">// 点击下方向键</span></div><div class="line">          <span class="keyword">case</span> <span class="number">40</span>: </div><div class="line">            rect.y += <span class="number">20</span>;</div><div class="line">            drawRect();</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125; </div><div class="line">      &#125;;</div><div class="line">      <span class="function"><span class="keyword">function</span> <span class="title">drawRect</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 清除画布</span></div><div class="line">        context.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</div><div class="line">        <span class="comment">// 绘制矩形</span></div><div class="line">        context.fillRect(rect.x, rect.y, rect.width, rect.height);</div><div class="line">      &#125;</div><div class="line">      <span class="comment">// 第一次绘制</span></div><div class="line">      drawRect();</div><div class="line">    &lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>body&gt;</div><div class="line">&lt;<span class="regexp">/html&gt;</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h1><p>在实现 Canvas 游戏和动画中，往往需要解决物体相互碰撞的情况如。对于物体碰撞相关的问题，我们会在动画中采用 碰撞检测 来解决，以此实现更为逼真的动画。</p>
+<h2 id="碰撞检测关键步骤"><a href="#碰撞检测关键步骤" class="headerlink" title="碰撞检测关键步骤"></a>碰撞检测关键步骤</h2><p>碰撞检测需要处理经历下面两个关键的步骤：</p>
+<ul>
+<li>计算判断两个物体是否发生碰撞</li>
+<li>发生碰撞后，两个物体的状态和动画效果的处理</li>
+</ul>
+<h2 id="计算碰撞（矩形物体碰撞检测）"><a href="#计算碰撞（矩形物体碰撞检测）" class="headerlink" title="计算碰撞（矩形物体碰撞检测）"></a>计算碰撞（矩形物体碰撞检测）</h2><p>假设检测发生碰撞的物体是 矩形1 和 矩形2 时，我们只需检测 矩形1 的上下左右四侧的和 矩形2 是否存在着距离。我们可以看看下面的图：</p>
+<p><img src="/images/crash-rect.png" alt="矩形物体碰撞检测"></p>
+<p>我们可以看到 矩形2 和 矩形1 之间没有发生碰撞共有四种可能的情况：</p>
+<ul>
+<li>矩形2的右侧 离 矩形1的左侧有一段距离</li>
+<li>矩形2的左侧 离 矩形1的右侧有一段距离</li>
+<li>矩形2的底部 离 矩形1的顶部有一段距离</li>
+<li>矩形2的顶部 离 矩形1的底部有一段距离</li>
+</ul>
+<p>当符合上面其中一种情况，则两个矩形没有发生碰撞。因此通过逆向推导我们可以得出：当上面四种情况都不满足的时候，则代表两个矩形碰撞了。在代码中，我们可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断四边是否都没有空隙</span></div><div class="line"><span class="keyword">if</span> (!(rect2.x + rect2.width &lt; rect1.x) &amp;&amp;</div><div class="line">    !(rect1.x + rect1.width &lt; rect2.x) &amp;&amp;</div><div class="line">    !(rect2.y + rect2.height &lt; rect1.y) &amp;&amp;</div><div class="line">    !(rect1.y + rect1.height &lt; rect2.y)) &#123;</div><div class="line">    <span class="comment">// 物体碰撞了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="计算碰撞（圆形物体碰撞检测）"><a href="#计算碰撞（圆形物体碰撞检测）" class="headerlink" title="计算碰撞（圆形物体碰撞检测）"></a>计算碰撞（圆形物体碰撞检测）</h2><p>检测两圆是否相交：当两个圆心之间的距离是否小于两个圆的半径之和。</p>
+<p><img src="/images/crash-distance.png" alt="圆形物体碰撞检测"></p>
+<p>其中 <code>dx</code> 和 <code>dy</code> 分别表示两个圆之间的横坐标和纵坐标的差值。 即 <code>dx = x2 - x1</code>; <code>dy = y2 - y1</code>;</p>
+<p>然后我们需要通过 勾股定理 计算两个圆心之间的距离。</p>
+<p><img src="/images/crash-gougu.png" alt="圆形物体碰撞检测"></p>
+<p>因此我们碰撞检测的代码可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dx = circle2.x - circle1.x;</div><div class="line"><span class="keyword">var</span> dy = circle2.y - circle1.y;</div><div class="line"><span class="keyword">var</span> distance = <span class="built_in">Math</span>.sqrt((dx * dx) * (dy * dy));</div><div class="line"><span class="keyword">if</span> (distance &lt; circle1.radius + circle2.radius) &#123;</div><div class="line">  <span class="comment">// 两个圆形碰撞了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>怎么检测矩形和圆形是否碰撞，基本已经可以适用大部分场景。当检测到碰撞后，则可以对碰撞的物体进行状态设置了，可以是相互毁灭，或者是反弹等。</p>
+<hr>
+<h1 id="canvas-还有更多"><a href="#canvas-还有更多" class="headerlink" title="canvas 还有更多"></a>canvas 还有更多</h1><ul>
+<li><a href="https://www.w3cplus.com/canvas/canvas-states.html" target="_blank" rel="external">保存和恢复绘画状态(save和store)</a></li>
+<li><a href="https://www.w3cplus.com/canvas/gradient.html" target="_blank" rel="external">渐变</a></li>
+<li><a href="https://oxcow.gitbooks.io/h5-canvas-study-notes/content/chapter6_shadows.html" target="_blank" rel="external">阴影</a></li>
+<li><a href="https://oxcow.gitbooks.io/h5-canvas-study-notes/content/chapter3_transform_func.html" target="_blank" rel="external">变形</a></li>
+<li><a href="https://www.w3cplus.com/canvas/compositing.html" target="_blank" rel="external">合成</a></li>
+<li><a href="http://javascript.ruanyifeng.com/htmlapi/canvas.html#toc7" target="_blank" rel="external">导出画布(getImageData)</a></li>
+<li><a href="http://javascript.ruanyifeng.com/htmlapi/canvas.html#toc11" target="_blank" rel="external">像素操作</a></li>
+</ul>
+<hr>
+<h1 id="推荐canvas教程"><a href="#推荐canvas教程" class="headerlink" title="推荐canvas教程"></a>推荐canvas教程</h1><ul>
+<li><a href="https://www.w3cplus.com/blog/tags/604.html" target="_blank" rel="external">Canvas 入门精通教程</a></li>
+<li><a href="https://oxcow.gitbooks.io/h5-canvas-study-notes/content/chapter6_shadows.html" target="_blank" rel="external">HTML5 Canvas 学习笔记</a></li>
+<li><a href="http://javascript.ruanyifeng.com/htmlapi/canvas.html" target="_blank" rel="external">Canvas API-阮一峰</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/canvas/" rel="tag"># canvas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/14/前端知识总结——JavaScript进阶/" rel="next" title="前端知识总结——JavaScript进阶">
+                <i class="fa fa-chevron-left"></i> 前端知识总结——JavaScript进阶
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="白发渔樵" />
+          <p class="site-author-name" itemprop="name">白发渔樵</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认识-canvas"><span class="nav-number">1.</span> <span class="nav-text">认识 canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制矩形"><span class="nav-number">2.</span> <span class="nav-text">绘制矩形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制线条（路径）"><span class="nav-number">3.</span> <span class="nav-text">绘制线条（路径）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制圆弧"><span class="nav-number">4.</span> <span class="nav-text">绘制圆弧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制部分圆"><span class="nav-number">5.</span> <span class="nav-text">绘制部分圆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制圆形"><span class="nav-number">6.</span> <span class="nav-text">绘制圆形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制圆角矩形"><span class="nav-number">7.</span> <span class="nav-text">绘制圆角矩形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制文本"><span class="nav-number">8.</span> <span class="nav-text">绘制文本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#给图形上色"><span class="nav-number">9.</span> <span class="nav-text">给图形上色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改线条宽度"><span class="nav-number">10.</span> <span class="nav-text">修改线条宽度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#擦除canvas"><span class="nav-number">11.</span> <span class="nav-text">擦除canvas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加载图像"><span class="nav-number">12.</span> <span class="nav-text">加载图像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像裁剪"><span class="nav-number">13.</span> <span class="nav-text">图像裁剪</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#requestAnimationFrame"><span class="nav-number">14.</span> <span class="nav-text">requestAnimationFrame</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#动画原理简介"><span class="nav-number">14.1.</span> <span class="nav-text">动画原理简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#早期动画循环"><span class="nav-number">14.2.</span> <span class="nav-text">早期动画循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环间隔-60Hz"><span class="nav-number">14.3.</span> <span class="nav-text">循环间隔 60Hz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setTimeout-和-setInterval-问题"><span class="nav-number">14.4.</span> <span class="nav-text">setTimeout 和 setInterval 问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requestAnimationFrame-1"><span class="nav-number">14.5.</span> <span class="nav-text">requestAnimationFrame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requestAnimationFrame-的兼容使用"><span class="nav-number">14.6.</span> <span class="nav-text">requestAnimationFrame 的兼容使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-requestAnimationFrame-实现动画"><span class="nav-number">14.7.</span> <span class="nav-text">使用 requestAnimationFrame 实现动画</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript里的动画循环"><span class="nav-number">15.</span> <span class="nav-text">JavaScript里的动画循环</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#键盘事件处理"><span class="nav-number">16.</span> <span class="nav-text">键盘事件处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#按键相关事件"><span class="nav-number">16.1.</span> <span class="nav-text">按键相关事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按键过程"><span class="nav-number">16.2.</span> <span class="nav-text">按键过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键码（keyCode）对照表"><span class="nav-number">16.3.</span> <span class="nav-text">键码（keyCode）对照表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：简单实现键盘控制物体移动"><span class="nav-number">16.4.</span> <span class="nav-text">例子：简单实现键盘控制物体移动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#碰撞检测"><span class="nav-number">17.</span> <span class="nav-text">碰撞检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#碰撞检测关键步骤"><span class="nav-number">17.1.</span> <span class="nav-text">碰撞检测关键步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算碰撞（矩形物体碰撞检测）"><span class="nav-number">17.2.</span> <span class="nav-text">计算碰撞（矩形物体碰撞检测）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算碰撞（圆形物体碰撞检测）"><span class="nav-number">17.3.</span> <span class="nav-text">计算碰撞（圆形物体碰撞检测）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#canvas-还有更多"><span class="nav-number">18.</span> <span class="nav-text">canvas 还有更多</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推荐canvas教程"><span class="nav-number">19.</span> <span class="nav-text">推荐canvas教程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白发渔樵</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
