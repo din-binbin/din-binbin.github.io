@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="浏览器,网页性能," />
 
 
 
@@ -94,13 +94,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Thinking Coding">
-<meta property="og:url" content="http://binbin-io.github.io/page/2/index.html">
+<meta name="description" content="浏览器是前端性能优化不可不说的，重要性杠杠的。">
+<meta name="keywords" content="浏览器,网页性能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识总结——浏览器渲染">
+<meta property="og:url" content="http://binbin-io.github.io/2017/09/24/前端知识总结——浏览器渲染/index.html">
 <meta property="og:site_name" content="Thinking Coding">
+<meta property="og:description" content="浏览器是前端性能优化不可不说的，重要性杠杠的。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://binbin-io.github.io/images/browser-1.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/HTML-DOM.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/HTML-Web.png">
+<meta property="og:updated_time" content="2017-09-23T17:27:01.420Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thinking Coding">
+<meta name="twitter:title" content="前端知识总结——浏览器渲染">
+<meta name="twitter:description" content="浏览器是前端性能优化不可不说的，重要性杠杠的。">
+<meta name="twitter:image" content="http://binbin-io.github.io/images/browser-1.png">
 
 
 
@@ -129,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://binbin-io.github.io/page/2/"/>
+  <link rel="canonical" href="http://binbin-io.github.io/2017/09/24/前端知识总结——浏览器渲染/"/>
 
 
 
 
 
-  <title>Thinking Coding</title>
+  <title>前端知识总结——浏览器渲染 | Thinking Coding</title>
   
 
 
@@ -160,9 +169,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,9 +272,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -280,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/08/21/前端知识总结——HTML、CSS进阶/">
+    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/09/24/前端知识总结——浏览器渲染/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="白发渔樵">
@@ -297,9 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/21/前端知识总结——HTML、CSS进阶/" itemprop="url">前端知识总结——HTML、CSS进阶</a></h1>
+          <h1 class="post-title" itemprop="name headline">前端知识总结——浏览器渲染</h1>
         
 
         <div class="post-meta">
@@ -311,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T15:24:58+08:00">
-                2017-08-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T00:24:06+08:00">
+                2017-09-24
               </time>
             
 
@@ -349,16 +354,52 @@
       
 
       
-        
-          <p>了解了HTML和CSS的基础知识后，就可以继续深入HTML和CSS的博大精深了。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/21/前端知识总结——HTML、CSS进阶/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>浏览器是前端性能优化不可不说的，重要性杠杠的。<br><a id="more"></a></p>
+<h1 id="浏览器和渲染引擎"><a href="#浏览器和渲染引擎" class="headerlink" title="浏览器和渲染引擎"></a>浏览器和渲染引擎</h1><p>我们所编写的HTML、CSS、JavaScript代码都是在浏览器这样的宿主环境下运行的，因此很有必要了解一下浏览器。</p>
+<h2 id="浏览器包括哪些组成部分？"><a href="#浏览器包括哪些组成部分？" class="headerlink" title="浏览器包括哪些组成部分？"></a>浏览器包括哪些组成部分？</h2><p><img src="/images/browser-1.png" alt="browser"></p>
+<p>其中，又把HTML解释器、CSS解释器、布局和JS引擎组成的部分称为渲染引擎。</p>
+<h2 id="渲染引擎有哪些？"><a href="#渲染引擎有哪些？" class="headerlink" title="渲染引擎有哪些？"></a>渲染引擎有哪些？</h2><ul>
+<li>Blink （Google Chrome、Opera）</li>
+<li>Trident （Edge/IE）</li>
+<li>Webkit （Safari）</li>
+<li>Gecko （Firefox）</li>
+</ul>
+<p>Blink是从Webkit引用过去的，非常相似。</p>
+<hr>
+<h1 id="从-HTML-到-DOM-发生了什么"><a href="#从-HTML-到-DOM-发生了什么" class="headerlink" title="从 HTML 到 DOM 发生了什么"></a>从 HTML 到 DOM 发生了什么</h1><ul>
+<li>对HTML文档进行词法解析，解析成token（最小单元）</li>
+<li>再对token进行扫描，依据语法进行语法解析，最后形成DOM</li>
+</ul>
+<hr>
+<h1 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h1><p><img src="/images/HTML-DOM.png" alt="DOM"></p>
+<p>渲染特点：边加载边解析边渲染。</p>
+<p>在HTML解析为DOM的过程中，遇到CSS则会进行CSS解析，经过解析成为样式规则，与DOM树（DOM Tree）一起构成渲染树（Render Tree）。</p>
+<p>但是，在HTML和CSS解析为渲染树的过程中，如果遇到JavaScript代码，则会阻塞解析。因为JavaScript会改变DOM和样式，以改变渲染树。</p>
+<p>渲染树在渲染的过程中，会给元素进行布局（layout）。</p>
+<hr>
+<h1 id="DOM-Tree-与-Render-Tree-的联系"><a href="#DOM-Tree-与-Render-Tree-的联系" class="headerlink" title="DOM Tree 与 Render Tree 的联系"></a>DOM Tree 与 Render Tree 的联系</h1><p>一般情况下，DOM树和渲染树是一一对应的。</p>
+<p>但是，因为渲染树里都是可见的元素，当DOM树里包含了不可见的元素的时候（如<code>display:none</code>），就不再渲染树一一对应了。</p>
+<p>而且设置了定位的元素，会脱离常规的渲染过程，在Render Tree里只是一个占位符，而去其他地方渲染。</p>
+<hr>
+<h1 id="重排与重绘"><a href="#重排与重绘" class="headerlink" title="重排与重绘"></a>重排与重绘</h1><p>重排与重绘又叫 reflow 和 repaint 。</p>
+<ul>
+<li>重排（一般是涉及到几何属性的改变）<ul>
+<li>页面第一次渲染</li>
+<li>浏览器窗口尺寸该Bain</li>
+<li>元素位置和尺寸</li>
+<li>新增和删除可见元素</li>
+<li>内容改变</li>
+</ul>
+</li>
+<li>重绘（有重排一定有重绘，但以下情况除外）<ul>
+<li>颜色属性的改变，如color、background-color</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="从输入地址到页面渲染"><a href="#从输入地址到页面渲染" class="headerlink" title="从输入地址到页面渲染"></a>从输入地址到页面渲染</h1><p>主线流程如下图：</p>
+<p><img src="/images/HTML-Web.png" alt="web"></p>
+
       
     </div>
     
@@ -373,262 +414,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/08/10/前端知识总结——CSS基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="白发渔樵">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Thinking Coding">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/10/前端知识总结——CSS基础/" itemprop="url">前端知识总结——CSS基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T22:35:46+08:00">
-                2017-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/浏览器/" rel="tag"># 浏览器</a>
           
-            
+            <a href="/tags/网页性能/" rel="tag"># 网页性能</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>这一篇文章将回顾之前所学的CSS基础知识。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/10/前端知识总结——CSS基础/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/22/前端知识总结——网络通路/" rel="next" title="前端知识总结——网络通路">
+                <i class="fa fa-chevron-left"></i> 前端知识总结——网络通路
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/08/01/前端知识总结——HTML基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="白发渔樵">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Thinking Coding">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/01/前端知识总结——HTML基础/" itemprop="url">前端知识总结——HTML基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T22:07:50+08:00">
-                2017-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>从之前的不懂，到现在可以用HTML5和canvas制作一个小游戏，收获是很多的。但是，学习是一个循序渐进的过程，学而时习之，不亦说乎嘛。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/01/前端知识总结——HTML基础/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -638,14 +455,11 @@
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -653,6 +467,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -673,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -727,6 +554,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器和渲染引擎"><span class="nav-number">1.</span> <span class="nav-text">浏览器和渲染引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器包括哪些组成部分？"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器包括哪些组成部分？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染引擎有哪些？"><span class="nav-number">1.2.</span> <span class="nav-text">渲染引擎有哪些？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从-HTML-到-DOM-发生了什么"><span class="nav-number">2.</span> <span class="nav-text">从 HTML 到 DOM 发生了什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#渲染过程"><span class="nav-number">3.</span> <span class="nav-text">渲染过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM-Tree-与-Render-Tree-的联系"><span class="nav-number">4.</span> <span class="nav-text">DOM Tree 与 Render Tree 的联系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重排与重绘"><span class="nav-number">5.</span> <span class="nav-text">重排与重绘</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从输入地址到页面渲染"><span class="nav-number">6.</span> <span class="nav-text">从输入地址到页面渲染</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -847,10 +690,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
