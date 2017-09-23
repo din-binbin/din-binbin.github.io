@@ -104,7 +104,10 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://binbin-io.github.io/images/depart.png">
 <meta property="og:image" content="http://binbin-io.github.io/images/TCP.png">
-<meta property="og:updated_time" content="2017-09-22T16:17:50.660Z">
+<meta property="og:image" content="http://binbin-io.github.io/images/requireHTTP.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/responseHTTP.png">
+<meta property="og:image" content="http://binbin-io.github.io/images/DNS-1.png">
+<meta property="og:updated_time" content="2017-09-23T16:09:25.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——网络通路">
 <meta name="twitter:description" content="学习了前端开发的本地业务，接下来就是向线上部署进军的时候了。加油！">
@@ -376,6 +379,7 @@
 <li>拆包（HTTP）</li>
 <li>JS、CSS、Nodejs等</li>
 </ul>
+<hr>
 <h1 id="网络体系结构"><a href="#网络体系结构" class="headerlink" title="网络体系结构"></a>网络体系结构</h1><p>当一套体系变得复杂的时候，往往会通过分层来降低其复杂度。</p>
 <h2 id="TCP-IP四层协议"><a href="#TCP-IP四层协议" class="headerlink" title="TCP/IP四层协议"></a>TCP/IP四层协议</h2><ul>
 <li>应用层（DNS、HTTP和邮件相关SMTP、POP3、IMAP）</li>
@@ -402,6 +406,7 @@
 <li>数据链路层</li>
 <li>物理层</li>
 </ul>
+<hr>
 <h1 id="网络传输里的-“-分组-”"><a href="#网络传输里的-“-分组-”" class="headerlink" title="网络传输里的 “ 分组 ”"></a>网络传输里的 “ 分组 ”</h1><p>网络在进行传输的时候，会把一个完整的数据通过一系列算法分组后再分组传输。且分组都是乱序随机传输的，最后在目标机器按照接收到的标记信息进行排序。</p>
 <p>每当数据经过一层网络体系的时候，都会在分组前加上一个头部，且上一层的头部会是下一层的数据。层层封装，最后再层层解封。如下图:</p>
 <p><img src="/images/depart.png" alt="分组传输"></p>
@@ -412,6 +417,7 @@
 <li>网络层：packet</li>
 <li>数据链路层：frame</li>
 </ul>
+<hr>
 <h1 id="TCP-到底是啥"><a href="#TCP-到底是啥" class="headerlink" title="TCP 到底是啥"></a>TCP 到底是啥</h1><p>TCP，即Transmission Control Protocol，传输控制协议 —— 一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
 <p>UDP，即User Datagram Protocol，用户数据报协议 —— 则是非面向连接的、不可靠的。</p>
 <p>TCP的连接过程如下：</p>
@@ -441,6 +447,100 @@
 </ul>
 </li>
 </ul>
+<p>注意：TCP连接过程中的字段传递都是数据分组经过传输层的时候在头部添加传递的。</p>
+<hr>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>HTTP对前端性能优化至关重要，HTTP，即HyperText Transfer Ptorocol，超文本传输协议 —— 一种用于分布式、协作式和超媒体信息系统的应用层协议。</p>
+<p>HTTP是无连接的：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</p>
+<h2 id="HTTP-报文结构"><a href="#HTTP-报文结构" class="headerlink" title="HTTP 报文结构"></a>HTTP 报文结构</h2><p>HTTP报文结构由如下几类：</p>
+<p>图为请求的报文结构：<br><img src="/images/requireHTTP.png" alt="http报文结构"></p>
+<ul>
+<li>方法：get、post，除此之外还有option、head、put、delete、trace、connect</li>
+</ul>
+<p>图为响应的报文结构：<br><img src="/images/responseHTTP.png" alt="http报文结构"></p>
+<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><ul>
+<li>1xx —— 表示通知信息，如请求收到或正在进行处理</li>
+<li>2xx —— 表示成功</li>
+<li>3xx —— 表示重定向</li>
+<li>4xx —— 表示客户端差错</li>
+<li>5xx —— 表示服务器出错</li>
+</ul>
+<h2 id="常见状态码"><a href="#常见状态码" class="headerlink" title="常见状态码"></a>常见状态码</h2><ul>
+<li>404<blockquote>
+<p>404 的含义就是客户端所访问的资源不存在</p>
+</blockquote>
+</li>
+<li>304<blockquote>
+<p>涉及到浏览器的缓存</p>
+</blockquote>
+</li>
+<li>301和302<blockquote>
+<p>这两个都表示跳转了，区别是啥呢？</p>
+<p>假设有一个博客，运营了一段时间，首页链接假设是 <code>http://blog.com/</code>。后来呢，换了个域名，链接就变成了<code>http://superblog.com/</code>。</p>
+<p>现在希望访问老首页就跳转到新首页，有两个选择：</p>
+<ul>
+<li>301 ，这个表示永久移动，就是再也不会用老域名了</li>
+<li>302 ，表示临时移动，就是还会用回老域名，现在临时切下</li>
+</ul>
+</blockquote>
+</li>
+<li>500<blockquote>
+<p>内部服务器错误</p>
+</blockquote>
+</li>
+</ul>
+<p>更多状态码可参考：<a href="http://www.runoob.com/http/http-status-codes.html" target="_blank" rel="external">HTTP状态码</a></p>
+<hr>
+<h1 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h1><h2 id="缓存相关头字段"><a href="#缓存相关头字段" class="headerlink" title="缓存相关头字段"></a>缓存相关头字段</h2><ul>
+<li>cache-control（相对时间，常用如max-age=60，优先级高于expires）</li>
+<li>expires（服务器绝对时间，格林尼治时间）</li>
+<li>last-modified（文件最后修改时间，也是绝对时间）</li>
+<li>if-modified-since（客户端会将last-modified的时间信息保存下来，并通过if-modified-since发送到服务器）</li>
+</ul>
+<h2 id="缓存的逻辑流程"><a href="#缓存的逻辑流程" class="headerlink" title="缓存的逻辑流程"></a>缓存的逻辑流程</h2><ul>
+<li>浏览器第一次请求，服务器返回字段部分假设如下：<blockquote>
+<p><code>status:200</code></p>
+<p><code>expires:Mon,31 Jul2017 14:14:16 GMT</code></p>
+<p><code>cache-control:max-age=60</code></p>
+<p><code>last-modified:Thu,13 Jul2017 11:24:02 GMT</code></p>
+</blockquote>
+</li>
+<li>若30秒后，浏览器第二次请求<blockquote>
+<p>由于<code>cache-control:max-age=60</code>，30秒的时候还没到60，因此此次请求会直接从本地读取数据。这种情况叫强缓存。</p>
+</blockquote>
+</li>
+<li>若61秒后，浏览器再次请求<blockquote>
+<p>此时，61&gt;60，需要向服务器发送请求，并把<code>if-modified-since:Thu,13 Jul2017 11:24:02 GMT</code>发送到服务器。如果，服务器端的文件在此时间后没修改过，则会返回如下内容：</p>
+<p><code>status:304</code></p>
+<p><code>expires:Mon,31 Jul2017 14:14:16 GMT</code></p>
+<p><code>cache-control:max-age=60</code></p>
+<p><code>last-modified:Thu,13 Jul2017 11:24:02 GMT</code></p>
+<p>之后浏览器得知文件没修改过，再从本地直接读取内容。这就是304状态码的由来。这种情况叫协商缓存。</p>
+<p>如果文件改动过，则服务器返回新的文件和如下内容:</p>
+<p><code>status:200</code></p>
+<p><code>expires:Mon,31 Jul2017 14:14:16 GMT</code></p>
+<p><code>cache-control:max-age=60</code></p>
+<p><code>last-modified:Thu,13 Jul2017 11:24:52 GMT</code></p>
+<p>之后浏览器再加载新的文件。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="last-modified-的缺陷"><a href="#last-modified-的缺陷" class="headerlink" title="last-modified 的缺陷"></a>last-modified 的缺陷</h2><p>当只是修改了文件的时间，而并未修改文件内容的时候，此时再从服务器获取文件是不够好的。因此，<code>Etag</code> 和 <code>if-None-Match</code>作为改良版出现了。</p>
+<p><code>Etag</code> 和 <code>if-None-Match</code>的值都是通过对文件的一系列算法操作后得到的唯一哈希值。只要内容不变，哈希值就不变。</p>
+<hr>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>当输入网址向服务器发送请求后，第一步并不直接是HTTP请求，而是要找到对应网址的IP地址，再发送HTTP请求。</p>
+<p>如何根据网址找到对应的IP地址呢？这就需要DNS了。</p>
+<p>DNS，即Domain Name System，域名系统，是基于UDP的应用层协议。</p>
+<p>域名可划分等级，如 <code>ke.qq.com</code> 这个域名，<code>ke</code> 为三级域名，<code>qq</code> 为二级域名， <code>com</code> 为顶级域名，再往上则为跟域名。</p>
+<p>与域名等级相对应的是域名服务器:</p>
+<ul>
+<li>根域名服务器（对应根域名）</li>
+<li>顶级域名服务器（对应顶级域名）</li>
+<li>权限域名服务器（对应二级、三级域名等）</li>
+<li>此外还包括本地域名服务器</li>
+</ul>
+<p>域名查询，包括两种方法：</p>
+<p><img src="/images/DNS-1.png" alt="DNS"></p>
+<p>全球共有13组根域名服务器，每一组都有很多服务器，分布在全球各地，因此查询起来很快。</p>
 
       
     </div>
@@ -608,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络通路"><span class="nav-number">1.</span> <span class="nav-text">网络通路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从输入地址到返回请求"><span class="nav-number">2.</span> <span class="nav-text">从输入地址到返回请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络体系结构"><span class="nav-number">3.</span> <span class="nav-text">网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP四层协议"><span class="nav-number">3.1.</span> <span class="nav-text">TCP/IP四层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五层协议"><span class="nav-number">3.2.</span> <span class="nav-text">五层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI标准的七层协议"><span class="nav-number">3.3.</span> <span class="nav-text">OSI标准的七层协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络传输里的-“-分组-”"><span class="nav-number">4.</span> <span class="nav-text">网络传输里的 “ 分组 ”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-到底是啥"><span class="nav-number">5.</span> <span class="nav-text">TCP 到底是啥</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络通路"><span class="nav-number">1.</span> <span class="nav-text">网络通路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从输入地址到返回请求"><span class="nav-number">2.</span> <span class="nav-text">从输入地址到返回请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络体系结构"><span class="nav-number">3.</span> <span class="nav-text">网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP四层协议"><span class="nav-number">3.1.</span> <span class="nav-text">TCP/IP四层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五层协议"><span class="nav-number">3.2.</span> <span class="nav-text">五层协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI标准的七层协议"><span class="nav-number">3.3.</span> <span class="nav-text">OSI标准的七层协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络传输里的-“-分组-”"><span class="nav-number">4.</span> <span class="nav-text">网络传输里的 “ 分组 ”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-到底是啥"><span class="nav-number">5.</span> <span class="nav-text">TCP 到底是啥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">6.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-报文结构"><span class="nav-number">6.1.</span> <span class="nav-text">HTTP 报文结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">6.2.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见状态码"><span class="nav-number">6.3.</span> <span class="nav-text">常见状态码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器缓存"><span class="nav-number">7.</span> <span class="nav-text">浏览器缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存相关头字段"><span class="nav-number">7.1.</span> <span class="nav-text">缓存相关头字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存的逻辑流程"><span class="nav-number">7.2.</span> <span class="nav-text">缓存的逻辑流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last-modified-的缺陷"><span class="nav-number">7.3.</span> <span class="nav-text">last-modified 的缺陷</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS"><span class="nav-number">8.</span> <span class="nav-text">DNS</span></a></li></ol></div>
             
 
           </div>
