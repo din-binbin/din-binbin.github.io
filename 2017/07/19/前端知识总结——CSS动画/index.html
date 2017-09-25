@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="学习了HTML和CSS的相关知识后，接下来继续复习——CSS动画。">
+<meta name="description" content="来看看酷炫的CSS动画吧！">
 <meta name="keywords" content="CSS,CSS动画">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端知识总结——CSS动画">
-<meta property="og:url" content="http://binbin-io.github.io/2017/08/23/前端知识总结——CSS动画/index.html">
+<meta property="og:url" content="http://binbin-io.github.io/2017/07/19/前端知识总结——CSS动画/index.html">
 <meta property="og:site_name" content="Thinking Coding">
-<meta property="og:description" content="学习了HTML和CSS的相关知识后，接下来继续复习——CSS动画。">
+<meta property="og:description" content="来看看酷炫的CSS动画吧！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://binbin-io.github.io/images/translate.png">
 <meta property="og:image" content="http://binbin-io.github.io/images/scale.png">
@@ -111,10 +111,10 @@
 <meta property="og:image" content="http://binbin-io.github.io/images/origin-right.png">
 <meta property="og:image" content="http://binbin-io.github.io/images/origin-px.png">
 <meta property="og:image" content="http://binbin-io.github.io/images/frame-full.jpg">
-<meta property="og:updated_time" content="2017-09-10T08:55:57.383Z">
+<meta property="og:updated_time" content="2017-09-25T16:53:14.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端知识总结——CSS动画">
-<meta name="twitter:description" content="学习了HTML和CSS的相关知识后，接下来继续复习——CSS动画。">
+<meta name="twitter:description" content="来看看酷炫的CSS动画吧！">
 <meta name="twitter:image" content="http://binbin-io.github.io/images/translate.png">
 
 
@@ -144,7 +144,7 @@
 
 
 
-  <link rel="canonical" href="http://binbin-io.github.io/2017/08/23/前端知识总结——CSS动画/"/>
+  <link rel="canonical" href="http://binbin-io.github.io/2017/07/19/前端知识总结——CSS动画/"/>
 
 
 
@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/08/23/前端知识总结——CSS动画/">
+    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/07/19/前端知识总结——CSS动画/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="白发渔樵">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T16:59:21+08:00">
-                2017-08-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T16:59:21+08:00">
+                2017-07-19
               </time>
             
 
@@ -360,80 +360,44 @@
       
 
       
-        <p>学习了HTML和CSS的相关知识后，接下来继续复习——CSS动画。<br><a id="more"></a></p>
+        <p>来看看酷炫的CSS动画吧！<br><a id="more"></a></p>
 <h1 id="CSS动画"><a href="#CSS动画" class="headerlink" title="CSS动画"></a>CSS动画</h1><p>通过 CSS3，我们能够创建动画，这可以在许多网页中取代动画图片、Flash 动画以及 JavaScript。</p>
-<p>CSS动画包括 <em>补间动画</em> 和 <em>帧动画</em> 。</p>
-<p>补间动画：transition；帧动画：animation。</p>
+<p>CSS动画包括补间动画和帧动画。</p>
+<ul>
+<li>补间动画：transition</li>
+<li>帧动画：animation。</li>
+</ul>
 <hr>
-<h1 id="动画必备属性-transform"><a href="#动画必备属性-transform" class="headerlink" title="动画必备属性 transform"></a>动画必备属性 transform</h1><p>transform 本意是变形，变换之意，在 CSS 中使用该属性可对元素进行移动（translate）、旋转（rotate）、缩放（scale）、倾斜（skew）等效果。因其有着各种特效及优良的性能，所以成为动画的标配。</p>
+<h1 id="动画必备属性-transform"><a href="#动画必备属性-transform" class="headerlink" title="动画必备属性 transform"></a>动画必备属性 transform</h1><p>transform 本意是变形，变换之意，在 CSS 中使用该属性可对元素进行移动（<code>translate</code>）、旋转（<code>rotate</code>）、缩放（<code>scale</code>）、倾斜（<code>skew</code>）等效果。因其有着各种特效及优良的性能，所以成为动画的标配。</p>
 <p>在学习之前，我们可以简单欣赏下几个案例：</p>
 <ul>
 <li><a href="http://desandro.github.io/3dtransforms/examples/card-01.html" target="_blank" rel="external">翻转号码</a></li>
 <li><a href="http://desandro.github.io/3dtransforms/examples/cube-02-show-sides.html" target="_blank" rel="external">翻转cube</a></li>
 </ul>
 <p>欣赏之后再来学习transform的相关知识点吧。</p>
-<ul>
-<li><p>translate</p>
-<ul>
-<li>其语法为：<code>transform: translate(tx[, ty])</code>。其中 tx 表示 x 方向偏移，ty 表示 y 方向偏移，如果 ty 没有指定值则为0。可以分拆为：<code>transform: translateX(tx)</code> 或 <code>transform: translateY(ty)</code>。</li>
-<li><p>简单示例如下（虚线框表示原先位置）：</p>
+<h2 id="translate"><a href="#translate" class="headerlink" title="translate"></a>translate</h2><p>其语法为：<code>transform: translate(tx[, ty])</code>。其中 tx 表示 x 方向偏移，ty 表示 y 方向偏移，如果 ty 没有指定值则为0。可以分拆为：<code>transform: translateX(tx)</code> 或 <code>transform: translateY(ty)</code>。简单示例如下（虚线框表示原先位置）：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(50px, 30px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="/images/translate.png" alt="translate"></p>
-</li>
-<li>注：tx，ty 如果为百分比值的话，其参考计算的是元素本身的宽和高，而不是父元素的宽和高。所以经常使用该方法设置定位居中，代码如下：<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>; <span class="comment">/* 父元素高度的一半位置 */</span></div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>; <span class="comment">/* 父元素宽度的一半位置 */</span></div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%); <span class="comment">/* 元素本身的一半宽、高 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre></li>
-</ul>
-</li>
-<li><p>scale</p>
-<ul>
-<li>其语法为：<code>transform: scale(sx[, sy])</code>。其中 sx 表示 x 方向的缩放比例，sy 表示 y 方向的缩放比例，如果 sy 没有指定值则与 sx 相等。同样也可以分拆为：<code>transform: scaleX(sx)</code> 和 <code>transform: scaleY(sy)</code>。</li>
-<li><p>简单示例如下：</p>
+<p>注：tx，ty 如果为百分比值的话，其参考计算的是元素本身的宽和高，而不是父元素的宽和高。所以经常使用该方法设置定位居中，代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.demo</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>; <span class="comment">/* 父元素高度的一半位置 */</span></div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>; <span class="comment">/* 父元素宽度的一半位置 */</span></div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%, -50%); <span class="comment">/* 元素本身的一半宽、高 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="scale"><a href="#scale" class="headerlink" title="scale"></a>scale</h2><p>其语法为：<code>transform: scale(sx[, sy])</code>。其中 sx 表示 x 方向的缩放比例，sy 表示 y 方向的缩放比例，如果 sy 没有指定值则与 sx 相等。同样也可以分拆为：<code>transform: scaleX(sx)</code> 和 <code>transform: scaleY(sy)</code>。简单示例如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(1.2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="/images/scale.png" alt="scale"></p>
-</li>
-</ul>
-</li>
-<li><p>rotate</p>
-<ul>
-<li>其语法为：<code>transform: rotate(angle)</code>。angle 表示顺时针角度。</li>
-<li><p>简单示例如下：</p>
+<h2 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h2><p>其语法为：<code>transform: rotate(angle)</code>。angle 表示顺时针角度。简单示例如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(15deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="/images/rotate.png" alt="rotate"></p>
-</li>
-</ul>
-</li>
-<li><p>skew</p>
-<ul>
-<li>其语法为：<code>transform: skew(ax[, ay])</code>。其中 ax 表示 x 方向的顺时针角度，ay 表示 y 方向的顺时针角度，如果 ay 没有指定值则 y 方向没有倾斜。</li>
-<li><p>简单示例如下：</p>
+<h2 id="skew"><a href="#skew" class="headerlink" title="skew"></a>skew</h2><p>其语法为：<code>transform: skew(ax[, ay])</code>。其中 ax 表示 x 方向的顺时针角度，ay 表示 y 方向的顺时针角度，如果 ay 没有指定值则 y 方向没有倾斜。简单示例如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">skew</span>(30deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="/images/skew.png" alt="skew"></p>
-</li>
-</ul>
-</li>
-<li><p>复合变换</p>
-<ul>
-<li>上面几个变换，都可以自由组合形成更复杂的复合变换。</li>
-<li><p>简单示例如下：</p>
+<h2 id="复合变换"><a href="#复合变换" class="headerlink" title="复合变换"></a>复合变换</h2><p>上面几个变换，都可以自由组合形成更复杂的复合变换。简单示例如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(30px) <span class="built_in">rotate</span>(10deg) <span class="built_in">skew</span>(0, 5deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="/images/mix.png" alt="复合变换"></p>
-</li>
-</ul>
-</li>
-<li><p>变换中心点</p>
-<blockquote>
-<p>默认上面所有的变换都是以元素的中心位置为参考原点的，不过我们可以通过属性 transform-origin 来改变参考原点。</p>
-<ul>
-<li>其语法为：<code>transform-origin: ox oy</code>。其中 ox 表示 x 方向的位置，可使用 <code>left</code>、<code>right</code>、<code>center</code>、<code>&lt;length&gt;</code>、<code>&lt;percentage&gt;</code>；oy 表示 y 方向的位置，可使用<code>top</code>、<code>bottom</code>、<code>center</code>、<code>&lt;length&gt;</code>、<code>&lt;percentage&gt;</code>。如果只传入一个值，则另一个值默认为 50% 。</li>
-<li>简单示例如下：<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(15deg);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box-origin-top-left</span> &#123;</div><div class="line">    <span class="attribute">transform-origin</span>: left top;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box-origin-right</span> &#123;</div><div class="line">    <span class="attribute">transform-origin</span>: right; <span class="comment">/* 设置一个值，则另一个为50% */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box-origin-px</span> &#123;</div><div class="line">    <span class="attribute">transform-origin</span>: <span class="number">200px</span> <span class="number">80%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<p>  <img src="/images/origin-top-left.png" alt="origin-top-left"></p>
-<p>  <img src="/images/origin-right.png" alt="origin-right"></p>
-<p>  <img src="/images/origin-px.png" alt="origin-px"></p>
-</li>
-</ul>
+<h2 id="变换中心点"><a href="#变换中心点" class="headerlink" title="变换中心点"></a>变换中心点</h2><p>默认上面所有的变换都是以元素的中心位置为参考原点的，不过我们可以通过属性 <code>transform-origin</code> 来改变参考原点。</p>
+<p>其语法为：<code>transform-origin: ox oy</code>。其中 <code>ox</code> 表示 <code>x</code> 方向的位置，可使用 <code>left</code>、<code>right</code>、<code>center</code>、<code>&lt;length&gt;</code>、<code>&lt;percentage&gt;</code>；<code>oy</code> 表示 <code>y</code> 方向的位置，可使用<code>top</code>、<code>bottom</code>、<code>center</code>、<code>&lt;length&gt;</code>、<code>&lt;percentage&gt;</code>。如果只传入一个值，则另一个值默认为 <code>50%</code> 。简单示例如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(15deg);</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box-origin-top-left</span> &#123;</div><div class="line">    <span class="attribute">transform-origin</span>: left top;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box-origin-right</span> &#123;</div><div class="line">    <span class="attribute">transform-origin</span>: right; <span class="comment">/* 设置一个值，则另一个为50% */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box-origin-px</span> &#123;</div><div class="line">    <span class="attribute">transform-origin</span>: <span class="number">200px</span> <span class="number">80%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="/images/origin-top-left.png" alt="origin-top-left"></p>
+<p><img src="/images/origin-right.png" alt="origin-right"></p>
+<p><img src="/images/origin-px.png" alt="origin-px"></p>
 <p>三维变换，可参考：<a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/" target="_blank" rel="external">CSS3 3D transform变换</a> 、 <a href="http://desandro.github.io/3dtransforms/" target="_blank" rel="external">Intro to CSS 3D transforms</a></p>
 <p>继续了解transform可参考：<a href="https://github.com/SamHwang1990/blog/issues/4" target="_blank" rel="external">深入浅出CSS Transform</a> 、 <a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%E7%9F%A9%E9%98%B5/" target="_blank" rel="external">理解CSS3 transform中的Matrix(矩阵)</a></p>
 <hr>
@@ -446,6 +410,7 @@
 </ul>
 <p>上面几种取值其实是cubic-bezier(n,n,n,n)函数的特殊值。</p>
 <p>可参考：<a href="http://easings.net/zh-cn" target="_blank" rel="external">缓动函数速查表</a> 、 <a href="http://cubic-bezier.com/#.17,.67,.83,.67" target="_blank" rel="external">cubic-bezier</a></p>
+<hr>
 <h1 id="animation-动画"><a href="#animation-动画" class="headerlink" title="animation 动画"></a>animation 动画</h1><ul>
 <li><code>animation-name</code>（名称）</li>
 <li><code>animation-duration</code>（持续时间）</li>
@@ -481,94 +446,94 @@
 <h1 id="常见-CSS-动画库"><a href="#常见-CSS-动画库" class="headerlink" title="常见 CSS 动画库"></a>常见 CSS 动画库</h1><p>自从 CSS3 有了动画功能，从此 Web 页面就迈进“忽如一夜春风来，千页万页动画开”的盛况。 所以 CSS 动画除了是炫技之选更是一项基本技能，当然也就有无数前辈为之呕心沥血总结经验了。</p>
 <ul>
 <li><p><a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">Animate.css</a></p>
-<blockquote>
-<p>Animate.css 是最早的也是目前最流行和最易于使用的CSS动画库之一，其包含了60多款不同类型的 CSS 动画如晃动、闪动、淡出淡出效果等，如果你想快速的使用各种 CSS 动画特效的话，你可以选择它。</p>
-</blockquote>
+<ul>
+<li>Animate.css 是最早的也是目前最流行和最易于使用的CSS动画库之一，其包含了60多款不同类型的 CSS 动画如晃动、闪动、淡出淡出效果等，如果你想快速的使用各种 CSS 动画特效的话，你可以选择它。</li>
+</ul>
 </li>
 <li><p><a href="https://www.minimamente.com/example/magic_animations/" target="_blank" rel="external">Magic CSS3 Animation</a></p>
-<blockquote>
-<p>Magic CSS3 Animations 是一个特殊效果的 CSS 动画库，你可以免费用于你的 Web 项目，简单的引用 CSS 样式：magic.css 或 magic.min.css （压缩版）即可。该项目提供了一个特别酷的演示应用程序。与 animate.css 相比，Magic CSS3 Animation 的大小适中，它的特色动画，如魔法效果，愚蠢的效果和炸弹效果十分出众和特别。</p>
-</blockquote>
+<ul>
+<li>Magic CSS3 Animations 是一个特殊效果的 CSS 动画库，你可以免费用于你的 Web 项目，简单的引用 CSS 样式：magic.css 或 magic.min.css （压缩版）即可。该项目提供了一个特别酷的演示应用程序。与 animate.css 相比，Magic CSS3 Animation 的大小适中，它的特色动画，如魔法效果，愚蠢的效果和炸弹效果十分出众和特别。</li>
+</ul>
 </li>
 <li><p><a href="http://ianlunn.github.io/Hover/" target="_blank" rel="external">Hover CSS</a></p>
-<blockquote>
-<p>Hover.css 是一个 CSS 动画库，专为您的网站中的按钮和其他 UI 元素而设计。它具有非常好的2D转换，以及许多其他精心制作的动画。</p>
-</blockquote>
+<ul>
+<li>Hover.css 是一个 CSS 动画库，专为您的网站中的按钮和其他 UI 元素而设计。它具有非常好的2D转换，以及许多其他精心制作的动画。</li>
+</ul>
 </li>
 <li><p><a href="http://h5bp.github.io/Effeckt.css/" target="_blank" rel="external">Effeckt</a></p>
-<blockquote>
-<p>Effeckt.css 是一个集合了众多新鲜而又实用的的 CSS/jQuery 动画效果，这些都适用于网站或是移动 APP 的网页，比如一些 AJAX 弹出框动画、菜单动画、图片标题展示等等，这些特效动画都能给你的网站提升一定用户体验，而且简单实用。</p>
-</blockquote>
+<ul>
+<li>Effeckt.css 是一个集合了众多新鲜而又实用的的 CSS/jQuery 动画效果，这些都适用于网站或是移动 APP 的网页，比如一些 AJAX 弹出框动画、菜单动画、图片标题展示等等，这些特效动画都能给你的网站提升一定用户体验，而且简单实用。</li>
+</ul>
 </li>
 <li><p><a href="https://projects.lukehaas.me/css-loaders/" target="_blank" rel="external">Single Element CSS Spinners</a></p>
-<blockquote>
-<p>在页面中，我们时常需要使用 gif 图片来实现比较炫酷的 loading 动画。Single Element CSS Spinners是一个CSS螺旋加载动画的集合。使用Single Element CSS Spinners 来替代 gif 来实现螺旋加载动画，不仅减少了请求图片的次数，同时还能够通过代码来灵活地修改动画的参数。</p>
-</blockquote>
+<ul>
+<li>在页面中，我们时常需要使用 gif 图片来实现比较炫酷的 loading 动画。Single Element CSS Spinners是一个CSS螺旋加载动画的集合。使用Single Element CSS Spinners 来替代 gif 来实现螺旋加载动画，不仅减少了请求图片的次数，同时还能够通过代码来灵活地修改动画的参数。</li>
+</ul>
 </li>
 </ul>
 <p>注：一般不建议全部拿来使用，而是使用哪个动画效果就拷贝对应的样式。</p>
 <hr>
 <h1 id="动画性能优化"><a href="#动画性能优化" class="headerlink" title="动画性能优化"></a>动画性能优化</h1><p>CSS3 动画给 Web 的用户体验带来了巨大提升，本文将尝试从浏览器渲染的角度，来解析动画优化的原理及其技巧。为大家提供一些动画性能优化的参考。</p>
-<p>60fps与设备刷新率</p>
-<p>目前大多数设备的屏幕刷新率为60fps（Frame per Second），即每秒60帧。因此，如果在页面中有一个动画或渐变效果，或者用户正在滚动页面，那么浏览器渲染动画或页面的每一帧的速率也需要跟设备屏幕的刷新率保持一致，即每一帧要在16毫秒（1S/60 = 16.66ms）之内完成。如果无法完成，由于帧率的下降会导致内容在屏幕上抖动。 此现象通常称为卡顿，会对用户体验产生负面影响。</p>
-<p>浏览器渲染</p>
-<p>简单来说，浏览器的渲染过程其实就是将页面转换成像素显示到屏幕上，大致有如下几个步骤：<br><img src="/images/frame-full.jpg" alt="渲染过程"></p>
+<h2 id="60fps与设备刷新率"><a href="#60fps与设备刷新率" class="headerlink" title="60fps与设备刷新率"></a>60fps与设备刷新率</h2><p>目前大多数设备的屏幕刷新率为60fps（Frame per Second），即每秒60帧。因此，如果在页面中有一个动画或渐变效果，或者用户正在滚动页面，那么浏览器渲染动画或页面的每一帧的速率也需要跟设备屏幕的刷新率保持一致，即每一帧要在16毫秒（1S/60 = 16.66ms）之内完成。如果无法完成，由于帧率的下降会导致内容在屏幕上抖动。 此现象通常称为卡顿，会对用户体验产生负面影响。</p>
+<h2 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h2><p>简单来说，浏览器的渲染过程其实就是将页面转换成像素显示到屏幕上，大致有如下几个步骤：<br><img src="/images/frame-full.jpg" alt="渲染过程"></p>
 <ul>
-<li>Javascript操作： 一般来说，我们会使用 JavaScript 来实现一些交互操作。比如用往页面里添加一些元素，切换显示隐藏等</li>
-<li>style 样式计算： 该过程根据 CSS 选择器，获取每个元素匹配的 CSS 样式并计算其最终应用样式</li>
-<li>Layout 布局：该过程计算元素要占据的空间大小及其在屏幕的位置。网页的布局模式意味着一个元素可能影响其他元素，例如 <code>&lt;body&gt;</code> 元素的宽度一般会影响其子元素的宽度以及树中各处的节点，因此对于浏览器来说，布局是经常发生的。</li>
-<li>Paint 绘制：本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等。也就是绘制元素所有的可视效果。</li>
-<li>Composite 渲染层合并：在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。</li>
+<li><p>Javascript操作： 一般来说，我们会使用 JavaScript 来实现一些交互操作。比如用往页面里添加一些元素，切换显示隐藏等</p>
+</li>
+<li><p>style 样式计算： 该过程根据 CSS 选择器，获取每个元素匹配的 CSS 样式并计算其最终应用样式</p>
+</li>
+<li><p>Layout 布局：该过程计算元素要占据的空间大小及其在屏幕的位置。网页的布局模式意味着一个元素可能影响其他元素，例如 <code>&lt;body&gt;</code> 元素的宽度一般会影响其子元素的宽度以及树中各处的节点，因此对于浏览器来说，布局是经常发生的。</p>
+</li>
+<li><p>Paint 绘制：本质上就是填充像素的过程。包括绘制文字、颜色、图像、边框和阴影等。也就是绘制元素所有的可视效果。</p>
+</li>
+<li><p>Composite 渲染层合并：在每个层上完成绘制过程之后，浏览器会将所有层按照合理的顺序合并成一个图层，然后显示在屏幕上。</p>
+</li>
 </ul>
-<p>如果我们需要提高动画的性能，需要做的就是减少浏览器在动画运行时所需要做的工作。当 CSS 在进行动画时，其不同属性值引起的改变，重新渲染可能会有三种执行路径：</p>
+<h2 id="提高动画性能"><a href="#提高动画性能" class="headerlink" title="提高动画性能"></a>提高动画性能</h2><p>如果我们需要提高动画的性能，需要做的就是减少浏览器在动画运行时所需要做的工作。当 CSS 在进行动画时，其不同属性值引起的改变，重新渲染可能会有三种执行路径：</p>
 <ul>
 <li>A：<code>layout -&gt; paint -&gt; composite</code></li>
 <li>B：<code>paint -&gt; composite</code></li>
 <li>C：<code>composite</code></li>
 </ul>
 <p>很明显，最短路径的 C 动画性能是最高的，所以我们在使用动画的时候就得考虑使用什么属性，以尽量减少执行路径。</p>
-<p>动画属性</p>
-<p>CSS 的属性大致分为三类：布局类（layout），绘制类（paint），合成类（composite）。</p>
-<p>重排（reflow）</p>
-<blockquote>
-<p>由元素的布局类属性改变所触发的行为过程，我们称为 reflow，也叫做 relayout（重新布局）。当某个节点 reflow 时会重新计算节点的尺寸和位置，还可能会引起其它节点的 reflow。该系列属性的改变，会执行路径 A 进行重新渲染，所以性能是最差的。（这充分说明，重排会引起重绘）。触发重排的属性如下：</p>
-</blockquote>
+<h2 id="动画属性"><a href="#动画属性" class="headerlink" title="动画属性"></a>动画属性</h2><p>CSS 的属性大致分为三类：布局类（layout），绘制类（paint），合成类（composite）。</p>
+<h2 id="重排（reflow）"><a href="#重排（reflow）" class="headerlink" title="重排（reflow）"></a>重排（reflow）</h2><p>由元素的布局类属性改变所触发的行为过程，我们称为 reflow，也叫做 relayout（重新布局）。当某个节点 reflow 时会重新计算节点的尺寸和位置，还可能会引起其它节点的 reflow。该系列属性的改变，会执行路径 A 进行重新渲染，所以性能是最差的。（这充分说明，重排会引起重绘）。触发重排的属性如下：</p>
 <ul>
 <li>盒子模型相关属性会触发重布局：<code>width</code>、<code>height</code>、<code>padding</code>、<code>margin</code>、<code>display</code>、<code>border-width</code>、<code>border</code>、<code>min-height</code></li>
 <li>定位属性及浮动也会触发重布局：<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>、<code>position</code>、<code>float</code>、<code>clear</code></li>
 <li>改变节点内部文字结构也会触发重布局：<code>text-align</code>、<code>overflow</code>、<code>font-weight</code>、<code>font-family</code>、<code>line-height</code>、<code>vertival-align</code>、<code>white-space</code>、<code>font-size</code></li>
 </ul>
-<p>重绘</p>
-<blockquote>
-<p>绘制类属性改变触发节点重新绘制其可视效果的过程，我们称为 repaint。该系列属性的改变，会执行路径 B，所以性能一般。触发重绘的属性如下：</p>
+<h2 id="重绘（repaint）"><a href="#重绘（repaint）" class="headerlink" title="重绘（repaint）"></a>重绘（repaint）</h2><p>绘制类属性改变触发节点重新绘制其可视效果的过程，我们称为 repaint。该系列属性的改变，会执行路径 B，所以性能一般。触发重绘的属性如下：</p>
 <ul>
 <li><code>color</code>、<code>border-style</code>、<code>border-radius</code>、<code>visibility</code>、<code>text-decoration</code>、<code>background</code>、<code>background-image</code>、<code>background-position</code>、<code>background-repeat</code>、<code>background-size</code>、<code>outline-color</code>、<code>outline</code>、<code>outline-style</code>、<code>outline-width</code>、<code>box-shadow</code></li>
 </ul>
-</blockquote>
 <p>上面的属性由于不会修改节点的大小和位置，因此不会触发重排，其只是改变了节点内部的渲染效果，所以只会进行重绘以下的步骤。</p>
-<p>composite</p>
-<p>目前只有两个属性属于 composite 类：</p>
+<h2 id="composite"><a href="#composite" class="headerlink" title="composite"></a>composite</h2><p>目前只有两个属性属于 composite 类：</p>
 <ul>
-<li><code>transform</code>、<code>opactiy</code></li>
+<li><code>transform</code></li>
+<li><code>opactiy</code></li>
 </ul>
 <p>该系列属性的改变，会执行路径 C，所以性能最佳。</p>
 <hr>
 <h1 id="动画性能优化技巧"><a href="#动画性能优化技巧" class="headerlink" title="动画性能优化技巧"></a>动画性能优化技巧</h1><ul>
-<li>减少动画元素<blockquote>
-<p>减少动画元素，是动画性能优化中首先需要完成的。通过审查页面动画 DOM 元素结构，去除不必要的动画元素，减少元素的数量，相应地会减少布页面局和绘制的时间。</p>
-</blockquote>
+<li><p>减少动画元素</p>
+<ul>
+<li>减少动画元素，是动画性能优化中首先需要完成的。通过审查页面动画 DOM 元素结构，去除不必要的动画元素，减少元素的数量，相应地会减少布页面局和绘制的时间。</li>
+</ul>
 </li>
-<li>尽量使用 <code>fixed</code>、<code>absolute</code> 定位<blockquote>
-<p>对于动画元素，尽量使用用 <code>fixed</code>、<code>absolute</code> 定位方式，避免影响到其他节点重排。</p>
-</blockquote>
+<li><p>尽量使用 <code>fixed</code>、<code>absolute</code> 定位</p>
+<ul>
+<li>对于动画元素，尽量使用用 <code>fixed</code>、<code>absolute</code> 定位方式，避免影响到其他节点重排。</li>
+</ul>
 </li>
-<li>尽量只改变<code>transform</code>和<code>opacity</code><blockquote>
-<p>能用 <code>transform</code>、<code>opacity</code> 优先使用，其属性的改变不会发生重排和重绘。如位移操作的，可以使用translate 来实现，渐隐渐现效果可以使用 <code>opacity</code> 属性来实现。</p>
-</blockquote>
+<li><p>尽量只改变<code>transform</code>和<code>opacity</code></p>
+<ul>
+<li>能用 <code>transform</code>、<code>opacity</code> 优先使用，其属性的改变不会发生重排和重绘。如位移操作的，可以使用translate 来实现，渐隐渐现效果可以使用 <code>opacity</code> 属性来实现。</li>
+</ul>
 </li>
-<li>恰当开启硬件加速效果<blockquote>
-<p>对动画元素应用<code>transform: translate3d(0, 0, 0)</code>、<code>will-change: transform</code> 等来开启硬件加速。通常开启硬件加速可以让动画变得更加流畅。但这里需注意，在不需要的时候需去掉避免过多的内存消耗。</p>
-</blockquote>
+<li><p>恰当开启硬件加速效果</p>
+<ul>
+<li>对动画元素应用<code>transform: translate3d(0, 0, 0)</code>、<code>will-change: transform</code> 等来开启硬件加速。通常开启硬件加速可以让动画变得更加流畅。但这里需注意，在不需要的时候需去掉避免过多的内存消耗。</li>
+</ul>
 </li>
 </ul>
 
@@ -603,8 +568,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/21/前端知识总结——HTML、CSS进阶/" rel="next" title="前端知识总结——HTML、CSS进阶">
-                <i class="fa fa-chevron-left"></i> 前端知识总结——HTML、CSS进阶
+              <a href="/2017/07/17/前端知识总结——CSS基础/" rel="next" title="前端知识总结——CSS基础">
+                <i class="fa fa-chevron-left"></i> 前端知识总结——CSS基础
               </a>
             
           </div>
@@ -613,7 +578,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/24/前端知识总结——响应式设计/" rel="prev" title="前端知识总结——响应式设计">
+              <a href="/2017/07/22/前端知识总结——响应式设计/" rel="prev" title="前端知识总结——响应式设计">
                 前端知识总结——响应式设计 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -705,7 +670,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -740,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS动画"><span class="nav-number">1.</span> <span class="nav-text">CSS动画</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画必备属性-transform"><span class="nav-number">2.</span> <span class="nav-text">动画必备属性 transform</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓动函数"><span class="nav-number">3.</span> <span class="nav-text">缓动函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-动画"><span class="nav-number">4.</span> <span class="nav-text">animation 动画</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transition-动画-和-animation-动画的比较"><span class="nav-number">5.</span> <span class="nav-text">transition 动画 和 animation 动画的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见-CSS-动画库"><span class="nav-number">6.</span> <span class="nav-text">常见 CSS 动画库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画性能优化"><span class="nav-number">7.</span> <span class="nav-text">动画性能优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画性能优化技巧"><span class="nav-number">8.</span> <span class="nav-text">动画性能优化技巧</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS动画"><span class="nav-number">1.</span> <span class="nav-text">CSS动画</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画必备属性-transform"><span class="nav-number">2.</span> <span class="nav-text">动画必备属性 transform</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#translate"><span class="nav-number">2.1.</span> <span class="nav-text">translate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scale"><span class="nav-number">2.2.</span> <span class="nav-text">scale</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rotate"><span class="nav-number">2.3.</span> <span class="nav-text">rotate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skew"><span class="nav-number">2.4.</span> <span class="nav-text">skew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复合变换"><span class="nav-number">2.5.</span> <span class="nav-text">复合变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变换中心点"><span class="nav-number">2.6.</span> <span class="nav-text">变换中心点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓动函数"><span class="nav-number">3.</span> <span class="nav-text">缓动函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#animation-动画"><span class="nav-number">4.</span> <span class="nav-text">animation 动画</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transition-动画-和-animation-动画的比较"><span class="nav-number">5.</span> <span class="nav-text">transition 动画 和 animation 动画的比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见-CSS-动画库"><span class="nav-number">6.</span> <span class="nav-text">常见 CSS 动画库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画性能优化"><span class="nav-number">7.</span> <span class="nav-text">动画性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#60fps与设备刷新率"><span class="nav-number">7.1.</span> <span class="nav-text">60fps与设备刷新率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器渲染"><span class="nav-number">7.2.</span> <span class="nav-text">浏览器渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提高动画性能"><span class="nav-number">7.3.</span> <span class="nav-text">提高动画性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画属性"><span class="nav-number">7.4.</span> <span class="nav-text">动画属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重排（reflow）"><span class="nav-number">7.5.</span> <span class="nav-text">重排（reflow）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重绘（repaint）"><span class="nav-number">7.6.</span> <span class="nav-text">重绘（repaint）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#composite"><span class="nav-number">7.7.</span> <span class="nav-text">composite</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画性能优化技巧"><span class="nav-number">8.</span> <span class="nav-text">动画性能优化技巧</span></a></li></ol></div>
             
 
           </div>
