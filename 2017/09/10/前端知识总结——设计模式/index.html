@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="设计模式（Design Pattern）是一套被反复使用、多数人知晓的、经过分类的、代码设计经验的总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识总结——设计模式">
+<meta property="og:url" content="http://binbin-io.github.io/2017/09/10/前端知识总结——设计模式/index.html">
+<meta property="og:site_name" content="Thinking Coding">
+<meta property="og:description" content="设计模式（Design Pattern）是一套被反复使用、多数人知晓的、经过分类的、代码设计经验的总结。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://binbin-io.github.io/images/MVVM.png">
+<meta property="og:updated_time" content="2017-09-26T13:53:20.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识总结——设计模式">
+<meta name="twitter:description" content="设计模式（Design Pattern）是一套被反复使用、多数人知晓的、经过分类的、代码设计经验的总结。">
+<meta name="twitter:image" content="http://binbin-io.github.io/images/MVVM.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://binbin-io.github.io/2017/09/10/前端知识总结——设计模式/"/>
+
+
+
+
+
+  <title>前端知识总结——设计模式 | Thinking Coding</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Thinking Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://binbin-io.github.io/2017/09/10/前端知识总结——设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="白发渔樵">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Thinking Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端知识总结——设计模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-10T23:46:12+08:00">
+                2017-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>设计模式（Design Pattern）是一套被反复使用、多数人知晓的、经过分类的、代码设计经验的总结。<br><a id="more"></a></p>
+<h1 id="什么是模式"><a href="#什么是模式" class="headerlink" title="什么是模式"></a>什么是模式</h1><p>鸡蛋+番茄 —— 经过一些列烹饪操作 —— 番茄炒蛋</p>
+<p>这一加工过程就是生活中的模式。</p>
+<hr>
+<h1 id="模式的特点"><a href="#模式的特点" class="headerlink" title="模式的特点"></a>模式的特点</h1><ul>
+<li>已验证的解决方案</li>
+<li>容易被复用</li>
+<li>富有表达力</li>
+</ul>
+<hr>
+<h1 id="设计模式和反模式"><a href="#设计模式和反模式" class="headerlink" title="设计模式和反模式"></a>设计模式和反模式</h1><p>设计模式是解决软件常见问题的可复用方案 —— 《JavaScript设计模式》</p>
+<p>反模式是一种针对某个特定问题的不良解决方案，该方案会导致糟糕的情况发生。 —— 《JavaScript设计模式》</p>
+<p>JavaScript中的反模式：</p>
+<ul>
+<li>定义大量污染全局命令空间的变量<blockquote>
+<p>会导致出现污染全局命名空间的情况</p>
+</blockquote>
+</li>
+<li>修改<code>Object</code>类的原型<blockquote>
+<p>相当于，用其他非标准的方法将内置的标准的类型系统搞乱</p>
+</blockquote>
+</li>
+<li>使用<code>document.write</code>创建页面<blockquote>
+<p>会导致重写我们的页面，而不是增量增加</p>
+</blockquote>
+</li>
+<li>向<code>setTimeout</code>传递字符串<blockquote>
+<p>会导致内部触发<code>eval()</code>的使用，<code>eval()</code>方法会造成性能问题和可能会引起安全性的问题</p>
+</blockquote>
+</li>
+<li>硬编码、写死功能</li>
+<li>……</li>
+</ul>
+<hr>
+<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>有这样一些情况；</p>
+<ul>
+<li>一个网站只有一个登录框</li>
+<li>一个朝代只有一个皇帝</li>
+</ul>
+<p>所谓的单例模式，即确保一个类只有一个实例，共享使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 皇帝单例模式</span></div><div class="line"><span class="keyword">var</span> KingSingle=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">// 皇帝实例</span></div><div class="line">        <span class="keyword">var</span> instance;</div><div class="line">        <span class="comment">// 初始化，返回皇帝实例对象</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                command:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            getInstance:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="comment">// 判断是否有皇帝，没有则初始化</span></div><div class="line">                <span class="keyword">if</span>(!instance)&#123;</div><div class="line">                    instance=init();</div><div class="line">                &#125;</div><div class="line">                <span class="comment">// 返回皇帝实例</span></div><div class="line">                <span class="keyword">return</span> instance;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">)();</div></pre></td></tr></table></figure>
+<ul>
+<li>单例模式优点：节约资源，控制入口</li>
+<li>单例模式去缺点：拓展困难，不可职责过重</li>
+</ul>
+<p>如果在我们应用场景中需要有类似的实体（有且只需要有一个实例，且可全局访问），那么我们就可以使用单例模式将其实现为一个单例对象。</p>
+<hr>
+<h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><p>对于一些旧的接口，调用方在调用的时候可能会出现问题，而通过Adapter（适配器）使其能够正常调用的解决方案就叫适配器模式。</p>
+<p>适配器模式，即不影响现有实现方式，兼容调用旧接口的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 旧的圆孔耳机</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">useOldEarphone</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 使用代码</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 适配器</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">adapter</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 适配操作</span></div><div class="line">    someAdapterOperation();</div><div class="line">    <span class="comment">// 使用代码</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> useOldEarphone();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 旧的手机使用圆孔耳机</span></div><div class="line"><span class="keyword">var</span> iphone6=useOldEarphone();</div><div class="line"></div><div class="line"><span class="comment">// 新手机也可使用</span></div><div class="line"><span class="keyword">var</span> iphone7=adapter();</div></pre></td></tr></table></figure>
+<ul>
+<li>适配器模式优点：简单、提高复用性</li>
+<li>适配器模式缺点：过多使用会导致系统层级复杂</li>
+</ul>
+<p>比如下面有一个这样的场景，在一个系统中，其过去老的逻辑是通过数组的方式来表示用户的信息，这是十分不友好的表示方式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这是一个用户信息数组，十分不友好</span></div><div class="line"><span class="keyword">var</span> data = [</div><div class="line">  <span class="string">'andy'</span>, <span class="comment">// 名称</span></div><div class="line">  <span class="string">'man'</span>, <span class="comment">// 性别</span></div><div class="line">  <span class="string">'engineer'</span>, <span class="comment">// 职业</span></div><div class="line">  <span class="string">'1992-10-10'</span> <span class="comment">// 出生年月日</span></div><div class="line">];</div></pre></td></tr></table></figure>
+<p>某一天，我们开发了一个新的功能接口 <code>getUserDetail</code>，getUserDetail 这个接口将会格式化输出传入的用户信息，然后其接受的只能是一个对象参数，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 新功能接口，这个接口在新系统中会广泛使用到</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUserDetail</span>(<span class="params">user</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'当前用户：'</span> + user.name);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'性别'</span> + user.sex);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'职业'</span> + user.job);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'出生日期'</span> + user.date);</div><div class="line">&#125;</div><div class="line"></div><div class="line">getUserDetail(&#123;</div><div class="line">  name: <span class="string">'andy'</span>,</div><div class="line">  sex: <span class="string">'man'</span>,</div><div class="line">  job: <span class="string">'engineer'</span>,</div><div class="line">  date: <span class="string">'1992-10-10'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这个时候需要去实现一个数据适配器 <code>arrToObjAdapter</code> 方法，来将我们过去旧的数据能够通过该适配器，兼容到我们新的接口 <code>getUserDetail</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrToObjAdapter</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        name:arr[<span class="number">0</span>],</div><div class="line">        sex:arr[<span class="number">1</span>],</div><div class="line">        job:arr[<span class="number">2</span>],</div><div class="line">        date:arr[<span class="number">3</span>]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h1><p>装饰器模式，即在不修改类原来的接口情况下，动态的为对象添加功能。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 豆浆类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BeanMilk</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.price=<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 一杯加糖加蛋的豆浆</span></div><div class="line"><span class="keyword">var</span> beanMilk1=<span class="keyword">new</span> BeanMilk();</div><div class="line">addSugar(beanMilk1); <span class="comment">// price=1.5</span></div><div class="line">addEgg(beanMilk1); <span class="comment">// price=2.5</span></div><div class="line"></div><div class="line"><span class="comment">//加糖</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addSugar</span>(<span class="params">milk</span>)</span>&#123;</div><div class="line">    milk.price+=<span class="number">0.5</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 加鸡蛋</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addEgg</span>(<span class="params">milk</span>)</span>&#123;</div><div class="line">    milk.price+=<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>装饰器模式优点：扩展对象灵活，可组合</li>
+<li>装饰器模式缺点：增加复杂性</li>
+</ul>
+<hr>
+<h1 id="实现函数执行日志记录"><a href="#实现函数执行日志记录" class="headerlink" title="实现函数执行日志记录"></a>实现函数执行日志记录</h1><p>在我们使用 nodejs 编写服务端的代码的时候，经常需要在代码中打日志。通过记录代码日志，能够让我们更容易地了解程序的运行情况，如下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 计算数字</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">times</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> sum = <span class="number">0</span>;</div><div class="line">  <span class="keyword">var</span> i = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(i &lt; times)&#123;</div><div class="line">    sum += i;</div><div class="line">    i++;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 计算第一个函数执行的时间</span></div><div class="line"><span class="keyword">var</span> fisrtStart = <span class="built_in">Date</span>.now();</div><div class="line">calculate(<span class="number">100</span>);</div><div class="line"><span class="keyword">var</span> firstUsed = <span class="built_in">Date</span>.now() - fisrtStart;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'calculate(100) 耗时'</span> + firstUsed + <span class="string">'ms'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 计算第二个函数执行的时间</span></div><div class="line"><span class="keyword">var</span> secondStart = <span class="built_in">Date</span>.now();</div><div class="line">calculate(<span class="number">1000</span>);</div><div class="line"><span class="keyword">var</span> secondUsed = <span class="built_in">Date</span>.now() - secondStart;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'calculate(1000) 耗时'</span> + secondUsed + <span class="string">'ms'</span>);</div></pre></td></tr></table></figure>
+<p>然而我们发现上面的方法，不仅需要每次调用编写相应的日志逻辑代码，还很不优雅。事实上，对于上面的问题，我们使用装饰器模式，来为 <code>calculate</code> 函数动态地添加打日志的功能。</p>
+<p>定义一个 addLog 的函数，它只有一个参数：需要添加日志功能的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLog</span>(<span class="params">func</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> startTime=<span class="built_in">Date</span>.now();</div><div class="line">        <span class="keyword">var</span> result=func(num);</div><div class="line">        <span class="keyword">var</span> endTime=<span class="built_in">Date</span>.now();</div><div class="line">        <span class="keyword">var</span> during=endTime-startTime;</div><div class="line">        <span class="keyword">var</span> funcName=func.name;</div><div class="line">        <span class="built_in">console</span>.log(funcNmae+<span class="string">'('</span>+num+<span class="string">') 耗时'</span>+during)；</div><div class="line">        <span class="keyword">return</span> result；</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在许多面向对象的语言中都有装饰器（Decorator），用来增加类的功能和职责。可参考：<a href="https://github.com/wycats/javascript-decorators" target="_blank" rel="external">javascript-decorators</a></p>
+<hr>
+<h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><p>观察者模式也称发布者-订阅者模式。</p>
+<p>发布者会保存一份订阅者（观察者）的名单，当发布者状态改变的时候就会主动地向订阅者发出通知，从而建立发布-订阅的关系。</p>
+<p>在JavaScript中，<code>onclick</code>等事件就是观察者模式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 观察者类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Observer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.update=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">// 执行代码</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 发布者类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Subject</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.observers=[];</div><div class="line">&#125;</div><div class="line"><span class="comment">// 增加订阅</span></div><div class="line">Subject.prototype.addObserver=<span class="function"><span class="keyword">function</span>(<span class="params">observer</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.observers.push(observer);</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 删除订阅</span></div><div class="line">Subject.prototype.removeObserver=<span class="function"><span class="keyword">function</span>(<span class="params">observer</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> index=<span class="keyword">this</span>.observers.indexOf(observer);</div><div class="line">    <span class="keyword">this</span>.observers.splice(index,<span class="number">1</span>);</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 通知订阅</span></div><div class="line">Subject.prototype.notify=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> observerLength=<span class="keyword">this</span>.observers.length;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;observerLength;i++)&#123;</div><div class="line">        <span class="keyword">this</span>.observers[i].update(context);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>观察者模式优点：更加解耦、支持广播通信</li>
+<li>观察者模式缺点：大量观察者，广播性能有问题</li>
+</ul>
+<hr>
+<h1 id="实现自定义事件Event对象"><a href="#实现自定义事件Event对象" class="headerlink" title="实现自定义事件Event对象"></a>实现自定义事件Event对象</h1><h2 id="什么是自定义事件"><a href="#什么是自定义事件" class="headerlink" title="什么是自定义事件"></a>什么是自定义事件</h2><p>事实上不难理解，在我们 js 中我们有许多事件，如鼠标点击时的 <code>click</code>，键盘的 <code>keyup</code> 等事件，这些都是系统提供给我们的可以触发使用的事件。但当我们的程序变得越来越复杂的时候，我们发现只靠系统提供的事件监听似乎已经不能满足我们的需求了。我们就需要我们自己去定义事件。自定义事件 <code>Event</code> 对象 在我们组件开发过程中经常会使用到。可参考：<a href="https://github.com/aralejs/events" target="_blank" rel="external">Events</a></p>
+<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Event = &#123;</div><div class="line">  handlers: &#123;&#125;,</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 监听指定函数</span></div><div class="line"><span class="comment">   * @param eventName &#123;string&#125; 事件名称</span></div><div class="line"><span class="comment">   * @param callback &#123;function&#125; 处理函数</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  on: <span class="function"><span class="keyword">function</span> (<span class="params">eventName, callback</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> handlers = <span class="keyword">this</span>.handlers;</div><div class="line"></div><div class="line">    <span class="comment">// 判断是否有相关事件的监听者，如果没有则创建</span></div><div class="line">    <span class="keyword">if</span> (!handlers[eventName]) &#123;</div><div class="line">      handlers[eventName] = [];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 增加指定事件的监听者</span></div><div class="line">    handlers[eventName].push(callback);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 触发指定事件</span></div><div class="line"><span class="comment">   * @param eventName &#123;string&#125; 事件名称</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  emit: <span class="function"><span class="keyword">function</span> (<span class="params">eventName</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> eventHandlers = <span class="keyword">this</span>.handlers[eventName];</div><div class="line">    <span class="comment">// 循环调用相关观察者处理函数</span></div><div class="line">    <span class="keyword">if</span>(eventHandlers)&#123;</div><div class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, len = eventHandlers.length; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">var</span> handler = eventHandlers[i];</div><div class="line">        <span class="comment">// 调用</span></div><div class="line">        handler(eventName);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="MVC-模式"><a href="#MVC-模式" class="headerlink" title="MVC 模式"></a>MVC 模式</h1><p>随着业务发展，应用复杂性提高，程序变得臃肿，难以分工开发。此时，会通过关注点分离来改进程序组织。核心思维是：将复杂的问题进行合理地分解，分成不同的几个部分，分别研究不同部分，最后再组合在一起形成整体的解决方案。</p>
+<p>比图一个应用程序，可拆分：</p>
+<ul>
+<li>界面（View 视图）</li>
+<li>逻辑（Controller 控制器）</li>
+<li>数据（Model 模型）</li>
+</ul>
+<p>上述即为MVC模式，当用户与View交互的时候，会触发事件并被Controller监听到，此时Controller会调用Model的数据并修改。由于View和Modle之间的观察者模式，当Model数据改变的时候就会通知View，View再根据新的数据显示界面。</p>
+<p>前端MVC框架，如BackboneJS、EmberJS等。</p>
+<hr>
+<h1 id="MVC-模式实践"><a href="#MVC-模式实践" class="headerlink" title="MVC 模式实践"></a>MVC 模式实践</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'calculator'</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'num'</span>&gt;</span>0元<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">'js-add'</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">'js-sub'</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="comment">// Mofel模型</span></span></div><div class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">Model</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> val=<span class="number">0</span>;</span></div><div class="line"><span class="javascript">        <span class="comment">// 增加数据</span></span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.add=<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</span></div><div class="line"><span class="javascript">            <span class="keyword">if</span>(val&lt;<span class="number">100</span>&gt;)&#123; val+=v; &#125;</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="javascript">        <span class="comment">// 减少数据</span></span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.sub=<span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</span></div><div class="line"><span class="javascript">            <span class="keyword">if</span>(val&gt;<span class="number">0</span>&gt;)&#123; val-=v; &#125;</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="javascript">        <span class="comment">// 获取数据</span></span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.getVal=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="javascript">            <span class="keyword">return</span> val;</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="javascript">        <span class="comment">// 观察者模式</span></span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> self=<span class="keyword">this</span>,views=[];</span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.register=<span class="function"><span class="keyword">function</span>(<span class="params">view</span>)</span>&#123;</span></div><div class="line"><span class="undefined">            views.push(view);</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.notify=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="javascript">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;views.length;i++)&#123;</span></div><div class="line"><span class="undefined">                views[i].render(self);</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="comment">// View视图</span></span></div><div class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">View</span>(<span class="params">controller</span>)</span>&#123;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> $calculator=$(<span class="string">'#calculator'</span>);</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> $num=$calculator.find(<span class="string">'.num'</span>);</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> $addBtn=$calculator.find(<span class="string">'js-add'</span>);</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> $subBtn=$calculator.find(<span class="string">'js-sub'</span>);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.render=fucntion()&#123;</span></div><div class="line"><span class="javascript">            $num.text(model.getVal()+<span class="string">'元'</span>);</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="comment">// 事件绑定</span></span></div><div class="line"><span class="undefined">        $addBtn.click(controller.increase);</span></div><div class="line"><span class="undefined">        $subBtn.click(controller.decrease);</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="comment">// Controller控制器</span></span></div><div class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">Controller</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> model=<span class="literal">null</span>,view=<span class="literal">null</span>;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.init=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="javascript">            model=<span class="keyword">new</span> Model();</span></div><div class="line"><span class="javascript">            view=<span class="keyword">new</span> View();</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">            model.register(view);</span></div><div class="line"><span class="undefined">            model.notify();</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.increase=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="undefined">            model.add(1);</span></div><div class="line"><span class="undefined">            model.notify();</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="keyword">this</span>.decrease=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="undefined">            model.sub(1);</span></div><div class="line"><span class="undefined">            model.notify();</span></div><div class="line"><span class="undefined">        &#125;;</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> controller=<span class="keyword">new</span> Controller();</span></div><div class="line"><span class="undefined">    controller.init();</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="MVVM-模式"><a href="#MVVM-模式" class="headerlink" title="MVVM 模式"></a>MVVM 模式</h1><p>随着JavaScript的能力越来越强，逐渐把以前在服务端完成的代码迁移到浏览器端。</p>
+<p>MVC模式对于浏览器来说：</p>
+<ul>
+<li>浏览器已经具备大部分的事件处理能力，不需要通过Controller控制View就可以完成很多操作。</li>
+<li>对前端开发来说，用户事件较多，会导致MVC模式反复多次调用view、Controller、Model三者。</li>
+</ul>
+<p>由此，我们可以将Controller替换为View Model，实现View和Model的双向绑定。</p>
+<p><img src="/images/MVVM.png" alt="MVVM"></p>
+<p>配合使用的框架有：VueJS、KnockoutJS等。</p>
+<ul>
+<li>MVVM 模式优点：双向绑定使View和Model自动化同步</li>
+<li>MVVM 模式缺点：不适用于简单UI界面</li>
+</ul>
+<hr>
+<h1 id="Vue-js-初接触"><a href="#Vue-js-初接触" class="headerlink" title="Vue.js 初接触"></a>Vue.js 初接触</h1><p>可参考：<a href="https://cn.vuejs.org/" target="_blank" rel="external">Vue.js</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'calculator'</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'num'</span>&gt;</span>&#123;&#123; val &#125;&#125;元<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">'js-add'</span> <span class="attr">v-on:click</span>=<span class="string">'add(1)'</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">'js-sub'</span> <span class="attr">v-on:click</span>=<span class="string">'sub(1)'</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="comment">// Model</span></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> data=&#123;</span></div><div class="line"><span class="undefined">        val:0</span></div><div class="line"><span class="undefined">    &#125;;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="comment">// View Model</span></span></div><div class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></div><div class="line"><span class="javascript">        el:<span class="string">'#calculator'</span>,</span></div><div class="line"><span class="undefined">        data:data,</span></div><div class="line"><span class="undefined">        methods:&#123;</span></div><div class="line"><span class="undefined">            add(v)&#123;</span></div><div class="line"><span class="javascript">                <span class="keyword">if</span>(<span class="keyword">this</span>.val&lt;<span class="number">100</span>)&#123; <span class="keyword">this</span>.val+=v; &#125;</span></div><div class="line"><span class="undefined">            &#125;,</span></div><div class="line"><span class="undefined">            sub(v)&#123;</span></div><div class="line"><span class="javascript">                <span class="keyword">if</span>(<span class="keyword">this</span>.val&gt;<span class="number">0</span>)&#123; <span class="keyword">this</span>.val-=v; &#125;</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">    &#125;);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="数据双向绑定的常见实现原理"><a href="#数据双向绑定的常见实现原理" class="headerlink" title="数据双向绑定的常见实现原理"></a>数据双向绑定的常见实现原理</h1><h2 id="观察者模式实现"><a href="#观察者模式实现" class="headerlink" title="观察者模式实现"></a>观察者模式实现</h2><p>观察者模式可以来实现我们的数据的双向绑定。只不过这种方式需要我们手动地去调用获取和设置数据的指定方法（如 updateData 等）。</p>
+<p>在数据发生变化的时候，我们发布一个叫数据变化的的事件。同理，当视图发生变化的时候，我们发布一个叫视图变化的事件。在这些事件发生时只要让相关的观察者去订阅这些事件即可。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 更新数据</span></div><div class="line"><span class="keyword">var</span> data = &#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateData</span>(<span class="params">attr, value</span>)</span>&#123;</div><div class="line">   data[attr] = value;</div><div class="line">   Event.trigger(<span class="string">'数据变化'</span>, attr, value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 订阅视图变化事件</span></div><div class="line">Event.on(<span class="string">'视图变化'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">attr, value</span>)</span>&#123;</div><div class="line">  <span class="comment">// 更新数据</span></div><div class="line">  updateData(attr, value);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 订阅数据变化事件</span></div><div class="line">Event.on(<span class="string">'数据变化'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">attr, value</span>)</span>&#123;</div><div class="line">   <span class="comment">// 更新绑定的视图</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//用户操作，发布视图变化事件</span></div><div class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"> e </span>)</span>&#123;</div><div class="line">   Event.trigger(<span class="string">'视图变化'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这种方式，是最早期的方式，问题是需要手动的方式来绑定关系，对于那种多交互和数据修改的页面就比较繁琐。</p>
+<h2 id="脏检测-Dirty-Checking-实现"><a href="#脏检测-Dirty-Checking-实现" class="headerlink" title="脏检测 (Dirty Checking)实现"></a>脏检测 (Dirty Checking)实现</h2><p>典型的 angularJS 的数据双向绑定就是基于数据的脏检测机制来实现的。angularJS 通过检查脏数据来进行 UI 层的操作更新。</p>
+<p>大体原理是通过记录所有变量的当前值，然后当发生特定的操作之后，angularJS 会调用 <code>$digest</code> 方法，这个方法内部做的逻辑就是遍历所有的 watcher(观察者)，对被监控的属性做对比，对比其在方法调用前后属性值有没有发生变化，如果发生变化，则调用对应的 <code>handler</code> (处理函数)。</p>
+<p>触发脏检测的操作：</p>
+<ul>
+<li>DOM事件，譬如用户输入文本，点击按钮(<code>ng-click</code>)等</li>
+<li>XHR响应事件 (<code>$http</code>)</li>
+<li>浏览器Location变更事件 (<code>$location</code>)</li>
+<li>Timer事件(<code>$timeout</code>, <code>$interval</code>)</li>
+<li>执行 <code>$digest()</code> 或 <code>$apply()</code></li>
+</ul>
+<p>脏检测方式的缺点十分明显，就是遍历 watcher 是很消耗性能的，特别是当监控数量达到一个数量级的时候。</p>
+<p>可参考：<a href="http://www.html-js.com/article/2145" target="_blank" rel="external">AngularJS 数据双向绑定揭秘</a></p>
+<h2 id="数据劫持-Hijacking-实现"><a href="#数据劫持-Hijacking-实现" class="headerlink" title="数据劫持(Hijacking)实现"></a>数据劫持(Hijacking)实现</h2><p>事实上，目前许多 MVVM 框架（vue.js、avalon.js 等）都是使用这种技术实现，数据劫持的核心是通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external">Object.defineProperty()</a> 来实现。我们可以使用 <code>Object.defineProperty()</code> 来定义一个对象的属性情况，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(obj, key,&#123;</div><div class="line">    value: someValue ,</div><div class="line">    writable: <span class="literal">true</span>, <span class="comment">// 可写</span></div><div class="line">    enumerable: <span class="literal">true</span>, <span class="comment">// 可被赋值</span></div><div class="line">    configurable: <span class="literal">true</span> <span class="comment">// 可改变和删除</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>除了上面之外，我们还可以设置属性的 <code>getter</code>，<code>setter</code>。当存在 <code>getter</code>，<code>setter</code> 函数时，会出现下面的情况：</p>
+<ul>
+<li>当获取目标属性时触发 <code>getter</code> 函数的执行</li>
+<li>当对目标属性进行赋值操作时会触发 <code>setter</code>函数的执行</li>
+</ul>
+<p>根据我们行业的术语，这种方式称为 数据劫持。通过使用 数据劫持，我们可以这样实现双向绑定：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个设置属性 setter 和 getter 的方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">defineProperty</span>(<span class="params">obj, attr, value</span>)</span>&#123;</div><div class="line">  <span class="comment">// 私有变量 value</span></div><div class="line">  <span class="keyword">var</span> value;</div><div class="line"></div><div class="line">  <span class="built_in">Object</span>.defineProperty(obj, attr, &#123;</div><div class="line">    get:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'获取属性值'</span> + value);</div><div class="line">      <span class="keyword">return</span> value;</div><div class="line">    &#125;,</div><div class="line">    set:<span class="function"><span class="keyword">function</span> (<span class="params">val</span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'修改属性值为 '</span> + value);</div><div class="line">      value = val;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'修改属性值'</span>);</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">  <span class="comment">// 设置属性值</span></div><div class="line">  obj[attr] = value;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 通过使用 defineProperty 方法，设置 man 的 name 属性的数据变化监听</span></div><div class="line"><span class="keyword">var</span> man = &#123;&#125;;</div><div class="line">defineProperty(man, <span class="string">'name'</span>, <span class="string">"cover"</span>); <span class="comment">// 修改属性值为 cover</span></div><div class="line">man.name; <span class="comment">// 获取属性值 cover</span></div><div class="line">man.name = <span class="string">'kevin'</span>; <span class="comment">// 修改属性值为 kevin</span></div></pre></td></tr></table></figure>
+<p>通过 <code>Object.defineProperty()</code> ，我们可以轻松地得知数据（对象）发生变化，然后在相应的 <code>setter</code> 函数中设置数据更新相应的操作（如发布更新事件）。通过这种方式我们可以使用赋值操作 = 来实现数据绑定，相对前面通过手动调用绑定指定更新数据接口 <code>updateData</code> 来说更加优雅。</p>
+<h2 id="面向未来的-Object-observe-实现"><a href="#面向未来的-Object-observe-实现" class="headerlink" title="面向未来的 Object.observe 实现"></a>面向未来的 Object.observe 实现</h2><p>一场变革即将到来。<code>Object.observe()</code> 是未来 ECMAScript 标准之一，它是一个可以异步观察 Javascript 中对象变化的方法，而无需你去使用一个其他的 JS 库。它允许一个观察者接收一个按照时间排序的变化记录序列，这个序列描述的是一列被观察的对象所发生的变化。例如下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 模型</span></div><div class="line"><span class="keyword">var</span> model = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 对 model进行观察</span></div><div class="line"><span class="built_in">Object</span>.observe(model, <span class="function"><span class="keyword">function</span>(<span class="params">changes</span>)</span>&#123;</div><div class="line">  <span class="comment">// 数据发生变化执行异步回调函数</span></div><div class="line">  changes.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">change</span>) </span>&#123;</div><div class="line">    <span class="comment">// 通知变化</span></div><div class="line">    <span class="built_in">console</span>.log(change.type, change.name, change.oldValue);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>通过使用<code>Object.observe()</code>，可以不需要使用任何框架就能实现双向数据绑定。唯一问题是目前浏览器还不支持，所以是面向未来的方式。</p>
+<hr>
+<h1 id="jQuery中的设计模式"><a href="#jQuery中的设计模式" class="headerlink" title="jQuery中的设计模式"></a>jQuery中的设计模式</h1><h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><p>迭代器模式提供一种方法遍历集合的所有元素，且不暴露该对象的内部表示。比如jQuery中的<code>each()</code>方法。</p>
+<h2 id="观察者模式-1"><a href="#观察者模式-1" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>jQuery中的自定义事件，就是典型的观察者模式。如：</p>
+<ul>
+<li>$(document).on();</li>
+<li>$(document).off();</li>
+<li>$(document).trigger();</li>
+</ul>
+<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><p>组合模式描述了一组对象可像单个对象一样的对待。如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'span'</span>).addClass(<span class="string">'disabled'</span>);</div></pre></td></tr></table></figure>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><ul>
+<li>不要刻意使用设计模式</li>
+<li>避免反模式</li>
+<li>通过实践理解设计模式</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/07/前端知识总结——Ajax/" rel="next" title="前端知识总结——Ajax">
+                <i class="fa fa-chevron-left"></i> 前端知识总结——Ajax
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="白发渔樵" />
+          <p class="site-author-name" itemprop="name">白发渔樵</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是模式"><span class="nav-number">1.</span> <span class="nav-text">什么是模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模式的特点"><span class="nav-number">2.</span> <span class="nav-text">模式的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式和反模式"><span class="nav-number">3.</span> <span class="nav-text">设计模式和反模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式"><span class="nav-number">4.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#适配器模式"><span class="nav-number">5.</span> <span class="nav-text">适配器模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器模式"><span class="nav-number">6.</span> <span class="nav-text">装饰器模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现函数执行日志记录"><span class="nav-number">7.</span> <span class="nav-text">实现函数执行日志记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#观察者模式"><span class="nav-number">8.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现自定义事件Event对象"><span class="nav-number">9.</span> <span class="nav-text">实现自定义事件Event对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是自定义事件"><span class="nav-number">9.1.</span> <span class="nav-text">什么是自定义事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现"><span class="nav-number">9.2.</span> <span class="nav-text">如何实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC-模式"><span class="nav-number">10.</span> <span class="nav-text">MVC 模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC-模式实践"><span class="nav-number">11.</span> <span class="nav-text">MVC 模式实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVVM-模式"><span class="nav-number">12.</span> <span class="nav-text">MVVM 模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-js-初接触"><span class="nav-number">13.</span> <span class="nav-text">Vue.js 初接触</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据双向绑定的常见实现原理"><span class="nav-number">14.</span> <span class="nav-text">数据双向绑定的常见实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式实现"><span class="nav-number">14.1.</span> <span class="nav-text">观察者模式实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脏检测-Dirty-Checking-实现"><span class="nav-number">14.2.</span> <span class="nav-text">脏检测 (Dirty Checking)实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据劫持-Hijacking-实现"><span class="nav-number">14.3.</span> <span class="nav-text">数据劫持(Hijacking)实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向未来的-Object-observe-实现"><span class="nav-number">14.4.</span> <span class="nav-text">面向未来的 Object.observe 实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jQuery中的设计模式"><span class="nav-number">15.</span> <span class="nav-text">jQuery中的设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器模式"><span class="nav-number">15.1.</span> <span class="nav-text">迭代器模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式-1"><span class="nav-number">15.2.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合模式"><span class="nav-number">15.3.</span> <span class="nav-text">组合模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在最后"><span class="nav-number">16.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白发渔樵</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
