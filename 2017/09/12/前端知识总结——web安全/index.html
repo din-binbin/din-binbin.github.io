@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="web安全,cookie,XSS,CSRF,HTTPS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="随着前端业务的发展，web的安全越来越重要，作为一名前端开发人员，必须知道相关的安全攻防知识。">
+<meta name="keywords" content="web安全,cookie,XSS,CSRF,HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端知识总结——web安全">
+<meta property="og:url" content="http://binbin-io.coding.me/2017/09/12/前端知识总结——web安全/index.html">
+<meta property="og:site_name" content="Thinking Coding">
+<meta property="og:description" content="随着前端业务的发展，web的安全越来越重要，作为一名前端开发人员，必须知道相关的安全攻防知识。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-10T15:47:27.440Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端知识总结——web安全">
+<meta name="twitter:description" content="随着前端业务的发展，web的安全越来越重要，作为一名前端开发人员，必须知道相关的安全攻防知识。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://binbin-io.coding.me/2017/09/12/前端知识总结——web安全/"/>
+
+
+
+
+
+  <title>前端知识总结——web安全 | Thinking Coding</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Thinking Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://binbin-io.coding.me/2017/09/12/前端知识总结——web安全/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="白发渔樵">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Thinking Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端知识总结——web安全</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T23:43:50+08:00">
+                2017-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>随着前端业务的发展，web的安全越来越重要，作为一名前端开发人员，必须知道相关的安全攻防知识。<br><a id="more"></a></p>
+<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>cookie最基本的功能是本地存储，以便下次访问的时候读取。</p>
+<p>基本构成是’名称’+’值’。</p>
+<p>如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Domain=ke.qq.com    <span class="comment">// 域</span></div><div class="line">Expires=<span class="number">2018</span><span class="number">-09</span><span class="number">-05</span>T12:<span class="number">32</span>:<span class="number">07.203</span>Z    <span class="comment">// 过期时间</span></div><div class="line">Max-age=<span class="number">36000</span>   <span class="comment">// 距离过期秒数</span></div><div class="line">Path=<span class="regexp">/  /</span><span class="regexp">/ 路径</span></div><div class="line"><span class="regexp">Secure  /</span><span class="regexp">/ 只在https才发送</span></div><div class="line"><span class="regexp">HttpOnly    /</span><span class="regexp">/ 不能通过JavaScript的document.cookie访问</span></div></pre></td></tr></table></figure>
+<p>cookie可在Chrome浏览器的Application面板查看。</p>
+<p>目前在Chrome浏览器里关于cookie还有一个特有的属性值SameSite，是为了防CSRF的。</p>
+<h2 id="js操作cookie"><a href="#js操作cookie" class="headerlink" title="js操作cookie"></a>js操作cookie</h2><p>可用document.cookie来获取cookie，得到的是一组键值对。</p>
+<p>name=value;</p>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">cname</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> name=cname + <span class="string">"="</span>;</div><div class="line">    <span class="keyword">var</span> decodedCookie=<span class="built_in">decodeURIComponent</span>(<span class="built_in">document</span>.cookie);</div><div class="line">    <span class="keyword">var</span> ca=decodedCookie.split(<span class="string">';'</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;ca.length;i++)&#123;</div><div class="line">        <span class="keyword">var</span> c=ca[i];</div><div class="line">        <span class="keyword">while</span>(c.charAt(<span class="number">0</span>) == <span class="string">' '</span>)&#123;</div><div class="line">            c=c.substring(<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(c.indexOf(name) == <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> c.substring(name.length,c.length);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">getCookie(<span class="string">'name'</span>);</div></pre></td></tr></table></figure>
+<h2 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.cookie=<span class="built_in">encodeURIComponent</span>(<span class="string">'username'</span>)+<span class="string">'='</span>+<span class="built_in">encodeURIComponent</span>(<span class="string">'cover'</span>)+<span class="string">'; domain=ke.qq.com'</span>+<span class="string">'; expires='</span>+ <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-1-1'</span>);</div></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>通过给cookie设置一个过期的时间即可删除cookie。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.cookie=<span class="built_in">encodeURIComponent</span>(<span class="string">'username'</span>)+<span class="string">'='</span>+<span class="built_in">encodeURIComponent</span>(<span class="string">'cover'</span>)+<span class="string">'; domain=ke.qq.com'</span>+<span class="string">'; expires='</span>+ <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="comment">// 表示设置为1970-1-1</span></div></pre></td></tr></table></figure>
+<h2 id="js-coolie"><a href="#js-coolie" class="headerlink" title="js-coolie"></a>js-coolie</h2><p>由于原生接口的繁杂，于是一些第三方库就开发出来解决这个问题。推荐使用js-cookie。</p>
+<p>基本使用包括：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Cookies.set(<span class="string">'name'</span>,<span class="string">'value'</span>,opts);</div><div class="line">Cookies.get(<span class="string">'name'</span>);</div><div class="line">Cookies.remove(<span class="string">'name'</span>);</div></pre></td></tr></table></figure>
+<h2 id="使用cookie保存用户信息"><a href="#使用cookie保存用户信息" class="headerlink" title="使用cookie保存用户信息"></a>使用cookie保存用户信息</h2><p>HTTP是无状态的协议，因此需要使用一些方法去保存请求方的信息，cookie就是其中一种。</p>
+<p>当第一次访问的时候，服务器会将带有cookie的返回结果返回给用户。<br>当第二次访问的时候，浏览器会将用户的cookie连同请求一起发送到服务器。</p>
+<p>需要注意的是，cookie是在服务器端设置的，一般是通过登录请求的Ajax获取服务器的cookie。</p>
+<hr>
+<h1 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h1><p>伴随着web业务的迅速发展，涉及到的用户信息越来越多，为了保护用户隐私，web安全变得越来越重要。</p>
+<h2 id="常见攻击方式"><a href="#常见攻击方式" class="headerlink" title="常见攻击方式"></a>常见攻击方式</h2><ul>
+<li>sql注入（数据库查询语言注入，通过服务端防范）</li>
+<li>XSS</li>
+<li>CSRF</li>
+<li>DDOS</li>
+<li>HTTP劫持</li>
+</ul>
+<h2 id="XSS简介"><a href="#XSS简介" class="headerlink" title="XSS简介"></a>XSS简介</h2><p>XSS，即Cross-Site Script，跨站脚本攻击。</p>
+<ul>
+<li>攻击者向网页注入恶意脚本代码</li>
+<li>用户访问包含该恶意代码的网页，会获取到恶意脚本代码</li>
+<li>通过运行恶意脚本，获取和控制用户信息</li>
+</ul>
+<p>通常有以下几种：</p>
+<ul>
+<li>反射型（非持久型）XSS</li>
+<li>存储型（持久型）XSS</li>
+<li>DOM-Based型XSS</li>
+</ul>
+<p>反射型和存储型均需要服务器的参与。</p>
+<h2 id="反射型（非持久型）XSS"><a href="#反射型（非持久型）XSS" class="headerlink" title="反射型（非持久型）XSS"></a>反射型（非持久型）XSS</h2><p>诱导用户点击恶意链接来造成一次性攻击</p>
+<ul>
+<li>用户访问带有恶意脚本代码参数的URL</li>
+<li>服务器获取请求参数并且直接使用</li>
+<li>服务端”反射”回结果页</li>
+<li>用户被攻击</li>
+</ul>
+<p>特点：一次性，通过链接点击引起。</p>
+<h2 id="存储型（持久型）XSS"><a href="#存储型（持久型）XSS" class="headerlink" title="存储型（持久型）XSS"></a>存储型（持久型）XSS</h2><p>恶意代码被存储到漏洞服务器中，用户浏览相关页面发起攻击</p>
+<ul>
+<li>将恶意代码上传或存储到漏洞服务器</li>
+<li>用户访问包含恶意脚本的页面</li>
+<li>服务器读取恶意数据并返回给用户</li>
+<li>用户被攻击</li>
+</ul>
+<h2 id="DOM-Based型XSS"><a href="#DOM-Based型XSS" class="headerlink" title="DOM-Based型XSS"></a>DOM-Based型XSS</h2><p>基于浏览器DOM解析的攻击</p>
+<ul>
+<li>用户打开带有恶意脚本的链接</li>
+<li>浏览器在DOM解析时直接使用恶意数据</li>
+<li>用户被攻击</li>
+</ul>
+<p>常触发场景：innerHTML、outHTML、document.write</p>
+<h2 id="XSS-payload"><a href="#XSS-payload" class="headerlink" title="XSS payload"></a>XSS payload</h2><p>实现XSS攻击的恶意脚本叫XSS payload。</p>
+<p>XSS payload可实现：</p>
+<ul>
+<li>窃取用户cookie<ul>
+<li>document.cookie</li>
+</ul>
+</li>
+<li>识别用户浏览器<ul>
+<li>navigator.userAgent</li>
+</ul>
+</li>
+<li>伪造请求<ul>
+<li>get/post</li>
+</ul>
+</li>
+<li>XSS钓鱼<ul>
+<li>XSS+钓鱼</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="XSS-防御"><a href="#XSS-防御" class="headerlink" title="XSS 防御"></a>XSS 防御</h1><h2 id="XSS-防御-httpOnly"><a href="#XSS-防御-httpOnly" class="headerlink" title="XSS 防御 httpOnly"></a>XSS 防御 httpOnly</h2><p>从攻击原理去防御</p>
+<ul>
+<li>可通过给cookie设置httpOnly属性，阻止客户端脚本访问cookie。<ul>
+<li>缺点：自己也不能用；非根本性解决XSS。</li>
+</ul>
+</li>
+</ul>
+<h2 id="XSS-防御-输入检查"><a href="#XSS-防御-输入检查" class="headerlink" title="XSS 防御 输入检查"></a>XSS 防御 输入检查</h2><p>要对用户的输入抱有怀疑的态度，对一些不正确不合规范的输入，需要做一些过滤和筛选。</p>
+<ul>
+<li>判断输入格式（白名单）</li>
+<li>过滤危险字符（黑名单）</li>
+<li>转义特殊字符（黑名单）</li>
+</ul>
+<p>但是一些工具可绕过前端的检查，因此需要服务端结合前端来实现输入检查。</p>
+<h2 id="XSS-防御-输出检查"><a href="#XSS-防御-输出检查" class="headerlink" title="XSS 防御 输出检查"></a>XSS 防御 输出检查</h2><p>输出检查是最后一道防线，其根据不同场景对数据进行处理。</p>
+<p>通常 XSS payload 会注入到以下几个环境：</p>
+<ul>
+<li>HTML标签（HTML执行环境）</li>
+<li>HTML属性（HTML执行环境）</li>
+<li>script标签（JavaScript解析环境）</li>
+<li>事件属性（JavaScript解析环境）</li>
+<li>URL（URL解析环境）</li>
+</ul>
+<p>输出检查，就是为了避免将用户输入当成代码运行。对不同环境可采取：</p>
+<ul>
+<li>HTML执行环境 ： 使用 <code>HTMLEncode()</code> 转义特殊字符</li>
+<li>JavaScript解析环境 ： 使用 <code>JavaScriptEncode()</code> 转义特殊字符</li>
+<li>URL解析环境 ： 使用 <code>URLEncode()</code> 转义特殊字符</li>
+</ul>
+<hr>
+<h1 id="web相关编码和转义"><a href="#web相关编码和转义" class="headerlink" title="web相关编码和转义"></a>web相关编码和转义</h1><p>提到 Web 前端安全，第一个想到的就是 XSS。而提到 XSS，不得不说的就是编码了。</p>
+<h2 id="常用编码"><a href="#常用编码" class="headerlink" title="常用编码"></a>常用编码</h2><ul>
+<li>URL 编码</li>
+<li>HTML 编码</li>
+<li>JS 编码</li>
+</ul>
+<h2 id="URL-编码"><a href="#URL-编码" class="headerlink" title="URL 编码"></a>URL 编码</h2><p>一般来说，URL只能使用英文字母<code>（a-zA-Z）</code>、数字<code>（0-9）</code>、<code>-_.~</code>4个特殊字符以及所有<code>（;,/?:@&amp;=+$#）</code>保留字符。如果使用了一些其他文字和特殊字符，则需要通过编码的方式来进行表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用了汉字</span></div><div class="line"><span class="keyword">var</span> url1 = <span class="string">'http://www.帅.com'</span>;</div></pre></td></tr></table></figure>
+<p>在 URL 中传参是通过键值对形式进行的，格式上是以<code>？</code>、<code>&amp;</code> 和 <code>=</code> 为特征标识进行解析，如果在键或者值的内容中包含一些特殊符号，就会造成解析错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 键为汉字</span></div><div class="line"><span class="keyword">var</span> url2 = <span class="string">'http://www.a.com?我=1'</span>;</div><div class="line"><span class="comment">// 值的内容为特殊符号</span></div><div class="line"><span class="keyword">var</span> url3 = <span class="string">'http://a.com?key=?&amp;'</span>;</div></pre></td></tr></table></figure>
+<p>对于上面的情况如果要正常解析，则需要进行编码，需要用不会造成歧义的符号代替有歧义的符号。</p>
+<h3 id="encodeURI"><a href="#encodeURI" class="headerlink" title="encodeURI"></a>encodeURI</h3><p>encodeURI 是用来编码 URI 的，最常见的就是编码一个 URL。encodeURI 会将需要编码的字符转换为 UTF-8 的格式。对于保留字符<code>（;,/?:@&amp;=+$#）</code>，以及非转义字符<code>（字母数字以及 -_.!~*&#39;()）</code>不会进行转义。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">encodeURI</span>(<span class="string">'http://www.帅.com'</span>); <span class="comment">// http://www.%E5%B8%85.com</span></div><div class="line"><span class="built_in">encodeURI</span>(<span class="string">'http://www.a.com?我=1'</span>);<span class="comment">// "http://www.a.com?%E6%88%91=1"</span></div></pre></td></tr></table></figure>
+<p>在这里，<code>%E5%B8%85</code> 就是 帅 的 URL 编码，<code>%E6%88%91</code> 即为 我 的 URL 编码。然后由于 encodeURI 不转义<code>&amp;</code>、<code>?</code>和<code>=</code>。所以对于 URL 参数的值是无法转义的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 值的内容为特殊符号</span></div><div class="line"><span class="built_in">encodeURI</span>(<span class="string">'http://a.com?key=?&amp;'</span>); <span class="comment">// "http://a.com?key=?&amp;"</span></div></pre></td></tr></table></figure>
+<h3 id="encodeURIComponent"><a href="#encodeURIComponent" class="headerlink" title="encodeURIComponent"></a>encodeURIComponent</h3><p>encodeURIComponent 是用来编码 URI 参数的。它会跳过非转义字符<code>（字母数字以及-_.!~*&#39;()）</code>。但会转义 URL的 保留字符<code>（;,/?:@&amp;=+$#）</code>。通常来说我们会 encodeURI 结合 encodeURIComponent 来使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// "http://a.com?a=%3F%26"</span></div><div class="line"><span class="built_in">encodeURI</span>(<span class="string">'http://a.com'</span>) + <span class="string">'?a='</span> + <span class="built_in">encodeURIComponent</span>(<span class="string">'?&amp;'</span>);</div></pre></td></tr></table></figure>
+<p>需注意的是由于 encodeURIComponent 会编码所有的 URL 保留字，所以不适合编码 URL。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// "http%3A%2F%2Fa.com%3Fkey%3D%3F%26"</span></div><div class="line"><span class="built_in">encodeURIComponent</span>(<span class="string">'http://a.com?key=?&amp;'</span>);</div></pre></td></tr></table></figure>
+<h3 id="URL解码"><a href="#URL解码" class="headerlink" title="URL解码"></a>URL解码</h3><p>有了 URL 编码，相应的会有解码机制。</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURI" target="_blank" rel="external">decodeURI( )</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent" target="_blank" rel="external">decodeURIComponent( )</a></li>
+</ul>
+<h2 id="HTML编码"><a href="#HTML编码" class="headerlink" title="HTML编码"></a>HTML编码</h2><p>在 HTML 中，某些字符是预留的，比如不能使用小于号（&lt;）和大于号（&gt;），这是因为浏览器会误认为它们是标签。如果希望正确地显示预留字符，我们必须在 HTML 源代码中使用字符实体（character entities）。</p>
+<p>当然还另一个重要原因，有些字符在 ASCII 字符集中没有定义，因此需要使用字符实体来表示，比如中文。</p>
+<p>HTML 编码分为：</p>
+<ul>
+<li>HTML 十六进制编码 <code>&amp;#xH;</code></li>
+<li>HTML 十进制编码 <code>&amp;#D;</code></li>
+<li>HTML 实体编码 <code>&amp;lt;</code></li>
+</ul>
+<p>在 HTML 进制编码中其中的数字则是对应字符的 unicode 字符编码。<br>比如单引号的 unicode 字符编码是27，则单引号可以被编码为<code>&amp;#x27;</code></p>
+<h3 id="HTML-实体编码"><a href="#HTML-实体编码" class="headerlink" title="HTML 实体编码"></a>HTML 实体编码</h3><p>通常来说，在业务中我们用到更多的是 HTML 的实体编码。常用的 HTML 实体编码函数如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 转义 HTML 特殊字符</span></div><div class="line"><span class="comment"> * @param &#123;String&#125; str</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">htmlEncode</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">String</span>(str)</div><div class="line">    .replace(<span class="regexp">/&amp;/g</span>, <span class="string">'&amp;amp;'</span>)</div><div class="line">    .replace(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>)</div><div class="line">    .replace(<span class="regexp">/'/g</span>, <span class="string">'&amp;#39;'</span>)</div><div class="line">    .replace(<span class="regexp">/&lt;/g</span>, <span class="string">'&amp;lt;'</span>)</div><div class="line">    .replace(<span class="regexp">/&gt;/g</span>, <span class="string">'&amp;gt;'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可参考：<a href="http://w3school.com.cn/html/html_entities.asp" target="_blank" rel="external">HTML 字符实体</a></p>
+<h2 id="JavaScript转义"><a href="#JavaScript转义" class="headerlink" title="JavaScript转义"></a>JavaScript转义</h2><p>JavaScript 中有些字符有特殊用途，如果字符串中想使用这些字符原来的含义，需要使用反斜杠对这些特殊符号进行转义。我们称之为 Javascript编码。一般有以下几类：</p>
+<ul>
+<li>三个八进制数字，如果不够个数，前面补0，例如 “e” 编码为“\145”</li>
+<li>两个十六进制数字，如果不够个数，前面补0，例如 “e” 编码为“\x65”</li>
+<li>四个十六进制数字，如果不够个数，前面补0，例如 “e” 编码为“\u0065”</li>
+<li>对于一些控制字符，使用特殊的C类型的转义风格（例如\n和\r）</li>
+</ul>
+<hr>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><p>CSRF，即Cross-Rite Request Forgery，跨站请求伪造。</p>
+<h2 id="CSRF-基本原理"><a href="#CSRF-基本原理" class="headerlink" title="CSRF 基本原理"></a>CSRF 基本原理</h2><ul>
+<li>用户登录</li>
+<li>服务器返回cookie</li>
+<li>诱导访问攻击页面</li>
+<li>通过cookie伪造请求</li>
+<li>返回正常页面，发送伪造请求，用户被攻击</li>
+</ul>
+<h2 id="CSRF-防御"><a href="#CSRF-防御" class="headerlink" title="CSRF 防御"></a>CSRF 防御</h2><p>正常请求与伪造请求的不同：</p>
+<ul>
+<li>用户知情与否<ul>
+<li>在发送请求时输入验证码可解决，但影响用户体验</li>
+<li>验证码一般是防止DDOS攻击</li>
+</ul>
+</li>
+<li>是否跨站请求<ul>
+<li>验证请求信息的referer属性可解决，但可能被篡改</li>
+</ul>
+</li>
+<li>参数是否伪造<ul>
+<li>可通过验证token解决，目前防CSRF最常用方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSRF-与-XSS-的结合"><a href="#CSRF-与-XSS-的结合" class="headerlink" title="CSRF 与 XSS 的结合"></a>CSRF 与 XSS 的结合</h2><p>结合之后，攻击力会变得很强，可直接运行脚本代码发起攻击。</p>
+<h2 id="XSS蠕虫"><a href="#XSS蠕虫" class="headerlink" title="XSS蠕虫"></a>XSS蠕虫</h2><p> 蠕虫的传染机理是利用恶意脚本进行复制和传播。</p>
+<p>条件：</p>
+<ul>
+<li>用户交互的页面</li>
+<li>影响范围广</li>
+</ul>
+<p>XSS蠕虫会重复的发起XSS和CSRF攻击。</p>
+<hr>
+<h1 id="DDOS"><a href="#DDOS" class="headerlink" title="DDOS"></a>DDOS</h1><p>DDoS，即Distributed Denial of Service，分布式拒绝服务。</p>
+<h2 id="DDOS-核心思想"><a href="#DDOS-核心思想" class="headerlink" title="DDOS 核心思想"></a>DDOS 核心思想</h2><p>通过大量非正常的请求来耗尽服务器的资源，使得服务器不能正常运行。</p>
+<h2 id="DDOS-防范"><a href="#DDOS-防范" class="headerlink" title="DDOS 防范"></a>DDOS 防范</h2><p>DDOS 攻击仍是业界安全问题中一个难题，当攻击流量超过了服务的网络设备的极限或带宽的最大负荷时，网站服务将瘫痪导致无法正常运作。</p>
+<p>通常来说，对于 DDOS 攻击我们可以通过下面的方式来进行防范。</p>
+<ul>
+<li>验证码<ul>
+<li>验证码是我们在互联网十分常见的技术之一。不得不说验证码是能够有效地防止多次重复请求的行为。目前来说，随着验证码方式的丰富化，导致黑客们没有一个比较有效的方式来获取和识别验证码。但由于验证码会影响到用户体验，因此验证码只有在比较重要的入口才会使用，如转账和登陆的场景。</li>
+</ul>
+</li>
+<li>限制请求频率（ratelimit）<ul>
+<li>限制请求频率是我们最常见的针对 DDOS 攻击的防御措施。其原理为设置每个客户端的请求频率的限制。简单来说，就是通过一些标识（如 IP 与 Cookie）来定位一个客户端，如果该客户端的请求在一定时间内过于频繁。则对该客户端之后的请求都重定向到一个出错的页面或者封杀相关 IP。</li>
+<li>当然许多框架都会有相应地限制请求频率的工具包，如 koa 框架便可以使用下面这些：<a href="https://github.com/cnpm/koa-limit" target="_blank" rel="external">koa-limit</a>、<a href="https://github.com/koajs/ratelimit" target="_blank" rel="external">koa-ratelimit</a>。</li>
+</ul>
+</li>
+<li>扩容加带宽<ul>
+<li>简单来说就是，增加机器增加服务带宽。只要超过了攻击流量便可以避免服务瘫痪。在双十一活动或者12306 抢车票等场景时，网站服务都会对自己的机器进行扩容和提高带宽。然而为了避免由于使用过多机器导致成本太高且浪费的情况。通常来说都是根据网站活动和请求情况来实施相应扩容操作。</li>
+</ul>
+</li>
+<li>其他的方法<ul>
+<li>设置自己的业务为分布式服务，防止单点失效</li>
+<li>使用主流云系统和 CDN（云和 CDN 其自身有 DDOS 的防范作用）</li>
+<li>优化资源使用提高 web server 的负载能力</li>
+</ul>
+</li>
+</ul>
+<p>更多DDOS可参考：<a href="https://www.leiphone.com/news/201509/9zGlIDvLhwguqOtg.html" target="_blank" rel="external">漫画告诉你什么是DDoS攻击</a>、<a href="https://www.zhihu.com/question/19581905" target="_blank" rel="external">创业公司如何防御DDoS攻击</a></p>
+<hr>
+<h1 id="运营商HTTP劫持"><a href="#运营商HTTP劫持" class="headerlink" title="运营商HTTP劫持"></a>运营商HTTP劫持</h1><p>在用户与服务器之间，存在着一个角色：运营商。</p>
+<p>用户通过运营商发起请求，服务端通过运营商返回数据。</p>
+<p>HTTP协议有这样一个特点，就是在传输过程中是明文的，不会加密。</p>
+<p>有些运营商或者其他窃听者就会篡改网页内容，比如插入右下角小广告什么的，这就是HTTP劫持。</p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>HTTPS可有效防止运营商HTTP劫持，防止页面篡改。</p>
+<p>简单说，HTTPS = HTTP + SSL（安全套接层）。</p>
+<p>SSL就是为了解决HTTP协议在传输过程中可能被篡改的问题而诞生的，后标准化为TSL（传输层安全协议），一般SSL/TSL并列出现。</p>
+<p>有了SSL/TSL，就可以在服务端对要返回的数据进行加密，使得传输中的篡改变得困难，再到用户的浏览器进行解密。</p>
+<h2 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h2><ul>
+<li>对称加密<ul>
+<li>加密和解密用的同一条秘钥</li>
+</ul>
+</li>
+<li>非对称加密<ul>
+<li>秘钥成对出现，通常其中一条不公开，叫私钥，另一个公开的叫公钥。其中一条加密的内容只能用另外一条解开。</li>
+</ul>
+</li>
+</ul>
+<p>非对称秘钥加密过程：</p>
+<ul>
+<li>请求HTTPS连接</li>
+<li>服务端返回公钥，保存私钥</li>
+<li>客户端产生对称秘钥，并使用服务器返回的公钥加密</li>
+<li>客户端发送加密后的对称秘钥到服务端</li>
+<li>服务端使用私钥解密得到对称秘钥</li>
+<li>服务端返回对称秘钥加密的页面</li>
+<li>至此，客户端和服务端可通过此对称秘钥通信</li>
+</ul>
+<p>为了防止服务端向客户端发送的公钥不被窃取和伪造，需要保证服务器公钥的合法性。做法如下：</p>
+<ul>
+<li>服务端不再是直接返回公钥，而是先向CA请求，申请证书，再返回包含公钥的证书到客户端</li>
+<li>客户端收到证书后，会向CA询问并验证证书，以确保服务器的合法性</li>
+<li>CA，即数字证书认证机构，具有权威性</li>
+</ul>
+<hr>
+<h1 id="其他安全"><a href="#其他安全" class="headerlink" title="其他安全"></a>其他安全</h1><ul>
+<li>点击劫持<ul>
+<li>点击劫持实际上就是在正常界面上覆盖一层透明的内容，引导用户在不知情的情况下进行了某些操作，这些操作可能是广告点击，或者是开启摄像头等操作，甚至可能会导致一些数据别窃取，也有可能结合 XSS 和 CSRF 进行更负责的攻击。</li>
+</ul>
+</li>
+<li>服务端安全<ul>
+<li>除了前端注意安全，后端也需要对安全进行防范，常见比如防止 SQL 注入，登录会话管理等。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web安全/" rel="tag"> # web安全</a>
+          
+            <a href="/tags/cookie/" rel="tag"> # cookie</a>
+          
+            <a href="/tags/XSS/" rel="tag"> # XSS</a>
+          
+            <a href="/tags/CSRF/" rel="tag"> # CSRF</a>
+          
+            <a href="/tags/HTTPS/" rel="tag"> # HTTPS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/10/前端知识总结——设计模式/" rel="next" title="前端知识总结——设计模式">
+                <i class="fa fa-chevron-left"></i> 前端知识总结——设计模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="白发渔樵" />
+          <p class="site-author-name" itemprop="name">白发渔樵</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie"><span class="nav-number">1.</span> <span class="nav-text">cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js操作cookie"><span class="nav-number">1.1.</span> <span class="nav-text">js操作cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取"><span class="nav-number">1.2.</span> <span class="nav-text">读取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加"><span class="nav-number">1.3.</span> <span class="nav-text">增加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">1.4.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js-coolie"><span class="nav-number">1.5.</span> <span class="nav-text">js-coolie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用cookie保存用户信息"><span class="nav-number">1.6.</span> <span class="nav-text">使用cookie保存用户信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS"><span class="nav-number">2.</span> <span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见攻击方式"><span class="nav-number">2.1.</span> <span class="nav-text">常见攻击方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS简介"><span class="nav-number">2.2.</span> <span class="nav-text">XSS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射型（非持久型）XSS"><span class="nav-number">2.3.</span> <span class="nav-text">反射型（非持久型）XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储型（持久型）XSS"><span class="nav-number">2.4.</span> <span class="nav-text">存储型（持久型）XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-Based型XSS"><span class="nav-number">2.5.</span> <span class="nav-text">DOM-Based型XSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-payload"><span class="nav-number">2.6.</span> <span class="nav-text">XSS payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS-防御"><span class="nav-number">3.</span> <span class="nav-text">XSS 防御</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-防御-httpOnly"><span class="nav-number">3.1.</span> <span class="nav-text">XSS 防御 httpOnly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-防御-输入检查"><span class="nav-number">3.2.</span> <span class="nav-text">XSS 防御 输入检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-防御-输出检查"><span class="nav-number">3.3.</span> <span class="nav-text">XSS 防御 输出检查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web相关编码和转义"><span class="nav-number">4.</span> <span class="nav-text">web相关编码和转义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用编码"><span class="nav-number">4.1.</span> <span class="nav-text">常用编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-编码"><span class="nav-number">4.2.</span> <span class="nav-text">URL 编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#encodeURI"><span class="nav-number">4.2.1.</span> <span class="nav-text">encodeURI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#encodeURIComponent"><span class="nav-number">4.2.2.</span> <span class="nav-text">encodeURIComponent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL解码"><span class="nav-number">4.2.3.</span> <span class="nav-text">URL解码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML编码"><span class="nav-number">4.3.</span> <span class="nav-text">HTML编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML-实体编码"><span class="nav-number">4.3.1.</span> <span class="nav-text">HTML 实体编码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript转义"><span class="nav-number">4.4.</span> <span class="nav-text">JavaScript转义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSRF"><span class="nav-number">5.</span> <span class="nav-text">CSRF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-基本原理"><span class="nav-number">5.1.</span> <span class="nav-text">CSRF 基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-防御"><span class="nav-number">5.2.</span> <span class="nav-text">CSRF 防御</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-与-XSS-的结合"><span class="nav-number">5.3.</span> <span class="nav-text">CSRF 与 XSS 的结合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS蠕虫"><span class="nav-number">5.4.</span> <span class="nav-text">XSS蠕虫</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDOS"><span class="nav-number">6.</span> <span class="nav-text">DDOS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DDOS-核心思想"><span class="nav-number">6.1.</span> <span class="nav-text">DDOS 核心思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DDOS-防范"><span class="nav-number">6.2.</span> <span class="nav-text">DDOS 防范</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运营商HTTP劫持"><span class="nav-number">7.</span> <span class="nav-text">运营商HTTP劫持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">7.1.</span> <span class="nav-text">HTTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对称加密和非对称加密"><span class="nav-number">7.2.</span> <span class="nav-text">对称加密和非对称加密</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他安全"><span class="nav-number">8.</span> <span class="nav-text">其他安全</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">白发渔樵</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
